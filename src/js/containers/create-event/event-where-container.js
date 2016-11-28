@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setEventWhere, addInput, removeInput } from '../../actions/create-event.js';
-import EventWhere from '../../components/create-event/event-where.jsx';
+import EventWhere from '../../components/create-event/event-where.js';
 
 const mapStateToProps = (state) => {
     let data = state.createEvent.eventWhere;

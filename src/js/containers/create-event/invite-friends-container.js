@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { hashHistory } from 'react-router';
 import { addInvitee, removeInvitee } from '../../actions/create-event.js';
 import validCookieExists from '../../lib/validCookieExists.js';
-import InviteFriends from '../../components/create-event/invite-friends.jsx';
+import InviteFriends from '../../components/create-event/invite-friends.js';
 
 const mapStateToProps = (state) => {
 

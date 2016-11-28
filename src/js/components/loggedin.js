@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import ReactNativeLogin from './fbook-web-login';
-//import { store } from '../init-store.js';
-//import { getUser } from '../actions/user.js';
+import { store } from '../init-store.js';
+import { getUser } from '../actions/user.js';
 
 export default class LoggedIn extends Component {
   constructor(props) {

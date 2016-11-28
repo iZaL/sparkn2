@@ -84,7 +84,7 @@ class ReactNativeLogin extends Component {
       else {
         console.log('not logged in' + this.state);
         return (
-          <View style={[styles.container]}>
+          <View style={styles.webViewContainer}>
             <WebView
               ref={'webview'}
               automaticallyAdjustContentInsets={false}

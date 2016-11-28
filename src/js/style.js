@@ -15,6 +15,10 @@ const styles = {
     height: 100,
     width: 300
   },
+  webViewContainer: {
+    flex: 1,
+    backgroundColor: '#F5FCFF'
+  },
 
 
   // profilePage
