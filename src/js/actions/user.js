@@ -14,6 +14,8 @@ export const EDIT_NAME_FAILURE = "EDIT_NAME_FAILURE";
 
 export const CHANGE_NAME = 'CHANGE_NAME';
 
+const HOME_URL = 'http://localhost:9000';
+
 /*
 GET USER ACTIONS
 */
@@ -28,8 +30,10 @@ export function getUser () {
     return (dispatch) => {
 
         dispatch(getUserRequest());
+
         console.log('axiosgetuser');
-        axios.get('/get-user?userID=' + id)
+
+        axios.get(`${HOME_URL}/get-user?userID=${id}`)
         .then((response) => {
 
             dispatch(getUserSuccess(response.data));

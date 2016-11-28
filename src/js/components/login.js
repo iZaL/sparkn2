@@ -13,8 +13,6 @@ class Login extends Component {
     }
 
     componentDidMount () {
-        console.log('LoginWillMount');
-        console.log(this.props.auth.isAuthenticated);
         if (this.props.auth.isAuthenticated) {
 
             Actions.feed({ type: 'reset' });
@@ -23,18 +21,17 @@ class Login extends Component {
     }
 
     onLoginPress () {
-      console.log(this.props);
       this.props.login();
     }
 
     render () {
         if (this.props.auth.isAuthenticated) {
-          console.log('LoginNotRendering');
+
           return (
             <View />
           )
         } else {
-          console.log('LoginRendering');
+          
           return (
               <View>
 

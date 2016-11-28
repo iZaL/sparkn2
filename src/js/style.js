@@ -19,7 +19,11 @@ const styles = {
     flex: 1,
     backgroundColor: '#F5FCFF'
   },
-
+  welcome: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
 
   // profilePage
 

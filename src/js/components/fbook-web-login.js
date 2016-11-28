@@ -15,7 +15,6 @@ const HOME_URL = 'http://localhost:9000';
 class ReactNativeLogin extends Component {
   constructor(props) {
     super(props);
-    console.log({ props });
 
     this.state = {
       loggedIn: false,
@@ -40,8 +39,7 @@ class ReactNativeLogin extends Component {
           loggedIn: isAuthenticated,
           loadedCookie: true
         });
-        console.log('loggedIn' + this.state.loggedIn);
-        console.log('loadedCookie' + this.state.loadedCookie);
+
       }
       else {
         isAuthenticated = false;
@@ -49,8 +47,7 @@ class ReactNativeLogin extends Component {
           loggedIn: isAuthenticated,
           loadedCookie: true
         });
-        console.log('loggedIn' + this.state.loggedIn);
-        console.log('loadedCookie' + this.state.loadedCookie);
+
       }
     });
   }
@@ -58,24 +55,21 @@ class ReactNativeLogin extends Component {
   onNavigationStateChange (navState) {
     // If we get redirected back to the HOME_URL we know that we are logged in. If your backend does something different than this
     // change this line.
-    console.log('navState=' + navState.url);
+
     if (navState.url == 'http://localhost:9000/#/feed') {
       this.setState({
         loggedIn: true,
       });
     }
-    console.log('loggedIn' + this.state.loggedIn);
-    console.log('loadedCookie' + this.state.loadedCookie);
+
   }
 
   render () {
     console.log('renderfacebooklogin');
-    console.log('loggedIn' + this.state.loggedIn);
-    console.log('loadedCookie' + this.state.loadedCookie);
     // If we have completed loading the cookie choose to show Login WebView or the LoggedIn component, else just show an empty View.
     if (this.state.loadedCookie) {
       if (this.state.loggedIn) {
-        console.log('Going to loggedin');
+
 
         return (
           <LoggedIn/>
@@ -121,7 +115,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const mapStateToProps = (state) => {
-    console.log(state.auth);
+    console.log(state);
     return {
         auth: state.auth
     };

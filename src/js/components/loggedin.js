@@ -1,10 +1,10 @@
-'use strict';
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import ReactNativeLogin from './fbook-web-login';
+import Login from '../containers/login-container.js';
 import { store } from '../init-store.js';
 import { getUser } from '../actions/user.js';
+import styles from '../style.js';
 
 export default class LoggedIn extends Component {
   constructor(props) {
@@ -21,22 +21,23 @@ export default class LoggedIn extends Component {
         console.log('gettingUserID');
         // const userIDD = store.getState().user.id;
         // console.log(userIDD);
-
+          console.log(!store.getState().user.id);
           if (!store.getState().user.id) {
-
               store.dispatch(getUser());
-
           }
+        Actions.feed({ type: 'reset' });
 
-        Actions.feed();
+  }
 
+  componentDidMount () {
+        console.log('componentDidMount');
   }
 
   render () {
     console.log('LoggedInDidRender');
     console.log(this.state.loggedIn);
     if (this.state.loggedIn) {
-      console.log('renderLoggedIn');
+
      return (
        <View style={styles.container}>
          <Text style={styles.welcome}>
@@ -50,23 +51,9 @@ export default class LoggedIn extends Component {
     else {
       console.log('LoggedInFailed')
       return (
-        <ReactNativeLogin />
+        <Login />
       );
     }
 
   }
 }
-
-var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
