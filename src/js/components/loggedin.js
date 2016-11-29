@@ -19,18 +19,19 @@ export default class LoggedIn extends Component {
         console.log('LoggedInWillMount and Actions.Feed being called');
 
         console.log('gettingUserID');
-        // const userIDD = store.getState().user.id;
-        // console.log(userIDD);
+         const userIDD = store.getState().user.id;
+         console.log(userIDD);
           console.log(!store.getState().user.id);
           if (!store.getState().user.id) {
               store.dispatch(getUser());
           }
-        Actions.feed({ type: 'reset' });
-
+        Actions.feed({ type: 'reset' }); // this isn't getting called.
+        console.log('should have called feed');
   }
 
   componentDidMount () {
         console.log('componentDidMount');
+        Actions.feed({ type: 'reset' });
   }
 
   render () {

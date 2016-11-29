@@ -31,7 +31,7 @@ class Login extends Component {
             <View />
           )
         } else {
-          
+
           return (
               <View>
 
@@ -48,7 +48,7 @@ class Login extends Component {
                       </View>
 
                       <View style={styles.row}>
-                          <Button buttonStyle={[styles.buttonStyle, { backgroundColor: 'blue' }]} textStyle={[styles.buttonTextStyle, { color: 'white' }]} onPress={this.onLoginPress} >
+                          <Button buttonStyle={[styles.buttonStyle, { backgroundColor: 'blue' }]} textStyle={[styles.buttonTextStyle, { color: 'white' }]} onPress={() => this.onLoginPress()} >
                             Login with Facebook
                           </Button>
                       </View>

@@ -9,11 +9,11 @@ import { Scene,
 import styles from './style';
 import TabIcon from './components/common/tab-bar/TabIcon';
 //import validCookieExists from './lib/validCookieExists.js';
-//import { getUser } from './actions/user.js';
-//import { getEvent, resetEventState } from './actions/event.js';
-//import { getNotifications } from './actions/notifications.js';
-//import { getCalendar } from './actions/calendar.js';
-//import { clearCreateEvent } from './actions/create-event.js';
+import { getUser } from './actions/user.js';
+import { getEvent, resetEventState } from './actions/event.js';
+import { getNotifications } from './actions/notifications.js';
+import { getCalendar } from './actions/calendar.js';
+import { clearCreateEvent } from './actions/create-event.js';
 import { store } from './init-store.js';
 import LoginContainer from './containers/login-container.js';
 import loginWithFacebook from './components/fbook-web-login.js';
@@ -37,11 +37,11 @@ import InviteFriendsContainer from './containers/create-event/invite-friends-con
 function initialiseAppState (nextState, replace, callback) {
     // catch if user is not authenticated
     //if (!validCookieExists()) {
-        Actions.login();
+        //Actions.login();
     //} else {
-      //  if (!store.getState().user.id) {
-          //  store.dispatch(getUser());
-        //}
+        if (!store.getState().user.id) {
+            store.dispatch(getUser());
+        }
     //}
     callback();
 }
@@ -127,6 +127,7 @@ class Index extends Component {
             <Scene key="loggedin" component={loggedIn} title="Logged In" />
 
             <Scene key="tabbar" initial >
+              <Scene key="feed" component={ FeedContainer } title="Feed" icon={TabIcon} />
               <Scene
                   key="main"
                   tabs
@@ -156,7 +157,7 @@ class Index extends Component {
                       panHandlers={null}
                     />
                 </Scene>
-                <Scene key="feed" component={ FeedContainer } title="Feed" icon={TabIcon} initial />
+
                 <Scene key="profile" component={ ProfileContainer } title="Profile" icon={TabIcon} />
                 <Scene key="createevent" component={ CreateEventContainer } title="Create Event" hideTabBar hideNavBar icon={TabIcon} />
 
