@@ -19,7 +19,7 @@ const Notification = ({ eventID, timestamp, firstName, lastName, photoURL, event
 // ADD THE OnClick button to Link! --<
     return (
       <Card style={[styles.cardStyle, viewedNotification && styles.viewedNotificationStyle]}>
-      <CardSection style={styles.cardSectionStyle}>
+      <CardSection style={styles.cardSectionNotification}>
       <TouchableOpacity style={styles.cardButtonStyle} onPress={ () => handleUpdateNotification(index) } to={ 'event/' + eventID } >
 
               <View style={styles.leftColumn}>

@@ -6,31 +6,27 @@ import { updateNotification } from '../actions/event.js';
 import { listenForUserID } from '../lib/action-listeners.js';
 import filterNotifications from '../lib/filterNotifications.js';
 import { store } from '../init-store.js';
-
+import jsonState from '../testState/jsonState.json';
 
 const mapStateToProps = (state) => {
 
-console.log('matchFeedStateToProps');
-
-    let data = state.notifications.data;
-    let feedIsFiltered = state.notifications.filter;
-    let isShowHosting = state.notifications.showHosting;
+    let data = jsonState.notifications.data;
+    let feedIsFiltered = jsonState.notifications.filter;
+    let isShowHosting = jsonState.notifications.showHosting;
     let notifications = filterNotifications(data, feedIsFiltered, isShowHosting);
-
-    console.log('About to Return Props');
 
     return {
         allEvents: data,
-        user: state.user,
+        user: jsonState.user,
         notifications,
-        isFetching: state.notifications.isFetching,
-        updateNotification: state.event.updateNotification,
+        isFetching: jsonState.notifications.isFetching,
+        updateNotification: jsonState.event.updateNotification,
         feedIsFiltered,
         isShowHosting
     };
 };
 const mapDispatchToProps = (dispatch) => {
-    console.log('matchFeedDispatchStateToProps');
+
     return {
         handleUpdateNotification: (index) => {
 

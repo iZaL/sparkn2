@@ -15,13 +15,13 @@ class Login extends Component {
     componentDidMount () {
         if (this.props.auth.isAuthenticated) {
 
-            Actions.feed({ type: 'reset' });
+            //Actions.feed({ type: 'reset' });
         }
 
     }
 
     onLoginPress () {
-      this.props.login();
+      Actions.tabbar();
     }
 
     render () {
@@ -49,7 +49,7 @@ class Login extends Component {
 
                       <View style={styles.row}>
                           <Button buttonStyle={[styles.buttonStyle, { backgroundColor: 'blue' }]} textStyle={[styles.buttonTextStyle, { color: 'white' }]} onPress={() => this.onLoginPress()} >
-                            Login with Facebook
+                            Login
                           </Button>
                       </View>
 

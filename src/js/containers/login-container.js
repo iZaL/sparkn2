@@ -2,11 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { userLogin } from '../actions/auth.js';
 import Login from '../components/login.js';
+import jsonState from '../testState/jsonState.json';
 
 const mapStateToProps = (state) => {
-    console.log(state.auth);
+
     return {
-        auth: state.auth
+        auth: jsonState.auth
     };
 };
 

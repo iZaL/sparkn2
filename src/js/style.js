@@ -1,3 +1,5 @@
+import colours from './colours.js';
+
 const styles = {
 
   // login page
@@ -25,6 +27,13 @@ const styles = {
     marginBottom: 5,
   },
 
+  navigationBarStyle: {
+    backgroundColor: colours.blue
+  },
+  navigationBarTextStyle: {
+    color: colours.white
+  },
+
   // profilePage
 
   profilePage: {
@@ -46,7 +55,7 @@ const styles = {
   userName: {
     fontSize: 36,
     fontWeight: '200',
-    color: 'gray'
+    color: colours.gray
   },
   uiProfilePagePhotoCircularImage: {
     height: 100,
@@ -54,14 +63,14 @@ const styles = {
   },
   editNameTitle: {
     fontWeight: '200',
-    color: 'gray',
+    color: colours.gray,
     flex: 1
   },
   inputStyle: {
     color: '#000',
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: 'lightgray',
+    borderColor: colours.lightgray,
     paddingRight: 10,
     paddingLeft: 10,
     fontSize: 12,
@@ -74,7 +83,7 @@ const styles = {
   buttonStyle: {
     borderRadius: 18,
     borderWidth: 1,
-    borderColor: 'lightgray',
+    borderColor: colours.lightgray,
     paddingRight: 15,
     paddingLeft: 15,
     height: 32,
@@ -114,6 +123,9 @@ const styles = {
   },
 
   // filter-panel
+  filterPanelContainer: {
+    height: 50
+  },
   rowFilterPanel: {
     marginTop: 20,
     flex: 1,
@@ -124,10 +136,10 @@ const styles = {
     maxHeight: 30
   },
   filterButton: {
-    backgroundColor: 'white',
+    backgroundColor: colours.white,
     borderRadius: 18,
     borderWidth: 1,
-    borderColor: 'lightgray',
+    borderColor: colours.lightgray,
     paddingRight: 10,
     paddingLeft: 10,
     marginLeft: 5,
@@ -138,23 +150,23 @@ const styles = {
   },
   buttonText: {
       fontSize: 12,
-      color: 'blue',
+      color: colours.blue,
       fontWeight: '300',
       paddingTop: 5,
       paddingBottom: 5
   },
   buttonTextSelected: {
       fontSize: 12,
-      color: 'white',
+      color: colours.white,
       fontWeight: '300',
       paddingTop: 5,
       paddingBottom: 5
   },
   filterButtonSelected: {
-    backgroundColor: 'blue',
+    backgroundColor: colours.blue,
     borderRadius: 18,
     borderWidth: 1,
-    borderColor: 'lightgray',
+    borderColor: colours.lightgray,
     paddingRight: 10,
     paddingLeft: 10,
     marginLeft: 5,
@@ -179,14 +191,17 @@ const styles = {
     marginRight: 5,
     marginTop: 10
   },
-  cardSectionStyle: {
-    // borderBottomWidth: 1,
-    // padding: 5,
-    // backgroundColor: '#fff',
-    // justifyContent: 'flex-start',
-    // flexDirection: 'column',
-    // borderColor: '#ddd',
-    // position: 'relative'
+  cardSectionCalendar: {
+    borderBottomWidth: 1,
+    padding: 5,
+    backgroundColor: '#fff',
+    justifyContent: 'flex-start',
+    flexDirection: 'column',
+    borderColor: '#ddd',
+    position: 'relative'
+  },
+  cardSectionNotification: {
+
   },
   cardButtonStyle: {
     flex: 1,
@@ -255,19 +270,16 @@ const styles = {
   // calendarItem
 
   rightColumnCalendar: {
-    backgroundColor: 'blue',
     flexDirection: 'row'
   },
   cardTopRow: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'yellow'
+    alignItems: 'center'
   },
   cardMiddleRow: {
     flex: 1,
-    flexDirection: 'row',
-    backgroundColor: 'green'
+    flexDirection: 'row'
   },
   profileImage: {
 
@@ -282,7 +294,6 @@ const styles = {
     padding: 3
   },
   coverImage: {
-    flex: 1,
     height: 74,
     width: 100
   },
@@ -396,13 +407,25 @@ const styles = {
     alignItems: 'center'
   },
   tabBarStyle: {
-    backgroundColor: '#eee',
+    backgroundColor: colours.blue,
+    flex: 1
   },
   tabBarSelectedItemStyle: {
-    backgroundColor: '#ddd',
-  }
+    backgroundColor: colours.white,
+    flex: 1
+  },
+  iconBar: {
+    flex: 1,
+    alignItems: 'center',
+
+  },
+  iconBarStyle: {
+    backgroundColor: colours.blue
+  },
+  iconBarSelectedItemStyle: {
+    backgroundColor: colours.white
+  },
 
 };
-
 
 export default styles;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Notification from './notification.js';
 import getUserID from '../lib/getUserID.js';
@@ -37,21 +37,20 @@ const Feed = ({ sceneKey, allEvents, notifications, isFetching, handleUpdateNoti
                 hasEdited={ data.hasEdited } />
         );
     });
-    console.log('About to Return Feed');
-    console.log('sceneKey = ' + sceneKey);
+    
     return (
       <View>
 
-      {
-          isFetching && <Spinner />
-      }
-      {
-          !isFetching &&
-          <View>
-            <TopBar location={sceneKey} />
-          </View>
-      }
-          <View style={styles.containerFeed}>
+        {
+            isFetching && <Spinner />
+        }
+        {
+            !isFetching &&
+            <View>
+              <TopBar location={sceneKey} />
+            </View>
+        }
+        <View style={styles.filterPanelContainer}>
           {
             !isFetching && allEvents.length > 0 &&
                 <FilterPanel displayAll={ displayAll }
@@ -59,6 +58,11 @@ const Feed = ({ sceneKey, allEvents, notifications, isFetching, handleUpdateNoti
                              dataIsFiltered={ feedIsFiltered }
                              isShowHosting={ isShowHosting } />
           }
+        </View>
+
+        <ScrollView>
+          <View style={styles.containerFeed}>
+
           {
               allEvents.length === 0 && !isFetching &&
                   <Text style={styles.smallMessageText}>
@@ -81,8 +85,9 @@ const Feed = ({ sceneKey, allEvents, notifications, isFetching, handleUpdateNoti
           }
           {
               !isFetching && mappedNotifications
-            }
-            </View>
+          }
+          </View>
+        </ScrollView>
 
       </View>
 

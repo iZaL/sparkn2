@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import TopBar from '../event/top-bar.js';
+import { View, Text, ScrollView } from 'react-native';
 import CalendarItem from './calendar-item.js';
 import FilterPanel from '../general/filter-panel.js';
 import Spinner from '../common/Spinner.js';
 import getUserID from '../../lib/getUserID.js';
+import styles from '../../style.js';
 
 const Calendar = ({ location, allEvents, filteredEvents, isFetching, fetchEvent, displaySome, displayAll, calendarIsFiltered, isShowHosting }) => {
 
@@ -14,66 +14,35 @@ const Calendar = ({ location, allEvents, filteredEvents, isFetching, fetchEvent,
 
         return new Date(a).getTime() > new Date(b).getTime();
     });
-    console.log(this.props);
-    const currentScene = 'calendar';
 
     return (
 
         <View>
-
-            <View className="container calendar">
               {
                   isFetching && <Spinner />
               }
-              {
-                  !isFetching && allEvents.length > 0 && <FilterPanel displaySome={ displaySome }
-                                                                      displayAll={ displayAll }
-                                                                      dataIsFiltered={ calendarIsFiltered }
-                                                                      isShowHosting={ isShowHosting } />
-              }
-              {
-                  sortedData.length === 0 && !isFetching &&
-                      <Text className="no-events-message">
-                          You have no { currentScene.includes('album') ? "past" : "upcoming" } events.
-                      </Text>
-              }
-              {
-                  !isFetching && sortedData.map((item, i) => {
 
-                      return <CalendarItem key={ 1 }
-                                           userIsHost={ item.hostID === getUserID() }
-                                           RSVPstatus={ item.RSVP }
-                                           eventName={ item.eventName }
-                                           eventWhat={ item.eventWhat }
-                                           eventWhere={ item.eventWhere }
-                                           eventWhen={ item.eventWhen }
-                                           coverPhoto={ item.coverPhoto }
-                                           eventID={ item.eventID } />;
-                  })
-              }
-
-            </View>
-
-            <View className="container calendar">
-                {
-                    isFetching && <Spinner />
-                }
+              <View style={styles.filterPanelContainer}>
                 {
                     !isFetching && allEvents.length > 0 && <FilterPanel displaySome={ displaySome }
                                                                         displayAll={ displayAll }
                                                                         dataIsFiltered={ calendarIsFiltered }
                                                                         isShowHosting={ isShowHosting } />
                 }
+              </View>
+
+              <ScrollView>
+                <View style={styles.containerFeed}>
                 {
                     sortedData.length === 0 && !isFetching &&
-                        <Text className="no-events-message">
+                        <Text style={styles.smallMessageText}>
                             You have no { currentScene.includes('album') ? "past" : "upcoming" } events.
                         </Text>
                 }
                 {
                     !isFetching && sortedData.map((item, i) => {
 
-                        return <CalendarItem key={ i }
+                        return <CalendarItem key={ 1 }
                                              userIsHost={ item.hostID === getUserID() }
                                              RSVPstatus={ item.RSVP }
                                              eventName={ item.eventName }
@@ -84,8 +53,9 @@ const Calendar = ({ location, allEvents, filteredEvents, isFetching, fetchEvent,
                                              eventID={ item.eventID } />;
                     })
                 }
+                </View>
+              </ScrollView>
 
-            </View>
         </View>
     );
 };

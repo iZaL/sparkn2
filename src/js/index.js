@@ -15,6 +15,7 @@ import { getNotifications } from './actions/notifications.js';
 import { getCalendar } from './actions/calendar.js';
 import { clearCreateEvent } from './actions/create-event.js';
 import { store } from './init-store.js';
+import Intro from './components/Intro.js';
 import LoginContainer from './containers/login-container.js';
 import loginWithFacebook from './components/fbook-web-login.js';
 import loggedIn from './components/loggedin.js';
@@ -104,7 +105,7 @@ const getSceneStyle = (/* NavigationSceneRendererProps */ props, computedProps) 
     shadowOffset: null,
     shadowOpacity: null,
     shadowRadius: null,
-    paddingTop: 65
+    paddingTop: 10
   };
   if (computedProps.isActive) {
     style.marginTop = computedProps.hideNavBar ? 0 : 64;
@@ -122,12 +123,11 @@ class Index extends Component {
       <Provider store={store} >
         <Router createReducer={reducerCreate} getSceneStyle={getSceneStyle}>
           <Scene key="root" hideNavBar hideTabBar>
-            <Scene key="login" component={LoginContainer} title="Login" initial />
-            <Scene key="facebooklogin" component={ loginWithFacebook } title="Facebook Login" />
-            <Scene key="loggedin" component={loggedIn} title="Logged In" />
+            <Scene key="intro" component={Intro} title="Intro" initial />
+            <Scene key="login" component={LoginContainer} title="Login" />
 
-            <Scene key="tabbar" initial >
-              <Scene key="feed" component={ FeedContainer } title="Feed" icon={TabIcon} />
+            <Scene key="tabbar" >
+
               <Scene
                   key="main"
                   tabs
@@ -135,35 +135,38 @@ class Index extends Component {
                   tabBarSelectedItemStyle={styles.tabBarSelectedItemStyle}
               >
                 <Scene
-                  key="albums" title="Albums" icon={TabIcon} navigationBarStyle={{ backgroundColor: 'red' }} titleStyle={{ color: 'white' }}>
+                  key="albums" title="Albums" icon={TabIcon} iconName="camera" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle}>
                   <Scene
                     key="albums1"
                     component={ AlbumsContainer }
                     title="Albums"
-                    onRight={() => alert('Right button')}
-                    rightTitle="Right"
+
                   />
                 </Scene>
-                <Scene key="calendar" title="Calendar" icon={TabIcon}>
+                <Scene key="calendar" title="Calendar" icon={TabIcon} iconName="calendar" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle}>
                     <Scene
                       key="calendar1"
                       component={ CalendarContainer }
                       title="Calendar"
-                      hideBackImage
-                      backTitle="Left"
-                      duration={1}
-                      onBack={() => alert('Left button!')}
-                      renderRightButton={() => <Text>Right</Text>}
-                      panHandlers={null}
                     />
                 </Scene>
-
-                <Scene key="profile" component={ ProfileContainer } title="Profile" icon={TabIcon} />
-                <Scene key="createevent" component={ CreateEventContainer } title="Create Event" hideTabBar hideNavBar icon={TabIcon} />
+                <Scene key="feed" component={ FeedContainer } title="Feed" icon={TabIcon} iconName="globe" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle} />
+                <Scene key="profile" component={ ProfileContainer } title="Profile" icon={TabIcon} iconName="user" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle} />
+                <Scene key="createevent" component={ CreateEventContainer } title="Create" hideTabBar icon={TabIcon} iconName="pencil" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle}/>
 
               </Scene>
 
-              <Scene key="when" component={ EventWhenContainer } title="When" />
+              <Scene
+                key="when"
+                component={ EventWhenContainer }
+                title="When" hideBackImage
+                backTitle="Left"
+                duration={1}
+                onBack={() => alert('Left button!')}
+                renderRightButton={() => <Text>Right</Text>}
+                onRight={() => alert('Right button')}
+                rightTitle="Right"
+              />
               <Scene key="inviteFriends" component={ InviteFriendsContainer } title="Invite Friends" />
 
             </Scene>
@@ -179,7 +182,8 @@ class Index extends Component {
 export default Index;
 
 //
-//
+//<Scene key="facebooklogin" component={ loginWithFacebook } title="Facebook Login" />
+//<Scene key="loggedin" component={loggedIn} title="Logged In" />
 // <Scene key="tabbar" initial >
 //   <Scene
 //       key="main"
@@ -188,7 +192,7 @@ export default Index;
 //       tabBarSelectedItemStyle={styles.tabBarSelectedItemStyle}
 //   >
 //     <Scene
-//       key="albums" title="Albums" icon={TabIcon} navigationBarStyle={{ backgroundColor: 'red' }} titleStyle={{ color: 'white' }}>
+//       key="albums" title="Albums" iconName="map-marker" icon={TabIcon} navigationBarStyle={{ backgroundColor: 'red' }} titleStyle={{ color: 'white' }}>
 //       <Scene
 //         key="albums1"
 //         component={ AlbumsContainer }
