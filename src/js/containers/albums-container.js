@@ -5,21 +5,21 @@ import { applyFilter, clearFilter } from '../actions/calendar.js';
 import filterNotifications from '../lib/filterNotifications.js';
 import getPastEvents from '../lib/getPastEvents.js';
 import { getEvent } from '../actions/event.js';
-
+import jsonState from '../testState/jsonState.json';
 
 const mapStateToProps = (state) => {
 
-    let pastEvents = state.calendar.data.filter(getPastEvents);
-    let data = state.calendar.data;
-    let calendarIsFiltered = state.calendar.filter;
-    let isShowHosting = state.calendar.showHosting;
+    let pastEvents = jsonState.calendar.data.filter(getPastEvents);
+    let data = jsonState.calendar.data;
+    let calendarIsFiltered = jsonState.calendar.filter;
+    let isShowHosting = jsonState.calendar.showHosting;
 
     let filteredEvents = filterNotifications(pastEvents, calendarIsFiltered, isShowHosting);
 
     return {
         allEvents: data,
         filteredEvents,
-        isFetching: state.calendar.isFetching,
+        isFetching: jsonState.calendar.isFetching,
         calendarIsFiltered,
         isShowHosting
     };

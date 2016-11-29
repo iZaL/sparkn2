@@ -1,5 +1,8 @@
 import React, { PropTypes } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import styles from '../../../style.js';
+import colours from '../../../colours.js';
 
 const propTypes = {
   selected: PropTypes.bool,
@@ -7,11 +10,14 @@ const propTypes = {
 };
 
 const TabIcon = (props) => (
-  <Text
-    style={{ color: props.selected ? 'red' : 'black' }}
-  >
-    {props.title}
-  </Text>
+  <View style={styles.iconBar}>
+    <Icon name={props.iconName} size={28} color={props.selected ? colours.blue : colours.white} />
+    <Text
+      style={{ color: props.selected ? colours.blue : colours.white }}
+    >
+      {props.title}
+    </Text>
+  </View>
 );
 
 TabIcon.propTypes = propTypes;

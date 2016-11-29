@@ -66,6 +66,13 @@ const Profile = ({ location, user, firstName, lastName, handleLogOut, handleChan
 
               </View>
 
+              <View style={styles.row}>
+                  <Button buttonStyle={[styles.buttonStyle, { backgroundColor: '#fff' }]} textStyle={[styles.buttonTextStyle, { color: 'lightgray' }]} onPress={ () => Actions.intro() }>
+                      Return to main
+                  </Button>
+
+              </View>
+
           </View>
       </View>
     );

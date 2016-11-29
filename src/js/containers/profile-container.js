@@ -4,12 +4,13 @@ import Profile from '../components/profile.js';
 import removeCookie from '../lib/removeCookie.js';
 import { Actions } from 'react-native-router-flux';
 import { changeName, editName } from '../actions/user.js';
+import jsonState from '../testState/jsonState.json';
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user,
-        firstName: state.user.firstName,
-        lastName: state.user.lastName
+        user: jsonState.user,
+        firstName: jsonState.user.firstName,
+        lastName: jsonState.user.lastName
     };
 };
 
