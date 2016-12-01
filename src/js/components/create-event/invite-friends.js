@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, ScrollView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import axios from 'axios';
 import { store } from '../../init-store.js';
 import { getFBFriends } from '../../actions/create-event.js';
-import { Button } from '../common';
+import { CardSection, Button } from '../common';
 import styles from '../../style.js';
 
 
@@ -24,26 +24,39 @@ class InviteFriends extends Component {
             return (
               <View
                 key={ index }
-                style={styles.container}
+
               >
-                    <View style={styles.rightFloatedContent}>
-                        <Button
-                          onPress={ (e) => this.props.handleSelected(friendData, index) }
-                          buttonStyle={[styles.buttonStyle, { backgroundColor: '#fff' }]}
-                          textStyle={[styles.buttonTextStyle, { color: 'lightgray' }]}
-                        >
-                          Invite
-                        </Button>
-                    </View>
+                    <CardSection style={styles.cardSectionInvite}>
+                      <View style={styles.rowFlex}>
 
-                    <Image
-                      style={styles.uiAvatarImage}
-                      source={ friendData.photoURL }
-                    />
+                        <View style={styles.leftJustified}>
+                          <View>
 
-                    <Text style={styles.textfriendName}>
-                        { friendData.firstName } { friendData.lastName }
-                    </Text>
+                            <Image
+                              style={styles.uiAvatarImage}
+                              source={{ uri: friendData.photoURL }}
+                            />
+
+                          </View>
+
+                          <Text style={styles.textfriendName}>
+                              { friendData.firstName } { friendData.lastName }
+                          </Text>
+
+                        </View>
+                        <View style={styles.rightColumnInvite}>
+
+                          <Button
+                            onPress={ (e) => this.props.handleSelected(friendData, index) }
+                            buttonStyle={[styles.buttonStyle, { backgroundColor: '#fff' }]}
+                          >
+                            Invite
+                          </Button>
+
+                        </View>
+
+                      </View>
+                    </CardSection>
               </View>
             );
         });
@@ -81,9 +94,10 @@ class InviteFriends extends Component {
       });
 
       return (
-          <View>
-              <View>
-                  <Text>Invited friends</Text>
+          
+            <ScrollView>
+              <View >
+                  <Text style={styles.mediumLabel}>Invited friends</Text>
                   { invitees }
               </View>
 
@@ -103,8 +117,8 @@ class InviteFriends extends Component {
                   Next
                 </Button>
               }
+            </ScrollView>
 
-          </View>
         );
     }
 }

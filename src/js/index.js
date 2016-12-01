@@ -26,14 +26,12 @@ import ProfileContainer from './containers/profile-container.js';
 import CreateEventContainer from './containers/create-event/create-event-container.js';
 //import EventContainer from './containers/event-container.js';
 //import EditEventContainer from './containers/edit-event-container.js';
-//import EventDetailsContainer from './containers/create-event/event-details-container.js';
-//import EventWhatContainer from './containers/create-event/event-what-container.js';
-//import EventWhereContainer from './containers/create-event/event-where-container.js';
+import EventDetailsContainer from './containers/create-event/event-details-container.js';
+import EventWhatContainer from './containers/create-event/event-what-container.js';
+import EventWhereContainer from './containers/create-event/event-where-container.js';
 import EventWhenContainer from './containers/create-event/event-when-container.js';
-//import EventWhenContainer from './components/create-event/event-when.js';
 //import ConfirmNewEventContainer from './containers/create-event/confirm-new-event-container.js';
 import InviteFriendsContainer from './containers/create-event/invite-friends-container.js';
-//import Test from './components/test.js';
 
 function initialiseAppState (nextState, replace, callback) {
     // catch if user is not authenticated
@@ -104,8 +102,7 @@ const getSceneStyle = (/* NavigationSceneRendererProps */ props, computedProps) 
     shadowColor: null,
     shadowOffset: null,
     shadowOpacity: null,
-    shadowRadius: null,
-    paddingTop: 10
+    shadowRadius: null
   };
   if (computedProps.isActive) {
     style.marginTop = computedProps.hideNavBar ? 0 : 64;
@@ -152,22 +149,57 @@ class Index extends Component {
                 </Scene>
                 <Scene key="feed" component={ FeedContainer } title="Feed" icon={TabIcon} iconName="globe" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle} />
                 <Scene key="profile" component={ ProfileContainer } title="Profile" icon={TabIcon} iconName="user" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle} />
-                <Scene key="createevent" component={ CreateEventContainer } title="Create" hideTabBar icon={TabIcon} iconName="pencil" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle}/>
+                <Scene key="eventdetails" component={ EventDetailsContainer } title="Create" hideTabBar icon={TabIcon} iconName="pencil" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle}
+                  backTitle="Back"
+                  backButtonTextStyle={styles.backButtonTextStyle}
+                  rightButtonTextStyle={styles.backButtonTextStyle}
+                  hideBackImage
+                  duration={100}
+                  direction="horizontal"
+                  onRight={() => alert('Cancel Event?')}
+                  rightTitle="Cancel" />
 
               </Scene>
-
-              <Scene
-                key="when"
-                component={ EventWhenContainer }
-                title="When" hideBackImage
-                backTitle="Left"
-                duration={1}
-                onBack={() => alert('Left button!')}
-                renderRightButton={() => <Text>Right</Text>}
-                onRight={() => alert('Right button')}
-                rightTitle="Right"
-              />
-              <Scene key="inviteFriends" component={ InviteFriendsContainer } title="Invite Friends" />
+              <Scene key="what" component={ EventWhatContainer } title="What" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle}
+                backTitle="Back"
+                backButtonTextStyle={styles.backButtonTextStyle}
+                rightButtonTextStyle={styles.backButtonTextStyle}
+                hideBackImage
+                duration={100}
+                direction="horizontal"
+                onRight={() => alert('Cancel Event?')}
+                rightTitle="Cancel" />
+              <Scene key="where" component={ EventWhereContainer } title="Where" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle}
+                backTitle="Back"
+                backButtonTextStyle={styles.backButtonTextStyle}
+                rightButtonTextStyle={styles.backButtonTextStyle}
+                hideBackImage
+                duration={100}
+                direction="horizontal"
+                onRight={() => alert('Cancel Event?')}
+                rightTitle="Cancel" />
+              <Scene key="when" component={ EventWhenContainer } title="When"
+                navigationBarStyle={styles.navigationBarStyle}
+                titleStyle={styles.navigationBarTextStyle}
+                backTitle="Back"
+                backButtonTextStyle={styles.backButtonTextStyle}
+                rightButtonTextStyle={styles.backButtonTextStyle}
+                hideBackImage
+                duration={100}
+                direction="horizontal"
+                onRight={() => alert('Cancel Event?')}
+                rightTitle="Cancel" />
+              <Scene key="inviteFriends" component={ InviteFriendsContainer } title="Invite Friends"
+                navigationBarStyle={styles.navigationBarStyle}
+                titleStyle={styles.navigationBarTextStyle}
+                backTitle="Back"
+                backButtonTextStyle={styles.backButtonTextStyle}
+                rightButtonTextStyle={styles.backButtonTextStyle}
+                hideBackImage
+                duration={100}
+                direction="horizontal"
+                onRight={() => alert('Cancel Event?')}
+                rightTitle="Cancel" />
 
             </Scene>
 
@@ -180,47 +212,3 @@ class Index extends Component {
 }
 
 export default Index;
-
-//
-//<Scene key="facebooklogin" component={ loginWithFacebook } title="Facebook Login" />
-//<Scene key="loggedin" component={loggedIn} title="Logged In" />
-// <Scene key="tabbar" initial >
-//   <Scene
-//       key="main"
-//       tabs
-//       tabBarStyle={styles.tabBarStyle}
-//       tabBarSelectedItemStyle={styles.tabBarSelectedItemStyle}
-//   >
-//     <Scene
-//       key="albums" title="Albums" iconName="map-marker" icon={TabIcon} navigationBarStyle={{ backgroundColor: 'red' }} titleStyle={{ color: 'white' }}>
-//       <Scene
-//         key="albums1"
-//         component={ AlbumsContainer }
-//         title="Albums"
-//         onRight={() => alert('Right button')}
-//         rightTitle="Right"
-//       />
-//     </Scene>
-//     <Scene key="calendar" title="Calendar" icon={TabIcon}>
-//         <Scene
-//           key="calendar1"
-//           component={ CalendarContainer }
-//           title="Calendar"
-//           hideBackImage
-//           backTitle="Left"
-//           duration={1}
-//           onBack={() => alert('Left button!')}
-//           renderRightButton={() => <Text>Right</Text>}
-//           panHandlers={null}
-//         />
-//     </Scene>
-//     <Scene key="feed" component={ FeedContainer } title="Feed" icon={TabIcon} initial />
-//     <Scene key="profile" component={ ProfileContainer } title="Profile" icon={TabIcon} />
-//     <Scene key="createevent" component={ CreateEventContainer } title="Create Event" hideTabBar hideNavBar icon={TabIcon} />
-//
-//   </Scene>
-//
-//   <Scene key="when" component={ EventWhenContainer } title="When" />
-//   <Scene key="inviteFriends" component={ InviteFriendsContainer } title="Invite Friends" />
-//
-// </Scene>

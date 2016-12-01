@@ -3,10 +3,11 @@ import { View, Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import DateTimeInput from '../general/date-time-input.js';
 import AddInput from '../general/add-input.js';
+import EventDetailsHeader from '../general/event-details-header.js';
 import { Button } from '../common';
 import styles from '../../style.js';
 
-const EventWhen = ({ eventWhenData, addInput, removeInput, handleDate, handleTime }) => {
+const EventWhen = ({ eventDetails, eventWhenData, addInput, removeInput, handleDate, handleTime }) => {
 
     let inputs = eventWhenData.map( (value, i) => {
         return (
@@ -21,36 +22,50 @@ const EventWhen = ({ eventWhenData, addInput, removeInput, handleDate, handleTim
             />);
     });
 
-    // let addInputClasses = classnames("twelve columns", {
-    //     "display-none": eventWhenData.length >= 3
-    // });
-    //
-    //
-    // let nextButtonClasses = classnames("twelve columns", {
-    //     "display-none": eventWhenData[0].date === ""
-    // });
+    let hideAddInput = eventWhenData.length >= 3;
+
+    let hideNext = eventWhenData[0].date === "";
 
     return (
-      <View style={styles.container}>
-          <Text style={styles.smallMessageText}>
-              Enter a date and a time for your event (or leave them blank to decide later).
-          </Text>
-          <Text style={styles.smallMessageText}>
-              You can add more than one option to create a poll.
-          </Text>
-          { inputs }
 
-          <AddInput data={ eventWhenData } handler={ addInput } />
+      <View>
+        <View style={styles.rowEventDetailsHeader}>
 
-          <View style={styles.row}>
+          <EventDetailsHeader location="Enter details"
+                            eventName={ eventDetails.eventName }
+                            eventDescription={ eventDetails.eventDescription } />
 
-              <Button
-                buttonStyle={styles.buttonStyle}
-                onPress={Actions.inviteFriends}
-              >
-                Next
-              </Button>
-          </View>
+        </View>
+        <View style={styles.container}>
+
+            <Text style={styles.smallMessageText}>
+                Enter a date and a time for your event (or leave them blank to decide later).
+            </Text>
+            <Text style={styles.smallMessageText}>
+                You can add more than one option to create a poll.
+            </Text>
+        </View>
+        <View style={styles.whenContainer}>
+              { inputs }
+
+              <AddInput data={ eventWhenData } handler={ addInput } />
+        </View>
+        <View style={styles.container}>
+              <View style={styles.row}>
+                  { (hideNext) &&
+                    <View />
+                  }
+                  { (!hideNext) &&
+                    <Button
+                      buttonStyle={styles.buttonStyle}
+                      onPress={Actions.inviteFriends}
+                    >
+                      Next
+                    </Button>
+                  }
+              </View>
+        </View>
+
       </View>
     );
 };

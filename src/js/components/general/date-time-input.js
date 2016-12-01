@@ -8,50 +8,58 @@ import { Button } from '../common';
 
 const DateTimeInput = ({ value, inputKey, inputCount, handleDate, handleTime, removeInput }) => {
 
-    //let removeInputClasses = classnames("one column", {
-      //  "display-none": inputKey === 0
-    //});
-
+    let hideRemoveInput = inputKey === 0
 
     return (
-        <View style={styles.dateTimeInput}>
 
-            <View style={styles.row}>
-                <Text style={styles.label}>
-                    Date
-                </Text>
+
+          <View style={styles.rowWhen}>
+
+            <View style={styles.column}>
+
+                <View>
+                  <Text style={styles.label}>
+                      Date
+                  </Text>
+                </View>
+
+                <View>
+
+                  <Input
+                      ref={ (input) => {
+                          if (input !== null && inputKey === inputCount - 1 && inputKey > 0) {
+                              input.focus();
+                          }
+                      }}
+                      style={styles.dateInputStyle}
+                      value={ value.date }
+                      placeholder="Date"
+                      onChange={ handleDate.bind(this, inputKey) }
+                      />
+                </View>
+            </View>
+
+            <View style={styles.column}>
+
                 <Text style={styles.label}>
                     Time
                 </Text>
-            </View>
-            <View style={styles.row}>
-
-                <Input
-                    ref={ (input) => {
-                        if (input !== null && inputKey === inputCount - 1 && inputKey > 0) {
-                            input.focus();
-                        }
-                    }}
-                    style={styles.dateInputStyle}
-                    type="date"
-                    //value={ value.date }
-                    placeholder="Date"
-                    //onChangeText={ handleDate.bind(this, inputKey) }
-                    />
 
                 <Input
                     step="300"
                     style={styles.timeInputStyle}
-                    type="time"
-                    //value={ value.time }
+                    value={ value.time }
                     placeholder="Time"
-                    //onChangeText={ (e) => handleTime(inputKey, e) }
+                    onChange={ (e) => handleTime(inputKey, e) }
                     />
+            </View>
 
-                { (inputKey === 0) &&
+            <View style={styles.column}>
+
+                { (hideRemoveInput) &&
                   <View />
                 }
-                { (inputKey !== 0) &&
+                { (!hideRemoveInput) &&
                   <Button
                     buttonStyle={styles.smallButtonStyle}
                     onPress={ (e) => removeInput(inputKey) }>
@@ -59,7 +67,9 @@ const DateTimeInput = ({ value, inputKey, inputCount, handleDate, handleTime, re
                   </Button>
                 }
             </View>
-        </View>
+
+          </View>
+
     );
 };
 

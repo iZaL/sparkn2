@@ -26,7 +26,7 @@ const Intro = () => {
                       Main App
                   </Button>
               </View>
-              
+
           </View>
 
     );

@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setEventWhere, addInput, removeInput } from '../../actions/create-event.js';
+import { setEventWhere, addInput, removeInput, clearCreateEvent } from '../../actions/create-event.js';
 import EventWhere from '../../components/create-event/event-where.js';
+import jsonState from '../../testState/jsonStateCreate.json';
 
 const mapStateToProps = (state) => {
-    let data = state.createEvent.eventWhere;
+    let data = jsonState.createEvent.eventWhere;
     return {
-        eventWhereData: data
+        eventWhereData: data,
+        eventDetails: jsonState.createEvent.eventDetails
     };
 };
 
@@ -27,6 +29,10 @@ const mapDispatchToProps = (dispatch) => {
 
         removeInput: (lastInputKey) => {
             dispatch(removeInput(lastInputKey, "eventWhere"));
+        },
+
+        discardEvent: () => {
+            dispatch(clearCreateEvent());
         }
     };
 };
