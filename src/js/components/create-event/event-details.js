@@ -1,11 +1,13 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, TextInput } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-//import classnames from 'classnames';
 import validCookieExists from '../../lib/validCookieExists.js';
-import { Button, Input } from '../common';
+//import Input from '../general/input.js';
+import { Button } from '../common';
+import EventDetailsHeader from '../general/event-details-header.js';
+import styles from '../../style.js';
 
-class EventDetails extends React.Component {
+class EventDetails extends Component {
 
     constructor (props){
         super(props);
@@ -24,65 +26,63 @@ class EventDetails extends React.Component {
         let hideNext = this.props.eventDetails.eventName === "" || this.props.eventDetails.eventDescription === "";
 
         return (
-            <View style={styles.justify}>
-
-                <Text>
-                    Enter the name of your event and a description.
-                </Text>
+              <View>
 
 
-                <View style={styles.row}>
+                <View style={styles.container}>
 
-                    <Input
-                        style={styles.inputNote}
-                        onChange={ this.props.handleChange.bind(this, 'eventName') }
-                        value={ this.props.eventDetails ? this.props.eventDetails.eventName : '' }
-                        type="text"
-                        placeholder="Event name" />
+                    <Text>
+                        Enter the name of your event and a description.
+                    </Text>
 
-                </View>
+                    <View style={styles.row}>
+                        <TextInput
+                            style={styles.inputStyle}
+                            handleChange={ this.props.handleChange.bind(this, 'eventName') }
+                            value={ this.props.eventDetails ? this.props.eventDetails.eventName : '' }
+                            type="text"
+                            placeholder="Event name" />
+                    </View>
+                    <View style={styles.row}>
+                        <TextInput
+                            style={styles.inputStyle}
+                            handleChange={ this.props.handleChange.bind(this, 'eventDescription') }
+                            value={ this.props.eventDetails ? this.props.eventDetails.eventDescription : '' }
+                            type="text"
+                            placeholder="Event description" />
+                    </View>
+                    <View style={styles.row}>
+                        <TextInput
+                            style={styles.inputStyle}
+                            handleChange={ this.props.handleChange.bind(this, 'eventNote') }
+                            value={ this.props.eventDetails ? this.props.eventDetails.eventNote : '' }
+                            placeholder="Leave a note to your friends (optional)" />
+                    </View>
+                    <View style={styles.row}>
 
-                <View style={styles.row}>
+                        { (hideNext) &&
+                          <View />
+                        }
+                        { (!hideNext) &&
+                          <Button
+                          onPress={Actions.what}
+                          buttonStyle={styles.buttonStyle}
+                          buttonTextStyle={styles.buttonTextStyle}
+                          >
+                            Next
+                          </Button>
+                        }
 
-                    <Input
-                        style={styles.inputNote}
-                        onChange={ this.props.handleChange.bind(this, 'eventDescription') }
-                        value={ this.props.eventDetails ? this.props.eventDetails.eventDescription : '' }
-                        type="text"
-                        placeholder="Event description" />
-                </View>
-
-                <View style={styles.row}>
-
-                    <Input
-                        style={styles.inputNote}
-                        onChange={ this.props.handleChange.bind(this, 'eventNote') }
-                        value={ this.props.eventDetails ? this.props.eventDetails.eventNote : '' }
-                        //rows="5"
-                        placeholder="Leave a note to your friends (optional)" />
-
-                </View>
-
-                <View style={styles.row}>
-
-                    { (hideNext) &&
-                      <View />
-                    }
-                    { (!hideNext) &&
-                      <Button
-                      onPress={Actions.what}
-                      buttonStyle={ nextButtonClasses }
-                      buttonTextStyle={styles.buttonTextStyle}
-                      >
-                        Next
-                      </Button>
-                    }
+                    </View>
 
                 </View>
-
-            </View>
+              </View>
         );
     }
 }
 
 export default EventDetails;
+
+//
+
+//

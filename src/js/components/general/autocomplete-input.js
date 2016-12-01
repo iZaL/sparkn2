@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Image } from 'react-native';
 import autocompleteHelper from '../../lib/autocomplete-helper.js';
-import Input from '../common/Input';
+import Input from '../general/input.js';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Button } from '../common';
 import styles from '../../style.js';
@@ -37,12 +37,15 @@ class AutocompleteInput extends Component {
                             input.focus();
                         }
                     }}
-                    onChange={ (e) => handleChange(e.target.value, "") }
-                    ref="searchField"
+                    handleChange={ (e) => handleChange(e.target.value, "") }
                     id={ id }
                     value={ value }
-                    type="text"
                     placeholder={ placeholder }
+                    style={styles.inputStyle}
+                    inputCount={ inputCount }
+                    inputKey={ inputKey }
+                    removeInput={ removeInput }
+
                 />
 
                 { (inputKey === 0) &&

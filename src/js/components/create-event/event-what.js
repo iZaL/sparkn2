@@ -1,55 +1,77 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Input from '../general/input.js';
 import AddInput from '../general/add-input.js';
+import EventDetailsHeader from '../general/event-details-header.js';
 import { Button } from '../common';
 import styles from '../../style.js';
 
-const EventWhat = ({ eventWhatData, addInput, removeInput, handleEventWhat }) => {
+const EventWhat = ({ eventDetails, eventWhatData, addInput, removeInput, handleEventWhat }) => {
 
     let inputCount = eventWhatData.length;
 
     let inputs = eventWhatData.map( (value, i) => {
 
         return (
-            <Input
-                handleChange={ handleEventWhat.bind(this, i) }
-                key={ i }
-                inputCount={ inputCount }
-                value={ value }
-                inputKey={ i }
-                removeInput={ removeInput }
-                placeholder= "What would you like to do?"
-            />);
+
+              <Input
+                  style={styles.inputStyle}
+                  handleChange={ handleEventWhat.bind(this, i) }
+                  key={ i }
+                  inputCount={ inputCount }
+                  value={ value }
+                  inputKey={ i }
+                  removeInput={ removeInput }
+                  placeholder= "What would you like to do?"
+              />
+
+        );
     });
 
-    // let addInputClasses = (eventWhatData.length >= 3 ? styles.displayNone : );
+    let hideAddInput = eventWhatData.length >= 3;
 
-    // let nextButtonClasses = (eventWhatData[0] === "" ? styles.displayNone : );
+    let hideNext = eventWhatData[0] === "";
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.smallMessageText}>
-                Enter what your event will be (or leave blank to decide it later).
-            </Text>
-            <Text style={styles.smallMessageText}>
-                You can add more than one option to create a poll.
-            </Text>
-            { inputs }
+        <View>
+          <View style={styles.rowEventDetailsHeader}>
 
-            <AddInput data={ eventWhatData } handler={ addInput } />
+            <EventDetailsHeader location="Enter details"
+                                eventName={ eventDetails.eventName }
+                                eventDescription={ eventDetails.eventDescription } />
 
-            <View style={styles.row}>
+          </View>
 
-                <Button
-                buttonStyle={styles.buttonStyle}
-                onPress={Actions.where}
-                >
-                  Next
-                </Button>
+          <View style={styles.container}>
+              <Text style={styles.smallMessageText}>
+                  Enter what your event will be (or leave blank to decide it later).
+              </Text>
+              <Text style={styles.smallMessageText}>
+                  You can add more than one option to create a poll.
+              </Text>
 
-            </View>
+              { inputs }
+
+              <AddInput data={ eventWhatData } handler={ addInput } />
+
+              <View style={styles.row}>
+
+                  { (hideNext) &&
+                    <View />
+                  }
+                  { (!hideNext) &&
+                    <Button
+                    onPress={Actions.where}
+                    buttonStyle={styles.buttonStyle}
+                    buttonTextStyle={styles.buttonTextStyle}
+                    >
+                      Next
+                    </Button>
+                  }
+
+              </View>
+          </View>
         </View>
     );
 };

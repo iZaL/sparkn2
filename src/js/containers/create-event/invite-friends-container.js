@@ -1,17 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addInvitee, removeInvitee } from '../../actions/create-event.js';
-import validCookieExists from '../../lib/validCookieExists.js';
+import { addInvitee, removeInvitee, clearCreateEvent } from '../../actions/create-event.js';
 import InviteFriends from '../../components/create-event/invite-friends.js';
+import jsonState from '../../testState/jsonStateCreate.json';
 
 const mapStateToProps = (state) => {
 
-    let friends = state.createEvent.friends;
-    let invitees = state.createEvent.invitees;
+    let friends = jsonState.createEvent.friends;
+    let invitees = jsonState.createEvent.invitees;
 
     return {
         friends: friends,
-        invitees: invitees
+        invitees: invitees,
+        eventDetails: jsonState.createEvent.eventDetails
     };
 };
 
@@ -24,6 +25,10 @@ const mapDispatchToProps = (dispatch) => {
 
         removeSelected: (id, index) => {
             dispatch(removeInvitee(id, index));
+        },
+
+        discardEvent: () => {
+            dispatch(clearCreateEvent());
         }
     };
 };

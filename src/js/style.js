@@ -41,16 +41,60 @@ const styles = {
   },
   container: {
     alignItems: 'center',
-    margin: 5
+    margin: 5,
+    borderColor: 'green',
+    borderWidth: 3,
+    borderRadius: 3
+  },
+  whenContainer: {
+    flexDirection: 'column',
+    margin: 15,
+    borderColor: 'pink',
+    borderWidth: 3,
+    borderRadius: 3
   },
   containerFeed: {
 
   },
   row: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'stretch',
     margin: 15,
-    minHeight: 32
+    minHeight: 32,
+    borderColor: 'yellow',
+    borderWidth: 3,
+    borderRadius: 3
+  },
+  rowFlex: {
+    flexDirection: 'row',
+    borderColor: 'blue',
+    borderWidth: 3,
+    borderRadius: 3,
+    justifyContent: 'space-between',
+    paddingLeft: 5,
+    paddingRight: 5
+  },
+  leftJustified: {
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    alignItems: 'flex-start',
+    padding: 10,
+    borderColor: 'orange',
+    borderWidth: 3,
+    borderRadius: 3
+  },
+  rowWhen: {
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    borderColor: 'yellow',
+    borderWidth: 3,
+    borderRadius: 3
+  },
+  column: {
+    flexDirection: 'column',
+    borderColor: 'purple',
+    borderWidth: 3,
+    borderRadius: 3
   },
   userName: {
     fontSize: 36,
@@ -59,7 +103,8 @@ const styles = {
   },
   uiProfilePagePhotoCircularImage: {
     height: 100,
-    width: 100
+    width: 100,
+    borderRadius: 15
   },
   editNameTitle: {
     fontWeight: '200',
@@ -67,14 +112,14 @@ const styles = {
     flex: 1
   },
   inputStyle: {
-    color: '#000',
+    color: colours.black,
     borderRadius: 5,
     borderWidth: 1,
     borderColor: colours.lightgray,
     paddingRight: 10,
     paddingLeft: 10,
     fontSize: 12,
-    flex: 1
+    flex: 0.9
   },
   smallButtonStyle: {
     flex: 0.1,
@@ -96,7 +141,9 @@ const styles = {
     fontSize: 16,
     fontWeight: '600',
     paddingTop: 10,
-    paddingBottom: 10
+    paddingBottom: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   hideEditButton: {
     height: 0,
@@ -200,6 +247,15 @@ const styles = {
     borderColor: '#ddd',
     position: 'relative'
   },
+  cardSectionInvite: {
+    borderBottomWidth: 1,
+    padding: 5,
+    backgroundColor: '#fff',
+    justifyContent: 'flex-start',
+    flexDirection: 'column',
+    borderColor: '#ddd',
+    position: 'relative'
+  },
   cardSectionNotification: {
 
   },
@@ -224,7 +280,8 @@ const styles = {
   uiProfilePhotoCircularImage: {
     width: 40,
     height: 40,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    borderRadius: 15
   },
   numberOfInvites: {
     fontSize: 10,
@@ -304,7 +361,7 @@ const styles = {
     flexDirection: 'row',
     backgroundColor: 'blue',
     justifyContent: 'center',
-    padding: 15,
+    padding: 10,
   },
   eventDetailTextTitle: {
     color: 'white',
@@ -320,37 +377,37 @@ const styles = {
   uiEventDetailPhotoCircularImage: {
     width: 40,
     height: 40,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    borderRadius: 15
   },
   columnEventDetailTextContainer: {
 
   },
-  dateTimeInput: {
 
-  },
   label: {
     fontSize: 12,
     fontWeight: '300'
+  },
+  mediumLabel: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: colours.gray
   },
   dateInputStyle: {
     color: '#000',
     borderRadius: 5,
     borderWidth: 1,
     borderColor: 'lightgray',
-    paddingRight: 10,
-    paddingLeft: 10,
     fontSize: 12,
-    flex: 1
+    width: 100
   },
   timeInputStyle: {
     color: '#000',
     borderRadius: 5,
     borderWidth: 1,
     borderColor: 'lightgray',
-    paddingRight: 10,
-    paddingLeft: 10,
     fontSize: 12,
-    flex: 1
+    width: 100
   },
 
   //invite friends
@@ -361,11 +418,16 @@ const styles = {
   uiAvatarImage: {
     width: 40,
     height: 40,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    borderRadius: 15
   },
   textfriendName: {
     fontSize: 12,
-    fontWeight: '300'
+    fontWeight: '300',
+    padding: 10
+  },
+  rightColumnInvite: {
+    alignSelf: 'center'
   },
   uiMiddleAlignedViewidedList: {
 
@@ -386,15 +448,6 @@ const styles = {
 
   },
   uiBigHorizontalList: {
-
-  },
-
-  //event details
-
-  inputNote: {
-
-  },
-  justify: {
 
   },
 
@@ -425,6 +478,14 @@ const styles = {
   iconBarSelectedItemStyle: {
     backgroundColor: colours.white
   },
+
+// Navbar styling
+
+  backButtonTextStyle: {
+    color: colours.white,
+    fontSize: 14,
+    fontWeight: '300'
+  }
 
 };
 
