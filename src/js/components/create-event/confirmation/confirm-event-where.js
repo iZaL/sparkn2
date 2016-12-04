@@ -1,38 +1,42 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import classnames from 'classnames';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { Button } from '../../common';
+import styles from '../../../style.js';
 
 const ConfirmEventWhere = ({ eventWhere }) => {
 
     const layout = eventWhere.map((data, i) => {
 
-        // let classes = classnames('three columns confirm-new-event-title where', {
-        //     'hide': i > 0
-        // });
+        let hideTitle = i > 0;
 
         return (
             <View
-            //className="poll-option-container row"
+            style={styles.rowSpaced}
             key={ i }
             >
+                { (hideTitle) &&
+                  <View style={styles.columnLeft} />
+                }
+                { (!hideTitle) &&
+                  <View style={styles.columnLeft}>
+                    <Text style={styles.optionTitleWhere}>
+                      Where
+                    </Text>
+                  </View>
+                }
                 <View
-                //className={ classes }
+                style={styles.columnMiddle}
                 >
-                  <Text>Where</Text>
-                </View>
-                <View
-                //className="nine columns confirm-new-event where"
-                >
-                  <Text
-                  //className="placeName"
-                  >
-                    { data.placeName || "TBC" }
-                  </Text>
-                  <Text
-                  //className="eventWhere-placeAddress"
-                  >
-                    { data.placeAddress }
-                  </Text>
+                  <View style={styles.rowSpaced}>
+                    <Button buttonStyle={styles.optionSelectedWhere} textStyle={styles.optionTextSelected}
+                    >
+                      <Icon name="map-marker" size={18} color="white" />
+                      {'  '}
+                      { data.placeName || "TBC" }
+                      { data.placeAddress }
+                    </Button>
+                  </View>
                 </View>
             </View>
         );
@@ -40,7 +44,7 @@ const ConfirmEventWhere = ({ eventWhere }) => {
 
     return (
         <View
-        //className="confirm-list"
+        style={styles.confirmList}
         >
             { layout }
         </View>

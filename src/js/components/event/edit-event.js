@@ -1,10 +1,12 @@
 import React from 'react';
-import Input from '../general/input.jsx';
-import AutocompleteInput from '../general/autocomplete-input.jsx';
-import DateTimeInput from '../general/date-time-input.jsx';
-import classnames from 'classnames';
-import TopBar from './top-bar.jsx';
-import { hashHistory } from 'react-router';
+import { View, Text, ScrollView } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import { Button } from '../common';
+import styles from '../../style';
+import Input from '../general/input.js';
+import AutocompleteInput from '../general/autocomplete-input.js';
+import DateTimeInput from '../general/date-time-input.js';
+import TopBar from './top-bar.js';
 
 
 const EditEvent = (props) => {
@@ -20,51 +22,45 @@ const EditEvent = (props) => {
 
     let hideButtonToggle = eventWhat.length === 0 || eventWhere.placeName === "" || eventWhen.date === "" || props.eventDetails.eventName === "" || props.eventDetails.eventDescription === "";
 
-    let hideSaveButton = classnames("twelve columns", {
-        "display-none": hideButtonToggle
-    });
+    let hideSaveButton = hideButtonToggle;
+
 
     return (
-            <div>
-                <div className="event-header row">
-                    <div>
-                        <p className="three columns back-button" > </p>
-                        <h3 className=" six columns title">Edit Event</h3>
-                        <p className="three columns cancel-event-button"></p>
-                    </div>
-                </div>
+            <View>
+                <View style={styles.row}>
+                    <View>
+                        <Text>Edit Event</Text>
+                    </View>
+                </View>
 
-                <div className="container">
-                    <p className="input-p-header"> Details </p>
-                    <div className="row">
-                        <input
-                            className="eleven columns"
-                            onChange={ props.handleChange.bind(this, 'eventName') }
+                <View style={styles.container}>
+                    <Text> Details </Text>
+                    <View style={styles.row}>
+                        <Input
+                            style={styles.inputStyle}
+                            handleChange={ props.handleChange.bind(this, 'eventName') }
                             value={ props.eventDetails ? props.eventDetails.eventName : '' }
-                            type="text"
                             placeholder="Event name" />
 
-                    </div>
+                    </View>
 
-                    <div className="row">
-                        <input
-                            className="eleven columns"
-                            onChange={ props.handleChange.bind(this, 'eventDescription') }
+                    <View style={styles.row}>
+                        <Input
+                            style={styles.inputStyle}
+                            handleChange={ props.handleChange.bind(this, 'eventDescription') }
                             value={ props.eventDetails ? props.eventDetails.eventDescription : '' }
-                            type="text"
                             placeholder="Event description" />
-                    </div>
+                    </View>
 
-                    <div className="row">
-                        <textarea
-                            className="eleven columns event-note"
-                            onChange={ props.handleChange.bind(this, 'eventNote') }
+                    <View style={styles.row}>
+                        <Input
+                            style={styles.inputStyle}
+                            handleChange={ props.handleChange.bind(this, 'eventNote') }
                             value={ props.eventDetails ? props.eventDetails.eventNote : '' }
-                            rows="5"
                             placeholder="Leave a note to your friends (optional)" />
-                    </div>
+                    </View>
 
-                    <p className="input-p-header"> What </p>
+                    <Text> What </Text>
                     <Input
                         handleChange={ props.handleEventWhat.bind(this, 0) }
                         value={ eventWhat }
@@ -73,7 +69,7 @@ const EditEvent = (props) => {
                         placeholder="What would you like to do?"
                     />
 
-                    <p className="input-p-header"> Where </p>
+                    <Text> Where </Text>
                         <AutocompleteInput
                             handleChange={ props.handleEventWhere.bind(this, 0) }
                             inputKey={ 0 }
@@ -83,7 +79,7 @@ const EditEvent = (props) => {
                             removeInput=''
                         />
 
-                    <p className="input-p-header"> When </p>
+                    <Text> When </Text>
                         <DateTimeInput
                             value={ eventWhen }
                             inputKey={ 0 }
@@ -92,12 +88,12 @@ const EditEvent = (props) => {
                             removeInput=''
                         />
 
-                    <button className="twelve columns" onClick={ () => { props.handleSaveEditedEvent(props.eventDetails.eventName, props.eventDetails.eventDescription, props.eventDetails.eventNote, eventWhat, eventWhere, eventWhen, props.params.eventID ); hashHistory.push("/feed"); } }>
+                    <Button buttonStyle={styles.buttonStyle} buttonText={styles.buttonTextStyle} onClick={ () => { props.handleSaveEditedEvent(props.eventDetails.eventName, props.eventDetails.eventDescription, props.eventDetails.eventNote, eventWhat, eventWhere, eventWhen, props.params.eventID ); Actions.tabbar(); } }>
                         Save Edited Event
-                    </button>
+                    </Button>
 
-                </div>
-            </div>
+                </View>
+            </View>
         );
 };
 

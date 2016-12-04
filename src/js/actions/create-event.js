@@ -1,6 +1,6 @@
 import axios from 'axios';
 import getUserID from '../lib/getUserID.js';
-//import { hashHistory } from 'react-router';
+import { Actions } from 'react-native-router-flux';
 
 export const SET_EVENT_DETAILS = "SET_EVENT_DETAILS";
 export const SET_EVENT_WHAT = "SET_EVENT_WHAT";
@@ -86,7 +86,7 @@ export function newEvent (eventData) {
             .then((response) => {
 
                 dispatch(newEventSuccess());
-                console.log('got here'); //hashHistory.push('/feed');
+                Actions.tabbar();
                 dispatch(clearCreateEvent());
             })
             .catch((error) => {

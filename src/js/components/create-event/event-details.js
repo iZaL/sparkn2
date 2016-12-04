@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TextInput } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import validCookieExists from '../../lib/validCookieExists.js';
+import TopBar from '../event/top-bar.js';
 //import Input from '../general/input.js';
 import { Button } from '../common';
 import EventDetailsHeader from '../general/event-details-header.js';
@@ -27,6 +28,7 @@ class EventDetails extends Component {
 
         return (
               <View>
+                <TopBar location="eventdetails" />
 
 
                 <View style={styles.container}>

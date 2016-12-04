@@ -1,4 +1,8 @@
 import React from 'react';
+import { TextInput, View, Text, Image } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { Button } from '../common';
+import styles from '../../style.js';
 
 const PhotoModal = ({ handleDeletePhoto, handleSharePhoto, eventID }) => {
 
@@ -24,11 +28,19 @@ const PhotoModal = ({ handleDeletePhoto, handleSharePhoto, eventID }) => {
     };
 
     return (
-        <div className="photo-modal-container">
-            <i className="fa fa-times" onClick={ closeModal } ariaHidden="true" />
-            <div className="share" onClick={ handleShareClick }>Share to Facebook</div>
-            <div className="delete" onClick={ (e) => handleDeleteClick(eventID) }>Delete</div>
-        </div>
+        <View style={styles.photoModalContainer}>
+            <Button onPress={ closeModal }>
+              <Icon name="times" size={18} color="gray" />
+            </Button>
+            <Button onPress={ handleShareClick }>
+              <Text>Share to Facebook</Text>
+              <Icon name="share" size={18} color="gray" />
+            </Button>
+            <Button onPress={ (e) => handleDeleteClick(eventID) }>
+              <Text>Delete</Text>
+              <Icon name="delete" size={18} color="red" />
+            </Button>
+        </View>
     );
 };
 

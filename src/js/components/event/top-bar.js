@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import Actions from 'react-native-router-flux';
-import Button from '../common';
+import { Button } from '../common';
+import styles from '../../style.js';
 
 class TopBar extends Component {
 
@@ -10,10 +11,11 @@ class TopBar extends Component {
     }
 
     eventType (location) {
+        console.log(location);
+        let pathname = location.split('/').pop();
+        console.log(pathname);
 
-        let pathname = location;
-
-        if (pathname === "create-event") {
+        if (pathname === "eventdetails") {
             return "Create an event";
         } else {
             return pathname.charAt(0).toUpperCase() + pathname.slice(1) + "?";
@@ -30,90 +32,110 @@ class TopBar extends Component {
         console.log(this.props);
         console.log('topBar');
         console.log(this.props.location);
-        let primaryPath = this.props.location;
+        let primaryPath = this.props.location.split('/')[0];
 
         return (
-            <View className="event-header row">
+            <View style={styles.topBarContainer}>
                 {
                     /* feed */
-                    !this.props.eventID && primaryPath === '' &&
-                    <Text className=" twelve columns title">Feed</Text>
+                    !this.props.eventID && primaryPath === 'feed' &&
+                    <View style={styles.rowCentered}>
+                      <Text style={styles.title1}>Feed</Text>
+                    </View>
                 }
                 {
                     /* /create-event */
-                    !this.props.eventID && primaryPath === 'create-event' &&
-                    <View>
-                        <Text className="three columns back-button" onClick={ () => { hashHistory.goBack(); } }> Back </Text>
-                        <Text className=" six columns title"> { this.eventType(this.props.location) }</Text>
-                        <Text className="three columns cancel-event-button" onClick={ () => { this.cancelEvent(); } }> Cancel </Text>
+                    !this.props.eventID && primaryPath === 'eventdetails' &&
+                    <View style={styles.rowSpaced}>
+                        <Button textStyle={styles.topBarButtonText} onClick={ () => { Actions.pop(); } }> Back </Button>
+                        <Text style={styles.title1}> { this.eventType(this.props.location) }</Text>
+                        <Button textStyle={styles.topBarButtonText} onClick={ () => { this.cancelEvent(); } }> Cancel </Button>
+                    </View>
+                }
+                {
+                    /* /invite-friends */
+                    !this.props.eventID && primaryPath === 'inviteFriends' &&
+                    <View style={styles.rowSpaced}>
+                        <Button textStyle={styles.topBarButtonText} onClick={ () => { Actions.pop(); } }> Back </Button>
+                        <Text style={styles.title1}> Invite Friends </Text>
+                        <Button textStyle={styles.topBarButtonText} onClick={ () => { this.cancelEvent(); } }> Cancel </Button>
+                    </View>
+                }
+                {
+                    /* /confirm-event */
+                    !this.props.eventID && primaryPath === 'confirm' &&
+                    <View style={styles.rowSpaced}>
+                        <Button textStyle={styles.topBarButtonText} onClick={ () => { Actions.pop(); } }> Back </Button>
+                        <Text style={styles.title1}> { primaryPath.charAt(0).toUpperCase() + primaryPath.slice(1) } </Text>
+                        <Button textStyle={styles.topBarButtonText} onClick={ () => { this.cancelEvent(); } }> Cancel </Button>
                     </View>
                 }
                 {
                     /* /calendar */
                     !this.props.eventID && primaryPath === 'albums' &&
 
-                    <View>
-                        <Text className="three columns back-button" > </Text>
-                        <Text className=" six columns title">
+                    <View style={styles.rowCentered}>
+                        <Button textStyle={styles.topBarButtonText}> </Button>
+                        <Text style={styles.title1}>
                             { primaryPath.charAt(0).toUpperCase() + primaryPath.slice(1) }
                         </Text>
-                        <Text className="three columns cancel-event-button"></Text>
+                        <Button textStyle={styles.topBarButtonText}> </Button>
                     </View>
                 }
                 {
                     /* /calendar */
                     !this.props.eventID && primaryPath === 'calendar' &&
 
-                    <View>
-                        <Text className="three columns back-button" > </Text>
-                        <Text className=" six columns title">
+                    <View style={styles.rowCentered}>
+                        <Button textStyle={styles.topBarButtonText}> </Button>
+                        <Text style={styles.title1}>
                             { primaryPath.charAt(0).toUpperCase() + primaryPath.slice(1) }
                         </Text>
-                        <Text className="three columns cancel-event-button"></Text>
+                        <Button textStyle={styles.topBarButtonText}></Button>
                     </View>
                 }
 
                 {
                     !this.props.eventID && primaryPath === "profile" &&
-                    <Text className="twelve columns title">Profile</Text>
+                    <View style={styles.rowCentered}>
+                      <Text style={styles.title1}>Profile</Text>
+                    </View>
                 }
                 { /**** EVENT ****/ }
                 {
                     //User is Host and its a Poll
                     this.props.eventID && this.props.userIsHost && this.props.isPoll &&
-                    <View>
-                        <Text className="three columns back-button" > </Text>
-                        <Text className=" six columns title">Poll</Text>
-                        <Text className="three columns cancel-event-button"></Text>
+                    <View style={styles.rowSpaced}>
+                        <Button textStyle={styles.topBarButtonText}> </Button>
+                        <Text style={styles.title1}>Poll</Text>
+                        <Button textStyle={styles.topBarButtonText}></Button>
                     </View>
                 }
                 {
                     //User is Invitee and its an Event
                     this.props.eventID && !this.props.userIsHost && !this.props.isPoll &&
-                    <View>
-                        <Text className="three columns back-button" > </Text>
-                        <Text className=" six columns title">Event</Text>
-                        <Text className="three columns cancel-event-button"></Text>
+                    <View style={styles.rowSpaced}>
+                        <Button textStyle={styles.topBarButtonText}> </Button>
+                        <Text style={styles.title1}>Event</Text>
+                        <Button textStyle={styles.topBarButtonText}></Button>
                     </View>
                 }
                 {
                     //User is Invitee and its a Poll
                     this.props.eventID && !this.props.userIsHost && this.props.isPoll &&
-                    <View>
-                        <Text className="three columns back-button" > </Text>
-                        <Text className=" six columns title">Poll</Text>
-                        <Text className="three columns cancel-event-button"></Text>
+                    <View style={styles.rowSpaced}>
+                        <Button textStyle={styles.topBarButtonText}> </Button>
+                        <Text style={styles.title1}>Poll</Text>
+                        <Button textStyle={styles.topBarButtonText}></Button>
                     </View>
                 }
                 {
                     //User is Host and its an Event
                     this.props.eventID && this.props.userIsHost && !this.props.isPoll &&
-                    <View>
-                        <Button onClick={ () => { this.props.handleEdit(this.props.event); } } to={ 'edit/' + this.props.eventID }>
-                            <Text className="three columns back-button"> Edit </Text>
-                        </Button>
-                        <Text className=" six columns title">Event</Text>
-                        <Button className="three columns cancel-event-button"
+                    <View style={styles.rowSpaced}>
+                        <Button textStyle={styles.topBarButtonText} onClick={ () => { this.props.handleEdit(this.props.event); } } to={ 'edit/' + this.props.eventID }> Edit </Button>
+                        <Text style={styles.title1}>Event</Text>
+                        <Button textStyle={styles.topBarButtonText}
                             onClick={ this.props.displayCancelModal }>
                             Cancel
                         </Button>

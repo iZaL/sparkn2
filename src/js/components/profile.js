@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TextInput } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-//import TopBar from './event/top-bar.jsx';
+import TopBar from './event/top-bar.js';
 import { Button } from './common';
 import Input from './general/input';
 import styles from '../style.js';
@@ -14,13 +14,15 @@ const Profile = ({ location, user, firstName, lastName, handleLogOut, handleChan
       handleEditName(firstName, lastName);
       Actions.feed({ type: 'reset' });
   }
-
+    console.log(this.props);
     //<TopBar location={ location } />
 
     return (
       <View style={styles.profilePage}>
+          <TopBar location="profile" />
 
           <View style={styles.container}>
+
 
               <View style={styles.row}>
                   <Text style={styles.userName}> { firstName + ' ' + lastName } </Text>

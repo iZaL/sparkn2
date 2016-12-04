@@ -27,6 +27,12 @@ const Intro = () => {
                   </Button>
               </View>
 
+              <View style={styles.row}>
+                  <Button buttonStyle={styles.buttonStyle} textStyle={styles.buttonTextStyle} onPress={ () => Actions.event() } >
+                      Event Screens
+                  </Button>
+              </View>
+
           </View>
 
     );

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
+import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import axios from 'axios';
 import { store } from '../../init-store.js';
 import { getFBFriends } from '../../actions/create-event.js';
+import EventDetailsHeader from '../general/event-details-header.js';
+import TopBar from '../event/top-bar.js';
 import { CardSection, Button } from '../common';
 import styles from '../../style.js';
 
@@ -17,9 +20,11 @@ class InviteFriends extends Component {
         if (this.props.friends.length === 0) {
             store.dispatch(getFBFriends());
         }
+        console.log(this.props);
     }
 
     render () {
+
         var friends = this.props.friends.map((friendData, index) => {
             return (
               <View
@@ -65,40 +70,52 @@ class InviteFriends extends Component {
             if (!inviteeData) {
                 return (
                   <View>
-                      <Text> Add your Friends to see them here </Text>
+                      <Text style={styles.smallMessageText}> Add your Friends to see them here </Text>
                   </View>
               );
           } else {
               return (
 
-                    <Button
-                      onPress={ (e) => this.props.removeSelected(inviteeData, index) }
-                      key={ inviteeData.id }
-                      buttonStyle={[styles.buttonStyle, { backgroundColor: '#fff' }]}
-                      textStyle={[styles.buttonTextStyle, { color: 'lightgray' }]}
-                    >
-                        <Image
-                          style={styles.uiAvatarImage}
-                          source={ inviteeData.photoURL}
-                          source={require('../../../img/placeholder.png')}
-                          />
+                      <TouchableOpacity
+                        onPress={ (e) => this.props.removeSelected(inviteeData, index) }
+                        key={ inviteeData.id }
+                        style={styles.invitedButton}
+                      >
+                            <Image
+                              style={styles.uiAvatarImage}
+                              source={{ uri: inviteeData.photoURL }}
+                              />
+                            <Text style={styles.textfriendName}>
+                              { inviteeData.firstName }
+                            </Text>
+                            <View>
+                              <Icon name="times" size={14} color="gray" />
+                            </View>
 
-                          { inviteeData.firstName }
+                      </TouchableOpacity>
 
-                        <Icon name="times" size={14} color="gray" />
 
-                    </Button>
 
               );
           }
       });
 
       return (
-          
+          <View>
+            <TopBar location="inviteFriends" />
+            
             <ScrollView>
               <View >
-                  <Text style={styles.mediumLabel}>Invited friends</Text>
-                  { invitees }
+                { (this.props.invitees.length === 0) &&
+                 <View />
+                }
+                { (this.props.invitees.length !== 0) &&
+                  <Text style={styles.mediumLabel}>Invited friends:</Text>
+                }
+                  <View style={styles.inviteesContainer}>
+                    { invitees }
+                  </View>
+                  <Text style={styles.mediumLabel}>Friends you can invite:</Text>
               </View>
 
               <View style={styles.uiMiddleAlignedViewidedList}>
@@ -110,14 +127,15 @@ class InviteFriends extends Component {
               }
               { (this.props.invitees.length !== 0) &&
                 <Button
-                  buttonStyle={[styles.buttonStyle, { backgroundColor: 'green' }]}
-                  textStyle={[styles.buttonTextStyle, { color: 'lightgray' }]}
+                  buttonStyle={styles.buttonStyle}
+                  textStyle={styles.buttonTextStyle}
                   onPress={Actions.confirm}
                 >
                   Next
                 </Button>
               }
             </ScrollView>
+          </View>
 
         );
     }

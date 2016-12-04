@@ -1,8 +1,7 @@
 import React from 'react';
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { store } from '../../init-store.js';
-import Input from '../general/input.js';
 import styles from '../../style.js';
 import { Button } from '../common';
 
@@ -13,19 +12,19 @@ const DateTimeInput = ({ value, inputKey, inputCount, handleDate, handleTime, re
     return (
 
 
-          <View style={styles.rowWhen}>
+          <View style={styles.dateInputRow}>
 
-            <View style={styles.column}>
+            <View style={styles.dateInputColumn}>
 
                 <View>
-                  <Text style={styles.label}>
+                  <Text style={styles.dateTimeLabel}>
                       Date
                   </Text>
                 </View>
 
                 <View>
 
-                  <Input
+                  <TextInput
                       ref={ (input) => {
                           if (input !== null && inputKey === inputCount - 1 && inputKey > 0) {
                               input.focus();
@@ -39,22 +38,26 @@ const DateTimeInput = ({ value, inputKey, inputCount, handleDate, handleTime, re
                 </View>
             </View>
 
-            <View style={styles.column}>
+            <View style={styles.timeInputColumn}>
 
-                <Text style={styles.label}>
+                <Text style={styles.dateTimeLabel}>
                     Time
                 </Text>
 
-                <Input
+                <View style={styles.timeInputRow}>
+
+                <TextInput
                     step="300"
                     style={styles.timeInputStyle}
                     value={ value.time }
                     placeholder="Time"
                     onChange={ (e) => handleTime(inputKey, e) }
                     />
+
+                </View>
             </View>
 
-            <View style={styles.column}>
+            <View style={styles.removeInputColumn}>
 
                 { (hideRemoveInput) &&
                   <View />

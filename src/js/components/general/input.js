@@ -8,6 +8,7 @@ const Input = ({ handleChange, value, placeholder, removeInput, inputKey, inputC
 
     return (
         <View style={styles.row}>
+
             <TextInput
               ref={ (input) => {
                   if (input !== null && inputKey === inputCount - 1 && inputKey > 0 && input.value === "") {
@@ -20,15 +21,17 @@ const Input = ({ handleChange, value, placeholder, removeInput, inputKey, inputC
               onChangeText={handleChange}
               style={style}
             />
+            <View style={styles.shortRow}>
 
-            { (inputKey === 0) &&
-              <View />
-            }
-            { (inputKey !== 0) &&
-              <Button buttonStyle={styles.smallButtonStyle} onPress={ (e) => removeInput(inputKey) }>
-                  <Icon name="times" size={14} color="gray" />
-              </Button>
-            }
+              { (inputKey === 0) &&
+                <View />
+              }
+              { (inputKey !== 0) &&
+                <Button buttonStyle={styles.smallButtonStyle} onPress={ (e) => removeInput(inputKey) }>
+                    <Icon name="times" size={14} color="gray" />
+                </Button>
+              }
+            </View>
 
         </View>
     );

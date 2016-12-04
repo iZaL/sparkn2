@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router';
-import classnames from 'classnames';
-import PollButton from '../general/poll-button.jsx';
-import { EventWhatSection, EventWhereSection, EventWhenSection } from './poll-sections.jsx';
+import { View, Image, Text, TouchableOpacity } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import PollButton from '../general/poll-button.js';
+import { EventWhatSection, EventWhereSection, EventWhenSection } from './poll-sections.js';
+import styles from '../../style.js';
 
 const InviteePoll = ({ event, toggleSelection, poll, handlePollConfirmation, eventID, isHost, hasVoted }) => {
 
@@ -16,34 +17,34 @@ const InviteePoll = ({ event, toggleSelection, poll, handlePollConfirmation, eve
 
         if (event.eventNote !== "") {
             return (
-                <div className="event-note">
+                <View style={styles.eventNote}>
                     { event.eventNote }
-                    <hr />
-                </div>
+
+                </View>
             );
         }
     }
 
     return (
-            <div className="poll">
+            <View style={styles.Poll}>
                 { eventNote(event) }
 
-                <div className="eventWhat">
+                <View style={styles.eventWhat}>
                     { eventWhat }
-                </div>
-                <div className="eventWhere">
+                </View>
+                <View style={styles.eventWhere}>
                     { eventWhere }
-                </div>
-                <div className="eventWhen">
+                </View>
+                <View style={styles.eventWhen}>
                     { eventWhen}
-                </div>
+                </View>
 
                 <PollButton poll={ poll }
                             handlePollConfirmation={ handlePollConfirmation }
                             eventID={ eventID }
                             voteButtonText={ voteButtonText }/>
 
-            </div>
+            </View>
     );
 };
 
@@ -53,32 +54,28 @@ function createPollSelections (event, toggleSelection, poll, eventType, EventTyp
 
     return event[eventType].map((choice, i) => {
 
-        let classes = classnames("poll-option", "eight columns offset-by-one", {
-            "selected": poll[eventType] === undefined || poll[eventType][i] === true
-        });
-        let labelClasses = classnames("two columns section-title", {
-            'hide': i > 0
-        });
+        let selectedClasses = (poll[eventType] === undefined || poll[eventType][i] === true);
+        let hideClasses = i > 0;
 
         if (poll[eventType]) {
 
             return (
-                <div onClick={ () => toggleSelection(eventType, i) }
+                <Button onClick={ () => toggleSelection(eventType, i) }
                      key={eventType + '-' + i}>
 
                     <EventTypeComponent text={ choice }
-                                        choiceClasses={ classes }
-                                        labelClasses={ labelClasses }/>
-                </div>
+                                        choiceClasses={ selectedClasses }
+                                        labelClasses={ hideClasses }/>
+                </Button>
             );
         } else {
 
             return (
-                <div key={eventType + '-' + i}>
+                <Button key={eventType + '-' + i}>
                     <EventTypeComponent text={ choice }
-                                        choiceClasses={ classes }
-                                        labelClasses={ labelClasses }/>
-                </div>
+                                        choiceClasses={ selectedClasses }
+                                        labelClasses={ hideClasses }/>
+                </Button>
             );
         }
     });

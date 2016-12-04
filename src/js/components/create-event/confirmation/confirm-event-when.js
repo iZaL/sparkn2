@@ -1,40 +1,44 @@
 import React from 'react';
-import classnames from 'classnames';
+import { View, Text } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { Button } from '../../common';
 import formatDate from '../../../lib/formatDate.js';
+import styles from '../../../style.js';
 
 const ConfirmEventWhen = ({ eventWhen }) => {
 
     const layout = eventWhen.map((data, i) => {
 
-        // let classes = classnames('three columns confirm-new-event-title when', {
-        //     'hide': i > 0
-        // });
+        let hideTitle = i > 0;
 
         return (
-            <View
-            //className="poll-option-container row"
+          <View
+            style={styles.rowSpaced}
             key={ i }
             >
-                <View
-                //className={ classes }
-                >When
+              { (hideTitle) &&
+                <View style={styles.columnLeft} />
+              }
+              { (!hideTitle) &&
+                <View style={styles.columnLeft}>
+                  <Text style={styles.optionTitleWhen}>
+                    When
+                  </Text>
                 </View>
-                <View
-                //className="nine columns confirm-new-event when"
-                >
-                    <View
-                    //className="row"
-                    >
-                        <Text
-                        //className="date"
-                        >
-                            { formatDate(data.date, true) || "TBC" }
-                        </Text>
-                        <Text
-                        //className="time"
-                        >
-                            { data.time || "TBC" }
-                        </Text>
+              }
+                <View style={styles.columnMiddle}>
+                    <View style={styles.rowSpaced}>
+
+                          <Button buttonStyle={styles.optionSelectedWhen} textStyle={styles.optionTextSelected}>
+                              <Icon name="calendar" size={18} color="white" />
+                              {'  '}
+                              { formatDate(data.date, true) || "TBC" }
+                              {'  '}
+                              <Icon name="clock-o" size={18} color="white" />
+                              {'  '}
+                              { data.time || "TBC" }
+                          </Button>
+
                     </View>
                 </View>
             </View>
@@ -43,7 +47,7 @@ const ConfirmEventWhen = ({ eventWhen }) => {
 
     return (
         <View
-        //className="confirm-list"
+        style={styles.confirmList}
         >
             { layout }
         </View>

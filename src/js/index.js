@@ -23,15 +23,14 @@ import FeedContainer from './containers/feed-container.js';
 import CalendarContainer from './containers/calendar-container.js';
 import AlbumsContainer from './containers/albums-container.js';
 import ProfileContainer from './containers/profile-container.js';
-import CreateEventContainer from './containers/create-event/create-event-container.js';
-//import EventContainer from './containers/event-container.js';
+import EventContainer from './containers/event-container.js';
 //import EditEventContainer from './containers/edit-event-container.js';
 import EventDetailsContainer from './containers/create-event/event-details-container.js';
 import EventWhatContainer from './containers/create-event/event-what-container.js';
 import EventWhereContainer from './containers/create-event/event-where-container.js';
 import EventWhenContainer from './containers/create-event/event-when-container.js';
-//import ConfirmNewEventContainer from './containers/create-event/confirm-new-event-container.js';
 import InviteFriendsContainer from './containers/create-event/invite-friends-container.js';
+import ConfirmNewEventContainer from './containers/create-event/confirm-new-event-container.js';
 
 function initialiseAppState (nextState, replace, callback) {
     // catch if user is not authenticated
@@ -86,6 +85,8 @@ function handleCreateEvent (nextState, replace, callback) {
     callback();
 }
 
+
+
 const reducerCreate = params => {
   const defaultReducer = new Reducer(params);
   return (state, action) => {
@@ -113,6 +114,12 @@ const getSceneStyle = (/* NavigationSceneRendererProps */ props, computedProps) 
 
 class Index extends Component {
 
+  cancelEvent () {
+
+          this.props.discardEvent();
+          Actions.tabbar();
+  }
+
   render() {
 
     return (
@@ -120,8 +127,9 @@ class Index extends Component {
       <Provider store={store} >
         <Router createReducer={reducerCreate} getSceneStyle={getSceneStyle}>
           <Scene key="root" hideNavBar hideTabBar>
-            <Scene key="intro" component={Intro} title="Intro" initial />
-            <Scene key="login" component={LoginContainer} title="Login" />
+            <Scene key="intro" component={Intro} title="Intro" hideNavBar initial />
+            <Scene key="login" component={LoginContainer} title="Login" hideNavBar />
+            <Scene key="event" component={EventContainer} title="Event" hideNavBar />
 
             <Scene key="tabbar" >
 
@@ -132,7 +140,7 @@ class Index extends Component {
                   tabBarSelectedItemStyle={styles.tabBarSelectedItemStyle}
               >
                 <Scene
-                  key="albums" title="Albums" icon={TabIcon} iconName="camera" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle}>
+                  key="albums" title="Albums" hideNavBar icon={TabIcon} iconName="camera" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle}>
                   <Scene
                     key="albums1"
                     component={ AlbumsContainer }
@@ -140,45 +148,45 @@ class Index extends Component {
 
                   />
                 </Scene>
-                <Scene key="calendar" title="Calendar" icon={TabIcon} iconName="calendar" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle}>
+                <Scene key="calendar" title="Calendar" hideNavBar icon={TabIcon} iconName="calendar" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle}>
                     <Scene
                       key="calendar1"
                       component={ CalendarContainer }
                       title="Calendar"
                     />
                 </Scene>
-                <Scene key="feed" component={ FeedContainer } title="Feed" icon={TabIcon} iconName="globe" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle} />
-                <Scene key="profile" component={ ProfileContainer } title="Profile" icon={TabIcon} iconName="user" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle} />
-                <Scene key="eventdetails" component={ EventDetailsContainer } title="Create" hideTabBar icon={TabIcon} iconName="pencil" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle}
+                <Scene key="feed" component={ FeedContainer } title="Feed" hideNavBar icon={TabIcon} iconName="globe" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle} initial />
+                <Scene key="profile" component={ ProfileContainer } title="Profile" hideNavBar icon={TabIcon} iconName="user" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle} />
+                <Scene key="eventdetails" component={ EventDetailsContainer } title="Create" hideNavBar hideTabBar icon={TabIcon} iconName="pencil" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle}
                   backTitle="Back"
                   backButtonTextStyle={styles.backButtonTextStyle}
                   rightButtonTextStyle={styles.backButtonTextStyle}
                   hideBackImage
                   duration={100}
                   direction="horizontal"
-                  onRight={() => alert('Cancel Event?')}
+                  onRight={ () => { this.cancelEvent(); } }
                   rightTitle="Cancel" />
 
               </Scene>
-              <Scene key="what" component={ EventWhatContainer } title="What" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle}
+              <Scene key="what" component={ EventWhatContainer } title="What" hideNavBar navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle}
                 backTitle="Back"
                 backButtonTextStyle={styles.backButtonTextStyle}
                 rightButtonTextStyle={styles.backButtonTextStyle}
                 hideBackImage
                 duration={100}
                 direction="horizontal"
-                onRight={() => alert('Cancel Event?')}
+                onRight={ () => { this.cancelEvent(); } }
                 rightTitle="Cancel" />
-              <Scene key="where" component={ EventWhereContainer } title="Where" navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle}
+              <Scene key="where" component={ EventWhereContainer } title="Where" hideNavBar navigationBarStyle={styles.navigationBarStyle} titleStyle={styles.navigationBarTextStyle}
                 backTitle="Back"
                 backButtonTextStyle={styles.backButtonTextStyle}
                 rightButtonTextStyle={styles.backButtonTextStyle}
                 hideBackImage
                 duration={100}
                 direction="horizontal"
-                onRight={() => alert('Cancel Event?')}
+                onRight={ () => { this.cancelEvent(); } }
                 rightTitle="Cancel" />
-              <Scene key="when" component={ EventWhenContainer } title="When"
+              <Scene key="when" component={ EventWhenContainer } title="When" hideNavBar
                 navigationBarStyle={styles.navigationBarStyle}
                 titleStyle={styles.navigationBarTextStyle}
                 backTitle="Back"
@@ -187,9 +195,9 @@ class Index extends Component {
                 hideBackImage
                 duration={100}
                 direction="horizontal"
-                onRight={() => alert('Cancel Event?')}
+                onRight={ () => { this.cancelEvent(); } }
                 rightTitle="Cancel" />
-              <Scene key="inviteFriends" component={ InviteFriendsContainer } title="Invite Friends"
+              <Scene key="inviteFriends" component={ InviteFriendsContainer } title="Invite Friends" hideNavBar
                 navigationBarStyle={styles.navigationBarStyle}
                 titleStyle={styles.navigationBarTextStyle}
                 backTitle="Back"
@@ -198,8 +206,20 @@ class Index extends Component {
                 hideBackImage
                 duration={100}
                 direction="horizontal"
-                onRight={() => alert('Cancel Event?')}
+                onRight={ () => { this.cancelEvent(); } }
                 rightTitle="Cancel" />
+              <Scene key="confirm" component={ ConfirmNewEventContainer } title="Confirm Event" hideNavBar
+                navigationBarStyle={styles.navigationBarStyle}
+                titleStyle={styles.navigationBarTextStyle}
+                backTitle="Back"
+                backButtonTextStyle={styles.backButtonTextStyle}
+                rightButtonTextStyle={styles.backButtonTextStyle}
+                hideBackImage
+                duration={100}
+                direction="horizontal"
+                onRight={ () => { this.cancelEvent(); } }
+                rightTitle="Cancel" />
+
 
             </Scene>
 

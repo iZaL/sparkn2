@@ -8,7 +8,13 @@ const colours = {
   gray: '#939598',
   lightgray: 'lightgray',
   orange: '#F58220',
-  green: '#8DC744'
+  green: '#8DC744',
+  what: '#424FA1',
+  where: '#7D3E98',
+  when: '#F58220',
+  confirm: '#8DC744'
+
+
 };
 
 export default colours;
