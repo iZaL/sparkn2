@@ -1,12 +1,13 @@
 import React from 'react';
-import classnames from 'classnames';
-import EventDetailsHeader from '../general/event-details-header.jsx';
-import RSVPsArea from './confirmed-event/RSVPs-area.jsx';
-import UploadPanel from './confirmed-event/upload-panel.jsx';
-import PhotoStream from './confirmed-event/photo-stream.jsx';
-import Message from '../general/message.jsx';
+import { View, Image, Text, TouchableOpacity } from 'react-native';
+import EventDetailsHeader from '../general/event-details-header.js';
+import RSVPsArea from './confirmed-event/RSVPs-area.js';
+import UploadPanel from './confirmed-event/upload-panel.js';
+import PhotoStream from './confirmed-event/photo-stream.js';
+import Message from '../general/message.js';
 import { eventNote } from '../../lib/confirmed-event-helpers.js';
 import formatDate from '../../lib/formatDate.js';
+import styles from '../../style.js';
 
 
 const ConfirmedEvent = ({ event, eventID, RSVPs, invitees, userIsHost, RSVPToEvent, handleUploadPhoto, photos, deletedPhotos, handleDeletePhoto, handleSharePhoto, file, handleSetFile, getSelectedPhoto, hasPhotoLoaded }) => {
@@ -27,62 +28,64 @@ const ConfirmedEvent = ({ event, eventID, RSVPs, invitees, userIsHost, RSVPToEve
 
         return notResponded.map((user, i) => {
             return (
-                <div className="item" key={ user.id }>
-                    <img className="ui avatar image" src={ user.photoURL } />
-                    <div className="content">
-                        <div className="header rsvp-list-items">{ user.firstName }</div>
-                    </div>
-                </div>
+                <View style={styles.item} key={ user.id }>
+                    <Image style={styles.uiAvatarImage} source={{ uri: user.photoURL }} />
+                    <View style={styles.content}>
+                        <Text style={styles.headerRsvpListItems}>{ user.firstName }</Text>
+                    </View>
+                </View>
             );
         });
     };
 
-    let placeNameClasses = classnames('placeName', {
-        'long': event.eventWhere[0] && event.eventWhere[0].placeName > 18
-    });
+    let placeNameLong = (event.eventWhere[0] && event.eventWhere[0].placeName > 18);
 
     return (
-        <div className="confirmed-event">
-            <div>
+        <View>
+            <View>
                 { eventNote(event) }
-                <div className="row">
-                    <p className="three columns confirmed-event-title what">
+                <View style={styles.row}>
+                    <Text>
                         What
-                    </p>
-                    <div className="nine columns confirmed-event what">
+                    </Text>
+                    <View>
                         { event.eventWhat[0] || "TBC" }
-                    </div>
-                </div>
-                <br />
-                <div className="row">
-                    <p className="three columns confirmed-event-title where">
+                    </View>
+                </View>
+
+                <View style={styles.row}>
+                    <Text>
                         Where
-                    </p>
+                    </Text>
 
-                    <div className="nine columns confirmed-event where">
+                    <View>
 
-                        <span className={ placeNameClasses }>{ event.eventWhere[0].placeName || "TBC" } </span>
-                        <span>{ event.eventWhere[0].placeAddress }</span>
-                    </div>
-                </div>
-                <br />
-                <div className="row">
-                    <p className="three columns confirmed-event-title when">
+                        { (!placeNameLong) &&
+                          <Text style={styles.placeNameShort}>{ event.eventWhere[0].placeName || "TBC" }</Text>
+                        }
+                        { (placeNameLong) &&
+                          <Text style={styles.placeNameLong}>{ event.eventWhere[0].placeName || "TBC" }</Text>
+                        }
+                        <Text>{ event.eventWhere[0].placeAddress }</Text>
+                    </View>
+                </View>
+
+                <View style={styles.row}>
+                    <Text>
                         When
-                    </p>
+                    </Text>
 
-                    <div className="nine columns confirmed-event when">
-                        <div className="date">
+                    <View>
+                        <View style={styles.date}>
                             { formatDate(event.eventWhen[0].date, true) || "TBC" }
-                        </div>
-                        <div className="time">
+                        </View>
+                        <View style={styles.time}>
                             { event.eventWhen[0].time || "TBC" }
-                        </div>
-                    </div>
-                </div>
-                <br />
-                <hr />
-                <Message extraClass="shared-to-fb display-none activate" text="Successfully shared to Facebook" />
+                        </View>
+                    </View>
+                </View>
+
+                <Message text="Successfully shared to Facebook" />
                 <RSVPsArea eventID={ eventID }
                            respondedList={ respondedList }
                            notRespondedList={ notRespondedList }
@@ -104,9 +107,9 @@ const ConfirmedEvent = ({ event, eventID, RSVPs, invitees, userIsHost, RSVPToEve
                              getSelectedPhoto={ getSelectedPhoto }
                              eventID={ eventID }/>
 
-            </div>
+            </View>
 
-        </div>
+        </View>
     );
 
 };

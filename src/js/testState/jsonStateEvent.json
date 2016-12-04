@@ -15,12 +15,179 @@
     filter: false
   },
   event: {
-    data: {},
+    data: {
+      isPoll: true,
+      eventNote: 'Poll1',
+      invitees: [
+        {
+          firstName: 'Andrew',
+          lastName: 'Ingham',
+          id: '10102165187510668',
+          photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/c0.53.320.320/p320x320/13435527_10102059923445698_249835275100390545_n.jpg?oh=38aab957ea16607951af329c7459ffb6&oe=58513397'
+        },
+        {
+          firstName: 'James',
+          lastName: 'Horton',
+          id: '10154036032594620',
+          photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p320x320/7366_10153500439874620_4700095034635563787_n.jpg?oh=0506598a1e8efd693cbb87060c00a233&oe=584FDBFC'
+        }
+      ],
+      eventWhat: [
+        'Eat cake',
+        'Eat cheese',
+        'Eat chilli'
+      ],
+      eventWhen: [
+        {
+          date: '2016-12-18',
+          time: '10:49'
+        },
+        {
+          date: '2016-12-25',
+          time: '10:49'
+        },
+        {
+          date: '2016-12-31',
+          time: '10:49'
+        }
+      ],
+      eventName: 'Poll1',
+      hasEdited: 'undefined',
+      hostPhotoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p320x320/1010535_10152958307150251_1106767454_n.jpg?oh=8f3c8426dfa342b81fba2459007ff582&oe=58F62E4F',
+      eventWhere: [
+        {
+          placeName: 'London',
+          placeAddress: ''
+        },
+        {
+          placeName: 'Birmingham',
+          placeAddress: ''
+        },
+        {
+          placeName: 'Manchester',
+          placeAddress: ''
+        }
+      ],
+      eventDescription: 'Poll1',
+      eventID: 'event:119',
+      hostID: '10156727442325251'
+    },
     isFetching: false,
+    tally: {
+      eventWhat: [
+        0,
+        0,
+        0
+      ],
+      eventWhere: [
+        0,
+        0,
+        0
+      ],
+      eventWhen: [
+        0,
+        0,
+        0
+      ]
+    },
+    hostEventChoices: {
+      eventWhat: '',
+      eventWhere: '',
+      eventWhen: ''
+    },
     updateNotification: false
   },
   notifications: {
     data: [
+      {
+        eventID: 'event:119',
+        timestamp: 1480855184371,
+        firstName: 'Dave',
+        lastName: 'Rickard',
+        photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p320x320/1010535_10152958307150251_1106767454_n.jpg?oh=8f3c8426dfa342b81fba2459007ff582&oe=58F62E4F',
+        eventWhat: [
+          'Eat cake',
+          'Eat cheese',
+          'Eat chilli'
+        ],
+        eventWhere: [
+          {
+            placeName: 'London',
+            placeAddress: ''
+          },
+          {
+            placeName: 'Birmingham',
+            placeAddress: ''
+          },
+          {
+            placeName: 'Manchester',
+            placeAddress: ''
+          }
+        ],
+        eventWhen: [
+          {
+            date: '2016-12-18',
+            time: '10:49'
+          },
+          {
+            date: '2016-12-25',
+            time: '10:49'
+          },
+          {
+            date: '2016-12-31',
+            time: '10:49'
+          }
+        ],
+        isPoll: true,
+        hostID: '10156727442325251',
+        subjectID: '10156727442325251',
+        viewed: true,
+        inviteesNumber: 2,
+        eventName: 'Poll1'
+      },
+      {
+        eventID: 'event:118',
+        timestamp: 1480783644221,
+        firstName: 'Dave',
+        lastName: 'Rickard',
+        photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p320x320/1010535_10152958307150251_1106767454_n.jpg?oh=39609ba001601e7ff5dd1bdede8bb0da&oe=58CEA14F',
+        eventWhat: [
+          'Turkey',
+          'Beef',
+          'Goose'
+        ],
+        eventWhere: [
+          {
+            placeName: 'Chatteris',
+            placeAddress: ''
+          },
+          {
+            placeName: 'Rotherhithe',
+            placeAddress: ''
+          },
+          ''
+        ],
+        eventWhen: [
+          {
+            date: '2016-12-24',
+            time: ''
+          },
+          {
+            date: '2016-12-31',
+            time: ''
+          },
+          {
+            date: '2017-01-21',
+            time: ''
+          }
+        ],
+        isPoll: true,
+        hostID: '10156727442325251',
+        subjectID: '10156727442325251',
+        viewed: true,
+        inviteesNumber: 4,
+        eventName: 'Xmas dinner'
+      },
       {
         eventID: 'event:112',
         timestamp: 1477565056943,
@@ -2210,7 +2377,7 @@
         eventName: 'The Pieces Play the Portcullis'
       },
       {
-        eventID: 'event:74',
+        eventID: 'event:75',
         timestamp: 1471464663068,
         firstName: 'Simon',
         lastName: 'Perry',
@@ -2238,7 +2405,7 @@
         eventName: 'The Pieces Play the Portcullis'
       },
       {
-        eventID: 'event:75',
+        eventID: 'event:74',
         timestamp: 1471464663068,
         firstName: 'Simon',
         lastName: 'Perry',
@@ -5340,49 +5507,43 @@
   },
   createEvent: {
     eventDetails: {
-      eventName: 'Birthday drinks',
-      eventDescription: '29 again',
-      eventNote: 'Hi guys, hope you can all make it for this to celebrate me being another year older.'
+      eventName: 'j',
+      eventDescription: 's',
+      eventNote: ''
     },
     eventWhat: [
-      'Cocktails',
-      'Craft Beer',
-      'Wine and Dine'
+      ''
     ],
     eventWhere: [
       {
-        placeName: 'The Fat Duck, Bray',
-        placeAddress: ''
-      },
-      {
-        placeName: 'Shutterbug , Shoreditch',
-        placeAddress: ''
-      },
-      {
-        placeName: 'The Kernel Brewery, Bermondsey',
+        placeName: '',
         placeAddress: ''
       }
     ],
     eventWhen: [
       {
-        date: '2016-11-18',
-        time: '15:00'
-      },
-      {
-        date: '2016-11-19',
-        time: '15:00'
-      },
-      {
-        date: '2016-11-20',
-        time: '15:00'
+        date: '',
+        time: ''
       }
     ],
     friends: [
+      {
+        firstName: 'Andrew',
+        lastName: 'Ingham',
+        id: '10102165187510668',
+        photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/c0.53.320.320/p320x320/13435527_10102059923445698_249835275100390545_n.jpg?oh=38aab957ea16607951af329c7459ffb6&oe=58513397'
+      },
       {
         firstName: 'Yuto',
         lastName: 'Fujii',
         id: '10102166246368708',
         photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p320x320/62936_10101824384487658_2273152055752836903_n.jpg?oh=55eb541de5bc91a98694a5b419363181&oe=5810FC12'
+      },
+      {
+        firstName: 'Michael',
+        lastName: 'Doswell',
+        id: '10153631391285566',
+        photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/c0.58.306.306/p320x320/12189547_10153030527540566_7707833105865813674_n.jpg?oh=4730f25e2267dd9d0c17beda8cfa493e&oe=587D14D1'
       },
       {
         firstName: 'Ashling',
@@ -5397,10 +5558,34 @@
         photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p320x320/7366_10153500439874620_4700095034635563787_n.jpg?oh=0506598a1e8efd693cbb87060c00a233&oe=584FDBFC'
       },
       {
+        id: '10154524734818156',
+        lastName: 'Combis',
+        firstName: 'Annalee',
+        photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/c0.0.320.320/p320x320/61654_463106463155_1957658_n.jpg?oh=3a0585842de8fcc4ce7d11bab4e7c212&oe=58460F65'
+      },
+      {
         firstName: 'Amandine',
         lastName: 'Korrigan',
         id: '10153633880756640',
         photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p320x320/14523089_10153747347766640_5295672909660360378_n.jpg?oh=5fbadf1687d2bdc5699fcc838f697e36&oe=58A92941'
+      },
+      {
+        firstName: 'Axel',
+        lastName: 'Antoni',
+        id: '10154097141932819',
+        photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p320x320/13529107_10154063117837819_4929231774171751598_n.jpg?oh=d917995aed1913b6aed4c68ac12ca102&oe=587BE7F2'
+      },
+      {
+        firstName: 'Marah',
+        lastName: 'Barden',
+        id: '10157183492680506',
+        photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p320x320/12279210_10156252155200506_7792104208279318965_n.jpg?oh=f52c8b1712fd11aea00ce928bf1a0dc6&oe=589881E8'
+      },
+      {
+        firstName: 'Foad',
+        lastName: 'Shah',
+        id: '10153680093340780',
+        photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p320x320/12799342_10153294793645780_1169860791626435079_n.jpg?oh=0bc17ee68731612b938310a0c23d9f56&oe=584E8E9B'
       },
       {
         firstName: 'Antoine',
@@ -5433,6 +5618,12 @@
         photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/c0.50.201.201/29175_400451675788_6221111_n.jpg?oh=37236b57d9b1da61695e2ee574154fa5&oe=583D7CA9'
       },
       {
+        firstName: 'Simon',
+        lastName: 'Perry',
+        id: '10154273541727279',
+        photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p320x320/1452178_10152787881857279_1359170031062339222_n.jpg?oh=3a6314f6f7d011530ed2ecaaa4f5ce81&oe=58703095'
+      },
+      {
         firstName: 'Chris',
         lastName: 'James',
         id: '10154261794145903',
@@ -5443,6 +5634,18 @@
         lastName: 'Munasinghe',
         id: '10155199475969179',
         photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/c0.81.320.320/p320x320/1902042_10152313949754179_1802989446_n.jpg?oh=c700c55da7e6718cbed60e95e1669aeb&oe=583A0C76'
+      },
+      {
+        firstName: 'Dameo',
+        lastName: 'Deare',
+        id: '10156841434360483',
+        photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/c85.0.320.320/p320x320/14068028_10157338054715483_2448905112098811988_n.jpg?oh=cfaa12a8ef7f0b7a16a20f0f564401fe&oe=5869C835'
+      },
+      {
+        firstName: 'Maria',
+        lastName: '',
+        id: '10153877597411314',
+        photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/c0.0.320.320/p320x320/13124674_10153642037076314_1453379051499076333_n.jpg?oh=6fdc5fc02c79f94720479b5c7cd77db8&oe=5858CA67'
       },
       {
         firstName: 'Joanne',
@@ -5467,62 +5670,6 @@
         lastName: 'Param',
         id: '1331031180242184',
         photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p320x320/11693887_1110710045607633_4434870506879967537_n.jpg?oh=1a38b198901e0476efa6036bda267783&oe=58430238'
-      }
-    ],
-    invitees: [
-      {
-        firstName: 'Michael',
-        lastName: 'Doswell',
-        id: '10153631391285566',
-        photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/c0.58.306.306/p320x320/12189547_10153030527540566_7707833105865813674_n.jpg?oh=4730f25e2267dd9d0c17beda8cfa493e&oe=587D14D1'
-      },
-      {
-        firstName: 'Axel',
-        lastName: 'Antoni',
-        id: '10154097141932819',
-        photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p320x320/13529107_10154063117837819_4929231774171751598_n.jpg?oh=d917995aed1913b6aed4c68ac12ca102&oe=587BE7F2'
-      },
-      {
-        firstName: 'Marah',
-        lastName: 'Barden',
-        id: '10157183492680506',
-        photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p320x320/12279210_10156252155200506_7792104208279318965_n.jpg?oh=f52c8b1712fd11aea00ce928bf1a0dc6&oe=589881E8'
-      },
-      {
-        firstName: 'Foad',
-        lastName: 'Shah',
-        id: '10153680093340780',
-        photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p320x320/12799342_10153294793645780_1169860791626435079_n.jpg?oh=0bc17ee68731612b938310a0c23d9f56&oe=584E8E9B'
-      },
-      {
-        firstName: 'Dameo',
-        lastName: 'Deare',
-        id: '10156841434360483',
-        photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/c85.0.320.320/p320x320/14068028_10157338054715483_2448905112098811988_n.jpg?oh=cfaa12a8ef7f0b7a16a20f0f564401fe&oe=5869C835'
-      },
-      {
-        firstName: 'Simon',
-        lastName: 'Perry',
-        id: '10154273541727279',
-        photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p320x320/1452178_10152787881857279_1359170031062339222_n.jpg?oh=3a6314f6f7d011530ed2ecaaa4f5ce81&oe=58703095'
-      },
-      {
-        firstName: 'Andrew',
-        lastName: 'Ingham',
-        id: '10102165187510668',
-        photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/c0.53.320.320/p320x320/13435527_10102059923445698_249835275100390545_n.jpg?oh=38aab957ea16607951af329c7459ffb6&oe=58513397'
-      },
-      {
-        id: '10154524734818156',
-        lastName: 'Combis',
-        firstName: 'Annalee',
-        photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/c0.0.320.320/p320x320/61654_463106463155_1957658_n.jpg?oh=3a0585842de8fcc4ce7d11bab4e7c212&oe=58460F65'
-      },
-      {
-        firstName: 'Maria',
-        lastName: '',
-        id: '10153877597411314',
-        photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/c0.0.320.320/p320x320/13124674_10153642037076314_1453379051499076333_n.jpg?oh=6fdc5fc02c79f94720479b5c7cd77db8&oe=5858CA67'
       },
       {
         firstName: 'Hannah',
@@ -5531,6 +5678,7 @@
         photoURL: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p320x320/12991032_985857774783244_2547338779257048690_n.jpg?oh=769b937ea112a111b546e016e85d6675&oe=5849F962'
       }
     ],
+    invitees: [],
     isFetching: false
   },
   photos: {

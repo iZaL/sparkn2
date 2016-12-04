@@ -1,13 +1,15 @@
 import React from 'react';
-import InviteePoll from './invitee-poll.jsx';
-import HostPoll from './host-poll.jsx';
-import Spinner from '../general/spinner.jsx';
-import EventDetailsHeader from '../general/event-details-header.jsx';
-import ConfirmedEvent from './confirmed-event.jsx';
-import Modal from '../general/modal.jsx';
-import TopBar from './top-bar.jsx';
-import DeletedEvent from './deleted-event.jsx';
-import { Link, hashHistory } from 'react-router';
+import { View } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import InviteePoll from './invitee-poll.js';
+import HostPoll from './host-poll.js';
+import Spinner from '../common/Spinner.js';
+import EventDetailsHeader from '../general/event-details-header.js';
+import ConfirmedEvent from './confirmed-event.js';
+import Modal from '../general/modal.js';
+import TopBar from './top-bar.js';
+import DeletedEvent from './deleted-event.js';
+import styles from '../../style.js';
 
 
 class Event extends React.Component {
@@ -16,6 +18,7 @@ class Event extends React.Component {
         super(props);
         this.handleDeleteEvent = this.handleDeleteEvent.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
+        console.log(this.props);
     }
 
     cancelEventConfirmationModal () {
@@ -25,7 +28,7 @@ class Event extends React.Component {
 
     handleDeleteEvent () {
         this.props.handleDeleteEvent(this.props.params.eventID);
-        hashHistory.push('/feed');
+        Actions.tabbar();
         this.handleCloseModal();
     }
 
@@ -38,26 +41,25 @@ class Event extends React.Component {
 
         if (this.props.userIsHost && this.props.isPoll) {
             console.log('you are a host viewing poll', this.props.isPoll);
+            console.log(this.props);
             return (
-                <div>
-
-                    <div className="container">
+                <View>
                         <HostPoll tally={ this.props.tally }
                                   event={ this.props.event }
-                                  eventID={ this.props.params.eventID }
+                                  eventID={ this.props.event.eventID } // changed from this.props.params.eventID
                                   handleHostEventChoices={ this.props.handleHostEventChoices }
                                   hostEventChoices={ this.props.hostEventChoices }
                                   handleConfirmEvent={ this.props.handleConfirmEvent }/>
-                    </div>
-                </div>
+
+                </View>
 
             );
         } else if (!this.props.userIsHost && this.props.isPoll) {
             console.log('you are a invitee viewing poll');
 
             return (
-                <div>
-                    <div className="container">
+                <View>
+                    <View style={styles.container}>
                         <InviteePoll event={ this.props.event }
                                   toggleSelection={ this.props.toggleSelection }
                                   poll={ this.props.poll }
@@ -65,16 +67,16 @@ class Event extends React.Component {
                                   eventID={ this.props.params.eventID }
                                   isHost={ this.props.userIsHost }
                                   hasVoted={ this.props.hasVoted }/>
-                    </div>
-                </div>
+                    </View>
+                </View>
             );
         } else {
             console.log('you are a host/invittee viewing an event');
-
+            console.log(this.props);
             return (
-                <div>
+                <View>
 
-                    <div className="container">
+                    <View style={styles.container}>
                         <ConfirmedEvent event={ this.props.event }
                                         eventID={ this.props.params.eventID }
                                         userIsHost={ this.props.userIsHost }
@@ -90,8 +92,8 @@ class Event extends React.Component {
                                         handleSetFile={ this.props.handleSetFile }
                                         getSelectedPhoto={ this.props.getSelectedPhoto }
                                         hasPhotoLoaded={ this.props.hasPhotoLoaded }/>
-                    </div>
-                </div>
+                    </View>
+                </View>
 
             );
         }
@@ -99,9 +101,9 @@ class Event extends React.Component {
 
 
     render () {
-
+        console.log(this.props);
         return (
-            <div>
+            <View>
                 {
                     this.props.isFetching && <Spinner />
                 }
@@ -111,33 +113,32 @@ class Event extends React.Component {
                 }
                 {
                     !this.props.isFetching && this.props.event &&
-                    <div>
-                        <Modal deleteEvent={ this.handleDeleteEvent }
-                               closeModal={ this.handleCloseModal } />
+                    <View>
+
 
                         <TopBar eventID={ this.props.event.eventID }
                                 userIsHost={ this.props.userIsHost }
                                 isPoll={ this.props.event.isPoll }
                                 handleEdit={ this.props.handleEdit }
-                                location={ this.props.location }
+                                location={ this.props.sceneKey }
                                 displayCancelModal={ this.cancelEventConfirmationModal }
                                 event={ this.props.event } />
 
 
                         <EventDetailsHeader
-                            location={ this.props.location.pathname.split('/').pop() }
+                            location='Event'
                             eventName={ this.props.event.eventName }
                             eventDescription={ this.props.event.eventDescription }
                             hostPhotoURL={ this.props.event.hostPhotoURL }
                             eventID={ this.props.event.eventID }
                             isPoll={ this.props.event.isPoll }
                             userIsHost={ this.props.event.isHost } />
-                    </div>
+                    </View>
                 }
                 {
                     !this.props.isFetching && this.props.event && this.renderView()
                 }
-            </div>
+            </View>
         );
 
     }
@@ -145,3 +146,6 @@ class Event extends React.Component {
 
 
 export default Event;
+
+//<Modal deleteEvent={ this.handleDeleteEvent }
+//       closeModal={ this.handleCloseModal } />

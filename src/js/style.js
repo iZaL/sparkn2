@@ -1,6 +1,278 @@
+import { Dimensions } from 'react-native';
 import colours from './colours.js';
 
+const width = Dimensions.get('window').width; //full width
+
 const styles = {
+
+  // app Wide
+  title1: {
+    color: colours.white,
+    fontSize: 24
+  },
+  title2: {
+   flex: 1,
+
+  },
+  msg1: {
+    fontSize: 18,
+    color: colours.gray,
+    fontWeight: '600',
+
+  },
+  msg2: {
+    fontSize: 16,
+    color: colours.gray,
+    fontWeight: '400'
+  },
+  msg3: {
+
+  },
+  invitedTitle: {
+    fontSize: 18,
+    color: colours.gray,
+    fontWeight: '700'
+  },
+  invitedWrapped: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    padding: 5
+  },
+  inviteeItem: {
+    padding: 4,
+    alignItems: 'center',
+    flexDirection: 'column',
+    flexWrap: 'nowrap'
+  },
+  uiAvatarImage: {
+    width: 40,
+    height: 40,
+    alignSelf: 'center',
+    borderRadius: 15
+  },
+  eventNote: {
+    paddingLeft: 25,
+    paddingRight: 25,
+    paddingTop: 10,
+    paddingBottom: 10,
+    flexWrap: 'wrap'
+  },
+
+
+  // topBar
+
+  topBarContainer: {
+    flexDirection: 'row',
+    height: 75,
+    backgroundColor: colours.blue,
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+    paddingBottom: 10,
+    paddingLeft: 3,
+    paddingRight: 3
+  },
+  topBarButton: {
+
+  },
+  topBarButtonText: {
+    color: colours.white,
+    fontSize: 16,
+    fontWeight: '300'
+  },
+  rowEvent: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 10,
+    marginBottom: 10,
+    paddingLeft: 5,
+    paddingRight: 5,
+    minHeight: 32
+  },
+  rowSpaced: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  pollSection: {
+    flexDirection: 'row',
+    borderColor: 'brown',
+    borderWidth: 3,
+    borderRadius: 3,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: 45,
+    width: Dimensions.get('window').width * 1
+  },
+  rowCentered: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  columnCentered: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  columnLeft: {
+    flex: 1.2,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start'
+  },
+  columnMiddle: {
+    flex: 3,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start'
+  },
+  columnRight: {
+    flex: 2,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start'
+  },
+  rowFlexStart: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start'
+  },
+  optionTitleWhat: {
+    flex: 1,
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: colours.what,
+    paddingLeft: 20,
+    paddingTop: 10
+  },
+  optionSelectedWhat: {
+    flex: 1,
+    backgroundColor: colours.what,
+    borderColor: colours.what,
+    borderWidth: 1,
+    borderRadius: 12,
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingLeft: 15,
+    paddingRight: 15
+  },
+  optionTextSelected: {
+    flex: 1,
+    fontSize: 16,
+    color: colours.white,
+    justifyContent: 'space-around'
+  },
+  optionDeselectedWhat: {
+    flex: 1,
+    backgroundColor: colours.white,
+    borderColor: colours.what,
+    borderWidth: 1,
+    borderRadius: 12,
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingLeft: 15,
+    paddingRight: 15
+  },
+  optionTextDeselectedWhat: {
+    flex: 1,
+    fontSize: 16,
+    color: colours.what,
+  },
+  optionTitleWhere: {
+    flex: 1,
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: colours.where,
+    paddingLeft: 20,
+    paddingTop: 10
+  },
+  optionSelectedWhere: {
+    flex: 1,
+    backgroundColor: colours.where,
+    borderColor: colours.where,
+    borderWidth: 1,
+    borderRadius: 12,
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingLeft: 15,
+    paddingRight: 15
+  },
+  optionDeselectedWhere: {
+    flex: 1,
+    backgroundColor: colours.white,
+    borderColor: colours.where,
+    borderWidth: 1,
+    borderRadius: 12,
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingLeft: 15,
+    paddingRight: 15
+  },
+  optionTextDeselectedWhere: {
+    flex: 1,
+    fontSize: 16,
+    color: colours.where,
+  },
+  optionTitleWhen: {
+    flex: 1,
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: colours.when,
+    paddingLeft: 20,
+    paddingTop: 10
+  },
+  optionSelectedWhen: {
+    flex: 1,
+    backgroundColor: colours.when,
+    borderColor: colours.when,
+    borderWidth: 1,
+    borderRadius: 12,
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingLeft: 15,
+    paddingRight: 15
+  },
+  optionDeselectedWhen: {
+    flex: 1,
+    backgroundColor: colours.white,
+    borderColor: colours.when,
+    borderWidth: 1,
+    borderRadius: 12,
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingLeft: 15,
+    paddingRight: 15
+  },
+  optionTextDeselectedWhen: {
+    flex: 1,
+    fontSize: 16,
+    color: colours.when,
+  },
+  confirmButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colours.confirm,
+    borderColor: colours.confirm,
+    borderWidth: 1,
+    borderRadius: 12,
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingLeft: 30,
+    paddingRight: 30
+  },
+  confirmButtonText: {
+    fontSize: 18,
+    color: colours.white,
+  },
+
+
+
+
+
 
   // login page
 
@@ -40,30 +312,25 @@ const styles = {
     marginTop: 20
   },
   container: {
+    flexDirection: 'column',
     alignItems: 'center',
-    margin: 5,
-    borderColor: 'green',
-    borderWidth: 3,
-    borderRadius: 3
+    margin: 5
   },
   whenContainer: {
     flexDirection: 'column',
-    margin: 15,
-    borderColor: 'pink',
-    borderWidth: 3,
-    borderRadius: 3
+    margin: 15
   },
   containerFeed: {
 
   },
   row: {
     flexDirection: 'row',
-    alignItems: 'stretch',
-    margin: 15,
-    minHeight: 32,
-    borderColor: 'yellow',
-    borderWidth: 3,
-    borderRadius: 3
+    justifyContent: 'space-between',
+    marginTop: 10,
+    marginBottom: 10,
+    paddingLeft: 5,
+    paddingRight: 5,
+    minHeight: 32
   },
   rowFlex: {
     flexDirection: 'row',
@@ -74,27 +341,22 @@ const styles = {
     paddingLeft: 5,
     paddingRight: 5
   },
+  shortRow: {
+    width: 50
+  },
   leftJustified: {
     flexDirection: 'row',
     alignSelf: 'flex-start',
     alignItems: 'flex-start',
-    padding: 10,
-    borderColor: 'orange',
-    borderWidth: 3,
-    borderRadius: 3
+    padding: 10
   },
   rowWhen: {
     flexDirection: 'row',
-    alignItems: 'stretch',
-    borderColor: 'yellow',
-    borderWidth: 3,
-    borderRadius: 3
+    alignItems: 'stretch'
   },
   column: {
     flexDirection: 'column',
-    borderColor: 'purple',
-    borderWidth: 3,
-    borderRadius: 3
+    flex: 1
   },
   userName: {
     fontSize: 36,
@@ -119,7 +381,9 @@ const styles = {
     paddingRight: 10,
     paddingLeft: 10,
     fontSize: 12,
-    flex: 0.9
+    height: 40,
+    flexDirection: 'row',
+    flex: 1
   },
   smallButtonStyle: {
     flex: 0.1,
@@ -150,9 +414,6 @@ const styles = {
     opacity: 0
   },
   navbarContainerStyle: {
-    borderWidth: 5,
-    borderColor: 'blue',
-    borderRadius: 3,
     flex: 1
   },
   hideButton: {
@@ -364,12 +625,12 @@ const styles = {
     padding: 10,
   },
   eventDetailTextTitle: {
-    color: 'white',
+    color: colours.white,
     fontSize: 16,
     fontWeight: 'bold'
   },
   eventDetailText: {
-    color: 'white',
+    color: colours.white,
     fontSize: 14,
     fontWeight: '300',
     alignSelf: 'center'
@@ -380,9 +641,7 @@ const styles = {
     alignSelf: 'center',
     borderRadius: 15
   },
-  columnEventDetailTextContainer: {
 
-  },
 
   label: {
     fontSize: 12,
@@ -399,7 +658,9 @@ const styles = {
     borderWidth: 1,
     borderColor: 'lightgray',
     fontSize: 12,
-    width: 100
+    minHeight: 40,
+    minWidth: 120,
+    paddingLeft: 10
   },
   timeInputStyle: {
     color: '#000',
@@ -407,7 +668,39 @@ const styles = {
     borderWidth: 1,
     borderColor: 'lightgray',
     fontSize: 12,
-    width: 100
+    minHeight: 40,
+    minWidth: 90,
+    paddingLeft: 10
+  },
+  dateInputRow: {
+    flexDirection: 'row',
+    height: 70,
+    borderColor: 'gray',
+    borderRadius: 3,
+    borderWidth: 3
+  },
+  dateInputColumn: {
+    flexDirection: 'column',
+    flex: 2.5
+  },
+  timeInputColumn: {
+    flexDirection: 'column',
+    paddingLeft: 10,
+    flex: 2
+  },
+  timeInputRow: {
+    flexDirection: 'row'
+  },
+  removeInputColumn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 2
+  },
+  dateTimeLabel: {
+    paddingBottom: 5,
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: colours.grey
   },
 
   //invite friends
@@ -415,25 +708,33 @@ const styles = {
   rightFloatedContent: {
 
   },
-  uiAvatarImage: {
-    width: 40,
-    height: 40,
-    alignSelf: 'center',
-    borderRadius: 15
-  },
+
   textfriendName: {
-    fontSize: 12,
+    fontSize: 16,
     fontWeight: '300',
     padding: 10
   },
   rightColumnInvite: {
     alignSelf: 'center'
   },
+  invitedButton: {
+    flexDirection: 'row',
+    padding: 3,
+    borderRadius: 5,
+    borderWidth: 0,
+    backgroundColor: colours.gray,
+    alignItems: 'center',
+    width: 180
+  },
+  inviteesContainer: {
+
+  },
   uiMiddleAlignedViewidedList: {
 
   },
 
   //confirm event
+
 
   item: {
 
@@ -444,10 +745,14 @@ const styles = {
   header: {
 
   },
-  invitedTitle: {
+
+  uiBigHorizontalList: {
 
   },
-  uiBigHorizontalList: {
+  confirmList: {
+
+  },
+  eventWherePlaceAddress: {
 
   },
 
@@ -481,10 +786,71 @@ const styles = {
 
 // Navbar styling
 
+
+
   backButtonTextStyle: {
     color: colours.white,
     fontSize: 14,
     fontWeight: '300'
+  },
+
+  // modalContainer
+
+  modalContainer: {
+
+  },
+
+  // invitee-poll
+
+
+
+
+  // poll sections
+  tallyText: {
+
+  },
+  placeNameShort: {
+
+  },
+  placeNameLong: {
+
+  },
+  placeAddress: {
+
+  },
+
+  // confirmed-event
+  headerRsvpListItems: {
+
+  },
+  // cancel confirmed-event
+  basicModal: {
+
+  },
+
+  // photo stream
+  rowPhoto: {
+
+  },
+  photo: {
+
+  },
+  uploadPanel: {
+
+  },
+
+  //RSVP area
+  RSVPButtonGoing: {
+
+  },
+  RSVPButtonMaybe: {
+
+  },
+  RSVPButtonNotGoing: {
+
+  },
+  RSVPButtonNotResponded: {
+
   }
 
 };

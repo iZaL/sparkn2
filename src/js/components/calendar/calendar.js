@@ -3,6 +3,7 @@ import { View, Text, ScrollView } from 'react-native';
 import CalendarItem from './calendar-item.js';
 import FilterPanel from '../general/filter-panel.js';
 import Spinner from '../common/Spinner.js';
+import TopBar from '../event/top-bar.js';
 import getUserID from '../../lib/getUserID.js';
 import styles from '../../style.js';
 
@@ -21,7 +22,7 @@ const Calendar = ({ location, allEvents, filteredEvents, isFetching, fetchEvent,
               {
                   isFetching && <Spinner />
               }
-
+              <TopBar location="calendar" />
               <View style={styles.filterPanelContainer}>
                 {
                     !isFetching && allEvents.length > 0 && <FilterPanel displaySome={ displaySome }

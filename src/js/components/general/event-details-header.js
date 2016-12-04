@@ -37,22 +37,31 @@ const EventDetailsHeader = ({ location, eventName, eventDescription, hostPhotoUR
             }
             { (!hideEventDetails) &&
               <View>
-                  <View style={styles.rowEventDetailsHeader}>
-                      <Image
-                        source={{ uri: { hostPhotoURL } }}
-                        style={styles.uiEventDetailPhotoCircularImage}
-                      >
-                        <Text>HostPhoto</Text>
-                      </Image>
+                <View style={styles.rowEventDetailsHeader}>
+                  <View style={styles.columnLeft}>
+                      <View>
+                        <Image
+                          source={{ uri: hostPhotoURL }}
+                          style={styles.uiEventDetailPhotoCircularImage}
+                        />
+                      </View>
                   </View>
-                  <View style={styles.columnEventDetailTextContainer}>
-                          <Text style={styles.eventDetailTextTitle}>
-                            { eventName }
-                          </Text>
-                          <Text style={styles.eventDetailText}>
-                            { eventDescription }
-                          </Text>
+                  <View style={styles.columnMiddle}>
+
+                      <View style={styles.rowCentered}>
+                        <View style={styles.columnCentered}>
+
+                              <Text style={styles.eventDetailTextTitle}>
+                                { eventName }
+                              </Text>
+                              <Text style={styles.eventDetailText}>
+                                { eventDescription }
+                              </Text>
+                        </View>
+                      </View>
+
                   </View>
+                </View>
               </View>
             }
           </View>

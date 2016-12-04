@@ -37,7 +37,7 @@ const Feed = ({ sceneKey, allEvents, notifications, isFetching, handleUpdateNoti
                 hasEdited={ data.hasEdited } />
         );
     });
-    
+
     return (
       <View>
 
@@ -47,7 +47,7 @@ const Feed = ({ sceneKey, allEvents, notifications, isFetching, handleUpdateNoti
         {
             !isFetching &&
             <View>
-              <TopBar location={sceneKey} />
+              <TopBar location="feed" />
             </View>
         }
         <View style={styles.filterPanelContainer}>

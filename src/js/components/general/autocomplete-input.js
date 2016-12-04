@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, TextInput } from 'react-native';
 import autocompleteHelper from '../../lib/autocomplete-helper.js';
 import Input from '../general/input.js';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -29,9 +29,9 @@ class AutocompleteInput extends Component {
         const { handleChange, value, placeholder, id, inputKey, inputCount, removeInput } = this.props;
 
         return (
-            <View style={styles.row}>
+          <View style={styles.row}>
 
-                <Input
+                <TextInput
                     ref={ (input) => {
                         if (input !== null && inputKey === inputCount - 1 && inputKey > 0) {
                             input.focus();
@@ -42,21 +42,22 @@ class AutocompleteInput extends Component {
                     value={ value }
                     placeholder={ placeholder }
                     style={styles.inputStyle}
-                    inputCount={ inputCount }
-                    inputKey={ inputKey }
                     removeInput={ removeInput }
 
                 />
+                <View style={styles.shortRow}>
 
-                { (inputKey === 0) &&
-                  <View />
-                }
-                { (inputKey !== 0) &&
-                  <Button buttonStyle={styles.smallButtonStyle} onPress={ (e) => removeInput(inputKey) }>
-                      <Icon name="times" size={14} color="gray" />
-                  </Button>
-                }
-            </View>
+                  { (inputKey === 0) &&
+                    <View />
+                  }
+                  { (inputKey !== 0) &&
+                    <Button buttonStyle={styles.smallButtonStyle} onPress={ (e) => removeInput(inputKey) }>
+                        <Icon name="times" size={14} color="gray" />
+                    </Button>
+                  }
+                </View>
+          </View>
+
         );
     }
 }

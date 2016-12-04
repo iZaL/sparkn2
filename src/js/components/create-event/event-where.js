@@ -4,6 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import AutocompleteInput from '../general/autocomplete-input.js';
 import AddInput from '../general/add-input.js';
 import EventDetailsHeader from '../general/event-details-header.js';
+import TopBar from '../event/top-bar.js';
 import { Button } from '../common';
 import styles from '../../style.js';
 
@@ -37,6 +38,7 @@ const EventWhere = ({ eventDetails, eventWhereData, addInput, removeInput, handl
 
     return (
         <View>
+          <TopBar location="eventdetails/where" />
           <View style={styles.rowEventDetailsHeader}>
 
             <EventDetailsHeader location="Enter details"

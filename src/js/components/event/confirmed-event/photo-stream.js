@@ -1,6 +1,11 @@
 import React from 'react';
-import PhotoModal from '../../general/photo-modal.jsx';
-import Loader from '../../general/loader.jsx';
+import { View, Text, Image, ScrollView, TouchableHighlight } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { Button } from '../../common';
+import styles from '../../../style';
+import PhotoModal from '../../general/photo-modal.js';
+import Loader from '../../general/loader.js';
 
 
 const PhotoStream = ({ hasPhotoLoaded, photos, deletedPhotos, getSelectedPhoto, handleDeletePhoto, handleSharePhoto, eventID }) => {
@@ -24,24 +29,23 @@ const PhotoStream = ({ hasPhotoLoaded, photos, deletedPhotos, getSelectedPhoto, 
     let stream = filteredPhotos.map((photo, i) => {
 
         return (
-            <div className="row photo" key={ i }>
-                <img className="eleven columns" src={ photo.photoURL } />
-                <i className="one column fa fa-ellipsis-v" id={ photo.photoURL } onClick={ (e) => handleMenuClick(e.target.id) } ariaHidden="true" />
-            </div>
+            <View style={styles.rowPhoto} key={ i }>
+                <Image style={styles.photo} source={{ uri: photo.photoURL }} />
+                <TouchableHighlight id={ photo.photoURL } onPress={ (e) => handleMenuClick(e.target.id) }>
+                  <Icon name="ellipsis-v" size={14} color="gray" />
+                </TouchableHighlight>
+            </View>
         );
     });
 
     return (
-        <div>
+        <View>
             <PhotoModal handleDeletePhoto={ handleDeletePhoto }
                         handleSharePhoto={ handleSharePhoto }
                         eventID={ eventID } />
             { hasPhotoLoaded === false &&  <Loader /> }
             { photos && hasPhotoLoaded !== false && stream }
-            <div className="row">
-                <hr className="twelve columns" />
-            </div>
-        </div>
+        </View>
     );
 };
 
