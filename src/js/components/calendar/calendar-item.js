@@ -1,82 +1,77 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import formatDate from '../../lib/formatDate.js';
-import { Button, CardSection, Card } from '../common';
-import styles from '../../style.js';
+import formatDate from '../../lib/formatDate';
+import { CardSection, Card } from '../common';
+import styles from '../../style';
 
 /***
-CalendarItem is used in calendar and album views.  Plays equivalent role to Notification.jsx for feed view
+* CalendarItem is used in calendar and album views. Plays equivalent role
+to Notification.jsx for feed view
 ***/
 
 const CalendarItem = ({ eventName, eventWhat, eventWhere, eventWhen,
-    eventID, coverPhoto, RSVPstatus, userIsHost }) => {
+  eventID, coverPhoto, RSVPstatus, userIsHost }) => {
+  // need to add onPress handler for Button.
+  return (
+    <Card style={styles.cardStyle}>
+      <CardSection style={styles.cardSectionCalendar}>
+        <TouchableOpacity style={styles.cardButtonStyle}>
+          <View style={styles.leftColumn}>
 
-      //need to add onPress handler for Button.
-    
-      return (
-          <Card style={styles.cardStyle}>
-            <CardSection style={styles.cardSectionCalendar}>
-              <TouchableOpacity style={styles.cardButtonStyle}>
+            <View style={styles.cardTopRow}>
 
-                  <View style={styles.leftColumn}>
+              <View>
+                {(userIsHost || RSVPstatus === 'going') &&
+                  <Icon name="check-circle" size={20} color="green" />
+                }
+                {!userIsHost && RSVPstatus === 'maybe' &&
+                  <Icon name="question-circle" size={20} color="orange" />
+                }
+                {!userIsHost && RSVPstatus === 'notGoing' &&
+                  <Icon name="times-circle" size={20} color="red" />
+                }
+                {!userIsHost && RSVPstatus === null &&
+                  <Icon name="exclamation-circle" size={20} color="gray" />
+                }
+              </View>
 
-                    <View style={styles.cardTopRow}>
+              <Text style={styles.calendarTitle}>
+                { eventName }
+              </Text>
 
-                      <View>
+            </View>
 
-                        {(userIsHost || RSVPstatus === 'going') &&
-                            <Icon name="check-circle" size={20} color="green" />
-                        }
-                        {!userIsHost && RSVPstatus === 'maybe' &&
-                            <Icon name="question-circle" size={20} color="orange" />
-                        }
-                        {!userIsHost && RSVPstatus === 'notGoing' &&
-                            <Icon name="times-circle" size={20} color="red" />
-                        }
-                        {!userIsHost && RSVPstatus === null &&
-                            <Icon name="exclamation-circle" size={20} color="gray" />
-                        }
+            <View style={styles.cardMiddleRow}>
 
-                      </View>
+              <Text style={styles.date}>
+                <Icon name="calendar-o" size={14} color="gray" />
+                { ` ${formatDate(eventWhen[0].date).toUpperCase() || 'TBC'}` }
+              </Text>
 
-                      <Text style={styles.calendarTitle}>
-                        { eventName }
-                      </Text>
+              <Text style={styles.placeName}>
+                <Icon name="map-marker" size={14} color="gray" />
+                { ` ${eventWhere[0].placeName || 'TBC'} ${eventWhere[0].placeAddress}` }
+              </Text>
 
-                    </View>
+            </View>
 
-                    <View style={styles.cardMiddleRow}>
+          </View>
 
-                      <Text style={styles.date}>
-                        <Icon name="calendar-o" size={14} color="gray" />
-                        { ` ${formatDate(eventWhen[0].date).toUpperCase() || 'TBC'}` }
-                      </Text>
+          <View style={styles.rightColumnCalendar}>
 
-                      <Text style={styles.placeName}>
-                        <Icon name="map-marker" size={14} color="gray" />
-                        { ` ${eventWhere[0].placeName || 'TBC'} ${eventWhere[0].placeAddress}` }
-                      </Text>
+            <Image
+              style={styles.coverImage}
+              source={coverPhoto ? { uri: coverPhoto.photoURL } : require('../../../img/placeholder.png')}
+            />
 
-                    </View>
+          </View>
 
-                  </View>
+        </TouchableOpacity>
+      </CardSection>
+    </Card>
 
-                  <View style={styles.rightColumnCalendar}>
-
-                    <Image
-                      style={styles.coverImage}
-                      source={coverPhoto ? { uri: coverPhoto.photoURL } : require('../../../img/placeholder.png')}
-                    />
-
-                  </View>
-
-              </TouchableOpacity>
-            </CardSection>
-          </Card>
-
-    );
+  );
 };
 
 export default CalendarItem;

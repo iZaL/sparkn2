@@ -50,154 +50,147 @@ GET EVENT ACTIONS
 ********/
 
 export function getEvent (eventID) {
+  return (dispatch) => {
+    dispatch(getEventRequest());
 
-    return (dispatch) => {
-
-        dispatch(getEventRequest());
-
-        axios.get('/get-event?eventID=' + eventID + '&userID=' + getUserID())
-            .then((response) => {
-                dispatch(getEventSuccess(response.data));
-                dispatch(getPhotos(response.data.photos));
-                dispatch(getDeletedPhotos(response.data.deletedPhotos));
-            })
-            .catch((error) => {
-                console.log(error, 'error from get event');
-                dispatch(getEventFailure(error));
-            });
-    };
+    axios.get(`/get-event?eventID=${eventID}&userID=${getUserID()}`)
+      .then((response) => {
+        dispatch(getEventSuccess(response.data));
+        dispatch(getPhotos(response.data.photos));
+        dispatch(getDeletedPhotos(response.data.deletedPhotos));
+      })
+      .catch((error) => {
+        dispatch(getEventFailure(error));
+      });
+  };
 }
 
 export function getEventRequest () {
-    return {
-        type: GET_EVENT_REQUEST,
-        isFetching: true
-    };
+  return {
+    type: GET_EVENT_REQUEST,
+    isFetching: true
+  };
 }
 
 export function getEventSuccess (event) {
-    return {
-        type: GET_EVENT_SUCCESS,
-        isFetching: false,
-        data: event
-    };
+  return {
+    type: GET_EVENT_SUCCESS,
+    isFetching: false,
+    data: event
+  };
 }
 
 export function getEventFailure (error) {
-    return {
-        type: GET_EVENT_FAILURE,
-        isFetching: false,
-        error: error
-    };
+  return {
+    type: GET_EVENT_FAILURE,
+    isFetching: false,
+    error
+  };
 }
 
 export function updatePoll (eventType, index) {
-    return {
-        type: UPDATE_POLL,
-        eventType,
-        index
-    };
+  return {
+    type: UPDATE_POLL,
+    eventType,
+    index
+  };
 }
 
 /********
-CONFIRM POLL ACTIONS
+* CONFIRM POLL ACTIONS
 ********/
 
 export function confirmPoll (poll, eventID) {
-
-    return (dispatch) => {
-
-        let payload = {
-            poll,
-            eventID,
-            userID: getUserID()
-        };
-
-        dispatch(confirmPollRequest());
-
-        axios.post('/confirm-poll', payload)
-            .then((response) => {
-                dispatch(confirmPollSuccess(response.data));
-                dispatch(getEvent(eventID));
-            })
-            .catch((error) => {
-                dispatch(confirmPollFailure(error));
-            });
+  return (dispatch) => {
+    const payload = {
+      poll,
+      eventID,
+      userID: getUserID()
     };
+
+    dispatch(confirmPollRequest());
+
+    axios.post('/confirm-poll', payload)
+      .then((response) => {
+        dispatch(confirmPollSuccess(response.data));
+        dispatch(getEvent(eventID));
+      })
+      .catch((error) => {
+        dispatch(confirmPollFailure(error));
+      });
+  };
 }
 
 export function confirmPollRequest () {
-    return {
-        type: CONFIRM_POLL_REQUEST,
-        isFetching: true
-    };
+  return {
+    type: CONFIRM_POLL_REQUEST,
+    isFetching: true
+  };
 }
 
 export function confirmPollSuccess () {
-    return {
-        type: CONFIRM_POLL_SUCCESS,
-        isFetching: false
-    };
+  return {
+    type: CONFIRM_POLL_SUCCESS,
+    isFetching: false
+  };
 }
 export function confirmPollFailure () {
-    return {
-        type: CONFIRM_POLL_FAILURE,
-        isFetching: false
-    };
+  return {
+    type: CONFIRM_POLL_FAILURE,
+    isFetching: false
+  };
 }
 
 export function addHostEventChoice (eventType, value, index) {
-    return {
-        type: ADD_HOST_EVENT_CHOICE,
-        eventType,
-        value,
-        index
-    };
+  return {
+    type: ADD_HOST_EVENT_CHOICE,
+    eventType,
+    value,
+    index
+  };
 }
 
 /********
-CONFIRM EVENT ACTIONS
+* CONFIRM EVENT ACTIONS
 ********/
 
 export function confirmEvent (hostEventChoices, eventID) {
-
-    return (dispatch) => {
-
-        let payload = {
-            hostEventChoices,
-            eventID
-        };
-
-        dispatch(confirmEventRequest());
-
-        axios.post('/confirm-event', payload)
-            .then((response) => {
-                dispatch(confirmEventSuccess());
-            })
-            .catch((error) => {
-                dispatch(confirmEventFailure());
-            });
+  return (dispatch) => {
+    const payload = {
+      hostEventChoices,
+      eventID
     };
+
+    dispatch(confirmEventRequest());
+
+    axios.post('/confirm-event', payload)
+      .then(() => {
+        dispatch(confirmEventSuccess());
+      })
+      .catch(() => {
+        dispatch(confirmEventFailure());
+      });
+  };
 }
 
 export function confirmEventRequest () {
-    return {
-        type: CONFIRM_EVENT_REQUEST,
-        isFetching: true
-    };
+  return {
+    type: CONFIRM_EVENT_REQUEST,
+    isFetching: true
+  };
 }
 
 export function confirmEventSuccess () {
-    return {
-        type: CONFIRM_EVENT_SUCCESS,
-        isFetching: false,
-    };
+  return {
+    type: CONFIRM_EVENT_SUCCESS,
+    isFetching: false
+  };
 }
 export function confirmEventFailure () {
-    return {
-        type: CONFIRM_EVENT_FAILURE,
-        isFetching: false
-    };
+  return {
+    type: CONFIRM_EVENT_FAILURE,
+    isFetching: false
+  };
 }
 
 /********
@@ -205,48 +198,46 @@ UPDATE RSVP ACTIONS
 ********/
 
 export function updateRSVP (RSVPStatus, eventID) {
-
-    return (dispatch) => {
-
-        let payload = {
-            userID: getUserID(),
-            eventID,
-            RSVPStatus
-        };
-
-        dispatch(updateRSVPRequest());
-
-        axios.post('/update-rsvp', payload)
-            .then((response) => {
-                dispatch(updateRSVPSuccess(response.data));
-            })
-            .catch((error) => {
-                dispatch(updateRSVPFailure(error));
-            });
+  return (dispatch) => {
+    const payload = {
+      userID: getUserID(),
+      eventID,
+      RSVPStatus
     };
+
+    dispatch(updateRSVPRequest());
+
+    axios.post('/update-rsvp', payload)
+      .then((response) => {
+        dispatch(updateRSVPSuccess(response.data));
+      })
+      .catch((error) => {
+        dispatch(updateRSVPFailure(error));
+      });
+  };
 }
 
 export function updateRSVPRequest () {
-    return {
-        type: UPDATE_RSVP_REQUEST,
-        isFetching: true
-    };
+  return {
+    type: UPDATE_RSVP_REQUEST,
+    isFetching: true
+  };
 }
 
 export function updateRSVPSuccess (RSVPs) {
-    return {
-        type: UPDATE_RSVP_SUCCESS,
-        isFetching: false,
-        data: RSVPs
-    };
+  return {
+    type: UPDATE_RSVP_SUCCESS,
+    isFetching: false,
+    data: RSVPs
+  };
 }
 
 export function updateRSVPFailure (error) {
-    return {
-        type: UPDATE_RSVP_FAILURE,
-        isFetching: false,
-        error
-    };
+  return {
+    type: UPDATE_RSVP_FAILURE,
+    isFetching: false,
+    error
+  };
 }
 
 
@@ -256,145 +247,138 @@ DELETE EVENT ACTIONS
 
 
 export function deleteEvent (eventID) {
+  return (dispatch) => {
+    dispatch(deleteEventRequest());
 
-    return (dispatch) => {
-
-        dispatch(deleteEventRequest());
-
-        axios.get('/delete-event?eventID=' + eventID)
-            .then((response) => {
-                dispatch(deleteEventSuccess(response.data));
-            })
-            .catch((error) => {
-                dispatch(deleteEventFailure(error));
-            });
-    };
+    axios.get(`/delete-event?eventID=${eventID}`)
+      .then((response) => {
+        dispatch(deleteEventSuccess(response.data));
+      })
+      .catch((error) => {
+        dispatch(deleteEventFailure(error));
+      });
+  };
 }
 
 export function deleteEventRequest () {
-    return {
-        type: DELETE_EVENT_REQUEST,
-        isFetching: true
-    };
+  return {
+    type: DELETE_EVENT_REQUEST,
+    isFetching: true
+  };
 }
 
 export function deleteEventSuccess () {
-    return {
-        type: DELETE_EVENT_SUCCESS,
-        isFetching: false,
-    };
+  return {
+    type: DELETE_EVENT_SUCCESS,
+    isFetching: false
+  };
 }
 
 export function deleteEventFailure (error) {
-    return {
-        type: DELETE_EVENT_FAILURE,
-        isFetching: false,
-        error: error
-    };
+  return {
+    type: DELETE_EVENT_FAILURE,
+    isFetching: false,
+    error
+  };
 }
 
 /********
-SAVE_EDITED_EVENT ACTIONS
+* SAVE_EDITED_EVENT ACTIONS
 ********/
 
-export function saveEditedEvent (eventName, eventDescription, eventNote, eventWhat, eventWhere, eventWhen, eventID) {
-
-    return (dispatch) => {
-
-        let payload = {
-            eventID,
-            eventName,
-            eventDescription,
-            eventNote,
-            eventWhat,
-            eventWhere,
-            eventWhen,
-            userID: getUserID()
-        };
-
-        dispatch(saveEditedEventRequest());
-
-        axios.post('/edit-event', payload)
-        .then((response) => {
-            dispatch(saveEditedEventSuccess());
-            dispatch(clearCreateEvent());
-        })
-        .catch((error) => {
-            dispatch(savedEditedEventFailure(error));
-        });
+export function saveEditedEvent (eventName, eventDescription, eventNote, eventWhat, eventWhere, eventWhen, eventID) { //eslint-disable-line
+  return (dispatch) => {
+    const payload = {
+      eventID,
+      eventName,
+      eventDescription,
+      eventNote,
+      eventWhat,
+      eventWhere,
+      eventWhen,
+      userID: getUserID()
     };
+
+    dispatch(saveEditedEventRequest());
+
+    axios.post('/edit-event', payload)
+      .then(() => {
+        dispatch(saveEditedEventSuccess());
+        dispatch(clearCreateEvent());
+      })
+      .catch((error) => {
+        dispatch(saveEditedEventFailure(error));
+      });
+  };
 }
 
 export function saveEditedEventRequest () {
-    return {
-        type: SAVE_EDITED_EVENT_REQUEST,
-        isFetching: true
-    };
+  return {
+    type: SAVE_EDITED_EVENT_REQUEST,
+    isFetching: true
+  };
 }
 
 export function saveEditedEventSuccess () {
-    return {
-        type: SAVE_EDITED_EVENT_SUCCESS,
-        isFetching: false,
-    };
+  return {
+    type: SAVE_EDITED_EVENT_SUCCESS,
+    isFetching: false
+  };
 }
 
 export function saveEditedEventFailure (error) {
-    return {
-        type: SAVE_EDITED_EVENT_FAILURE,
-        isFetching: false,
-        error: error
-    };
+  return {
+    type: SAVE_EDITED_EVENT_FAILURE,
+    isFetching: false,
+    error
+  };
 }
 
 /********
-UPDATE NOTIFICATIONS ACTIONS
+* UPDATE NOTIFICATIONS ACTIONS
 ********/
 export function updateNotification (index) {
+  return (dispatch) => {
+    dispatch(updateNotificationRequest());
 
-    return (dispatch) => {
-
-        dispatch(updateNotificationRequest());
-
-        axios.get('/update-notification?index=' + index + '&userID=' + getUserID())
-            .then((response) => {
-                dispatch(updateNotificationSuccess());
-            })
-            .catch((error) => {
-                console.error(error);
-                dispatch(updateNotificationFailure(error));
-            });
-    };
+    axios.get(`/update-notification?index=${index}&userID=${getUserID()}`)
+      .then(() => {
+        dispatch(updateNotificationSuccess());
+      })
+      .catch((error) => {
+        dispatch(updateNotificationFailure(error));
+      });
+  };
 }
 
 export function updateNotificationRequest () {
-    return {
-        type: UPDATE_NOTIFICATION_REQUEST,
-        updateNotification: true
-    };
+  return {
+    type: UPDATE_NOTIFICATION_REQUEST,
+    updateNotification: true
+  };
 }
 
-export function updateNotificationSuccess (event) {
-    return {
-        type: UPDATE_NOTIFICATION_SUCCESS,
-        updateNotification: false,
-    };
+export function updateNotificationSuccess () {
+  return {
+    type: UPDATE_NOTIFICATION_SUCCESS,
+    updateNotification: false
+  };
 }
 
 export function updateNotificationFailure (error) {
-    return {
-        type: UPDATE_NOTIFICATION_FAILURE,
-        updateNotification: false,
-        error: error
-    };
+  return {
+    type: UPDATE_NOTIFICATION_FAILURE,
+    updateNotification: false,
+    error
+  };
 }
 
 /********
-RESET_EVENT_STATE ACTION
+* RESET_EVENT_STATE ACTION
 ********/
 
 export function resetEventState () {
-    return {
-        type: RESET_EVENT_STATE
-    };
+  return {
+    type: RESET_EVENT_STATE
+  };
 }
