@@ -4,6 +4,13 @@
     "comma-dangle": ["error", "never"],
     "space-before-function-paren": ["error", "always"],
     "no-use-before-define": ["error", {"functions": false}],
-    "spaced-comment": ["error", "always", { "exceptions": ["*"] }]
+    "spaced-comment": ["error", "always", { "exceptions": ["*"] }],
+    "no-trailing-spaces": ["error", { "skipBlankLines": true }],
+    "padded-blocks": 0,
+    "object-curly-spacing": ["error", "always"],
+    "react/jsx-curly-spacing": 0,
+    "react/jsx-filename-extension": 0,
+    "array-callback-return": 0,
+    "consistent-return": 0
   }
 }

@@ -5,7 +5,7 @@ import getUserID from '../lib/getUserID.js';
 import { getEvent, updatePoll, confirmPoll, addHostEventChoice, confirmEvent, deleteEvent, updateRSVP } from '../actions/event.js';
 import { setFile, selectPhoto, getS3URL, deletePhoto, sharePhoto } from '../actions/photos.js';
 import { hydrateCreateEvent, clearCreateEvent } from '../actions/create-event.js';
-import { listenForS3URL } from '../lib/action-listeners.js';
+import listenForS3URL from '../lib/action-listeners.js';
 import { listenForSavePhotoURL } from '../lib/save-photo-url-helper.js';
 import jsonState from '../testState/jsonStateEvent.json';
 
