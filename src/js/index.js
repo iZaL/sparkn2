@@ -1,30 +1,19 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
 import { Provider } from 'react-redux';
-import { Scene,
-  Reducer,
-  Router,
-  Actions,
-  ActionConst, } from 'react-native-router-flux';
+import { Scene, Reducer, Router, Actions } from 'react-native-router-flux';
 import styles from './style';
 import TabIcon from './components/common/tab-bar/TabIcon';
-//import validCookieExists from './lib/validCookieExists.js';
 import { getUser } from './actions/user.js';
 import { getEvent, resetEventState } from './actions/event.js';
-import { getNotifications } from './actions/notifications.js';
-import { getCalendar } from './actions/calendar.js';
 import { clearCreateEvent } from './actions/create-event.js';
 import { store } from './init-store.js';
 import Intro from './components/Intro.js';
 import LoginContainer from './containers/login-container.js';
-import loginWithFacebook from './components/fbook-web-login.js';
-import loggedIn from './components/loggedin.js';
 import FeedContainer from './containers/feed-container.js';
 import CalendarContainer from './containers/calendar-container.js';
 import AlbumsContainer from './containers/albums-container.js';
 import ProfileContainer from './containers/profile-container.js';
 import EventContainer from './containers/event-container.js';
-//import EditEventContainer from './containers/edit-event-container.js';
 import EventDetailsContainer from './containers/create-event/event-details-container.js';
 import EventWhatContainer from './containers/create-event/event-what-container.js';
 import EventWhereContainer from './containers/create-event/event-where-container.js';
@@ -32,60 +21,8 @@ import EventWhenContainer from './containers/create-event/event-when-container.j
 import InviteFriendsContainer from './containers/create-event/invite-friends-container.js';
 import ConfirmNewEventContainer from './containers/create-event/confirm-new-event-container.js';
 
-function initialiseAppState (nextState, replace, callback) {
-    // catch if user is not authenticated
-    //if (!validCookieExists()) {
-        //Actions.login();
-    //} else {
-        if (!store.getState().user.id) {
-            store.dispatch(getUser());
-        }
-    //}
-    callback();
-}
-
-function fetchCalendar (nextState, replace, callback) {
-
-    // catch if user is not authenticated
-    // onEnter runs before requireAuthentication
-    //if (!validCookieExists()) {
-
-        Actions.calendar();
-    //} else {
-
-    //    if (!store.getState().user.id) {
-
-    //        store.dispatch(getUser());
-    //    }
-    //    store.dispatch(getCalendar());
-    //}
-
-    callback();
-}
-
-function fetchEvent (nextState, replace, callback) {
-    store.dispatch(resetEventState());
-    store.dispatch(getEvent(nextState.params.eventID));
-    callback();
-}
-
-
-function handleCreateEvent (nextState, replace, callback) {
-
-    //if (!validCookieExists()) {
-        Actions.login();
-    //} else {
-
-    //    if (!store.getState().user.id) {
-
-      //      store.dispatch(getUser());
-      //  }
-    //}
-    store.dispatch(clearCreateEvent());
-    callback();
-}
-
-
+// disable remote debugger warning in a simulator
+console.disableYellowBox = true;
 
 const reducerCreate = params => {
   const defaultReducer = new Reducer(params);
@@ -114,10 +51,9 @@ const getSceneStyle = (/* NavigationSceneRendererProps */ props, computedProps) 
 
 class Index extends Component {
 
-  cancelEvent () {
-
-          this.props.discardEvent();
-          Actions.tabbar();
+  cancelEvent(){
+  this.props.discardEvent();
+  Actions.tabbar();
   }
 
   render() {

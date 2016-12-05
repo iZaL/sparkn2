@@ -1,7 +1,7 @@
 import axios from 'axios';
-import getUserID from '../lib/getUserID.js';
-import { clearCreateEvent } from './create-event.js';
-import { getPhotos, getDeletedPhotos } from './photos.js';
+import getUserID from '../lib/getUserID';
+import { clearCreateEvent } from './create-event';
+import { getPhotos, getDeletedPhotos } from './photos';
 
 export const GET_EVENT = 'GET_EVENT';
 export const GET_EVENT_REQUEST = 'GET_EVENT_REQUEST';
