@@ -9,10 +9,8 @@ import Spinner from './common/Spinner';
 // import Navbar from './general/navbar';
 import styles from '../style';
 
-const Feed = ({ sceneKey, allEvents, notifications, isFetching,
+const Feed = ({ allEvents, notifications, isFetching,
   handleUpdateNotification, displaySome, displayAll, feedIsFiltered, isShowHosting }) => {
-
-  const { navbarContainerStyle } = styles;
 
   const mappedNotifications = notifications.map((data, i) => {
     return (
