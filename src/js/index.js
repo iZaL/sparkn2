@@ -25,7 +25,7 @@ class App extends Component {
     return (
       <Provider store={ store }>
         <NavigationProvider context={ navigationContext }>
-          <StackNavigation initialRoute={ Router.getRoute('feed') } />
+          <StackNavigation initialRoute={ Router.getRoute('profile') } />
         </NavigationProvider>
       </Provider>
     );
