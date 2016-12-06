@@ -1,33 +1,31 @@
-import { savePhotoURL } from '../actions/photos.js';
-import { store } from '../init-store.js';
+import { savePhotoURL } from '../actions/photos';
 
-export function listenForSavePhotoURL (store) {
+export default function listenForSavePhotoURL (store) {
 
-    let unsubscribe = store.subscribe(listener);
+  const unsubscribe = store.subscribe(listener);
 
+  function listener () {
 
-    function listener () {
+    const status = getPhotoURLStatus(store.getState());
 
-        let status = getPhotoURLStatus(store.getState());
+    if (status) {
 
-        if (status) {
-
-            unsubscribe();
-            const eventID = getEventIDFromStore(store.getState());
-            const photoURL = getPhotoURLFromStore(store.getState());
-            store.dispatch(savePhotoURL(photoURL, eventID));
-        }
+      unsubscribe();
+      const eventID = getEventIDFromStore(store.getState());
+      const photoURL = getPhotoURLFromStore(store.getState());
+      store.dispatch(savePhotoURL(photoURL, eventID));
     }
+  }
 
-    function getPhotoURLFromStore (state) {
-        return state.photos.photoURL;
-    }
+  function getPhotoURLFromStore (state) {
+    return state.photos.photoURL;
+  }
 
-    function getEventIDFromStore (state) {
-        return state.event.data.eventID;
-    }
+  function getEventIDFromStore (state) {
+    return state.event.data.eventID;
+  }
 
-    function getPhotoURLStatus (state) {
-        return state.photos.photoURL;
-    }
+  function getPhotoURLStatus (state) {
+    return state.photos.photoURL;
+  }
 }

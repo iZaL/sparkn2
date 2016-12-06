@@ -1,7 +1,7 @@
 import { Dimensions } from 'react-native';
-import colours from './colours.js';
+import colours from './colours';
 
-const width = Dimensions.get('window').width; //full width
+// const width = Dimensions.get('window').width; //full width
 
 const styles = {
 
@@ -11,14 +11,12 @@ const styles = {
     fontSize: 24
   },
   title2: {
-   flex: 1,
-
+    flex: 1
   },
   msg1: {
     fontSize: 18,
     color: colours.gray,
-    fontWeight: '600',
-
+    fontWeight: '600'
   },
   msg2: {
     fontSize: 16,
@@ -180,7 +178,7 @@ const styles = {
   optionTextDeselectedWhat: {
     flex: 1,
     fontSize: 16,
-    color: colours.what,
+    color: colours.what
   },
   optionTitleWhere: {
     flex: 1,
@@ -215,7 +213,7 @@ const styles = {
   optionTextDeselectedWhere: {
     flex: 1,
     fontSize: 16,
-    color: colours.where,
+    color: colours.where
   },
   optionTitleWhen: {
     flex: 1,
@@ -250,7 +248,7 @@ const styles = {
   optionTextDeselectedWhen: {
     flex: 1,
     fontSize: 16,
-    color: colours.when,
+    color: colours.when
   },
   confirmButton: {
     justifyContent: 'center',
@@ -266,13 +264,8 @@ const styles = {
   },
   confirmButtonText: {
     fontSize: 18,
-    color: colours.white,
+    color: colours.white
   },
-
-
-
-
-
 
   // login page
 
@@ -296,7 +289,7 @@ const styles = {
   welcome: {
     textAlign: 'center',
     color: '#333333',
-    marginBottom: 5,
+    marginBottom: 5
   },
 
   navigationBarStyle: {
@@ -457,18 +450,18 @@ const styles = {
     flex: 1
   },
   buttonText: {
-      fontSize: 12,
-      color: colours.blue,
-      fontWeight: '300',
-      paddingTop: 5,
-      paddingBottom: 5
+    fontSize: 12,
+    color: colours.blue,
+    fontWeight: '300',
+    paddingTop: 5,
+    paddingBottom: 5
   },
   buttonTextSelected: {
-      fontSize: 12,
-      color: colours.white,
-      fontWeight: '300',
-      paddingTop: 5,
-      paddingBottom: 5
+    fontSize: 12,
+    color: colours.white,
+    fontWeight: '300',
+    paddingTop: 5,
+    paddingBottom: 5
   },
   filterButtonSelected: {
     backgroundColor: colours.blue,
@@ -616,13 +609,13 @@ const styles = {
     width: 100
   },
 
-  //create Event
+  // create Event
 
   rowEventDetailsHeader: {
     flexDirection: 'row',
     backgroundColor: 'blue',
     justifyContent: 'center',
-    padding: 10,
+    padding: 10
   },
   eventDetailTextTitle: {
     color: colours.white,
@@ -703,7 +696,7 @@ const styles = {
     color: colours.grey
   },
 
-  //invite friends
+  // invite friends
 
   rightFloatedContent: {
 
@@ -733,7 +726,7 @@ const styles = {
 
   },
 
-  //confirm event
+  // confirm event
 
 
   item: {
@@ -774,7 +767,7 @@ const styles = {
   },
   iconBar: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'center'
 
   },
   iconBarStyle: {
@@ -785,8 +778,6 @@ const styles = {
   },
 
 // Navbar styling
-
-
 
   backButtonTextStyle: {
     color: colours.white,
@@ -801,10 +792,6 @@ const styles = {
   },
 
   // invitee-poll
-
-
-
-
   // poll sections
   tallyText: {
 
@@ -839,7 +826,7 @@ const styles = {
 
   },
 
-  //RSVP area
+  // RSVP area
   RSVPButtonGoing: {
 
   },
