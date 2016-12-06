@@ -1,46 +1,43 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import Feed from '../components/feed.js';
-import { applyFilter, clearFilter } from '../actions/notifications.js';
-import { updateNotification } from '../actions/event.js';
-import { listenForUserID } from '../lib/action-listeners.js';
-import filterNotifications from '../lib/filterNotifications.js';
-import { store } from '../init-store.js';
+import Feed from '../components/feed';
+import { applyFilter, clearFilter } from '../actions/notifications';
+import { updateNotification } from '../actions/event';
+import filterNotifications from '../lib/filterNotifications';
 import jsonState from '../testState/jsonState.json';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
 
-    let data = jsonState.notifications.data;
-    let feedIsFiltered = jsonState.notifications.filter;
-    let isShowHosting = jsonState.notifications.showHosting;
-    let notifications = filterNotifications(data, feedIsFiltered, isShowHosting);
+  const data = jsonState.notifications.data;
+  const feedIsFiltered = jsonState.notifications.filter;
+  const isShowHosting = jsonState.notifications.showHosting;
+  const notifications = filterNotifications(data, feedIsFiltered, isShowHosting);
 
-    return {
-        allEvents: data,
-        user: jsonState.user,
-        notifications,
-        isFetching: jsonState.notifications.isFetching,
-        updateNotification: jsonState.event.updateNotification,
-        feedIsFiltered,
-        isShowHosting
-    };
+  return {
+    allEvents: data,
+    user: jsonState.user,
+    notifications,
+    isFetching: jsonState.notifications.isFetching,
+    updateNotification: jsonState.event.updateNotification,
+    feedIsFiltered,
+    isShowHosting
+  };
 };
 const mapDispatchToProps = (dispatch) => {
 
-    return {
-        handleUpdateNotification: (index) => {
+  return {
+    handleUpdateNotification: (index) => {
 
-            dispatch(updateNotification(index));
-        },
-        displaySome: (filterChoice) => {
+      dispatch(updateNotification(index));
+    },
+    displaySome: (filterChoice) => {
 
-            dispatch(applyFilter(filterChoice));
-        },
-        displayAll: () => {
+      dispatch(applyFilter(filterChoice));
+    },
+    displayAll: () => {
 
-            dispatch(clearFilter());
-        }
-    };
+      dispatch(clearFilter());
+    }
+  };
 };
 
 

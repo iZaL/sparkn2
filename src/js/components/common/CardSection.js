@@ -17,14 +17,14 @@ export default function CardSection (props) {
 CardSection.propTypes = propTypes;
 
 
-const styles = {
-  containerStyle: {
-    borderBottomWidth: 1,
-    padding: 5,
-    backgroundColor: '#fff',
-    justifyContent: 'flex-start',
-    flexDirection: 'row',
-    borderColor: '#ddd',
-    position: 'relative'
-  }
-};
+// const styles = {
+//   containerStyle: {
+//     borderBottomWidth: 1,
+//     padding: 5,
+//     backgroundColor: '#fff',
+//     justifyContent: 'flex-start',
+//     flexDirection: 'row',
+//     borderColor: '#ddd',
+//     position: 'relative'
+//   }
+// };

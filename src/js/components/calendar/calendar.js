@@ -7,10 +7,11 @@ import TopBar from '../event/top-bar';
 import getUserID from '../../lib/getUserID';
 import styles from '../../style';
 
-const Calendar = ({ location, allEvents, filteredEvents, isFetching,
-  fetchEvent, displaySome, displayAll, calendarIsFiltered, isShowHosting }) => {
+const Calendar = ({ allEvents, filteredEvents, isFetching,
+  displaySome, displayAll, calendarIsFiltered, isShowHosting }) => {
 
   const sortedData = filteredEvents.sort((a, b) => {
+    /* eslint-disable no-param-reassign */
     a = a.eventWhen[0].date;
     b = b.eventWhen[0].date;
 
@@ -40,24 +41,26 @@ const Calendar = ({ location, allEvents, filteredEvents, isFetching,
           {
             sortedData.length === 0 && !isFetching &&
               <Text style={styles.smallMessageText}>
-                You have no { currentScene.includes('album') ? 'past' : 'upcoming' } events.
+                You have no past or upcoming events events.
               </Text>
           }
           {
             !isFetching && sortedData.map((item, i) => {
 
-              return (<CalendarItem
-                key={ 1 }
-                userIsHost={ item.hostID === getUserID() }
-                RSVPstatus={ item.RSVP }
-                eventName={ item.eventName }
-                eventWhat={ item.eventWhat }
-                eventWhere={ item.eventWhere }
-                eventWhen={ item.eventWhen }
-                coverPhoto={ item.coverPhoto }
-                eventID={ item.eventID }
-              />
-            )}
+              return (
+                <CalendarItem
+                  key={ i }
+                  userIsHost={ item.hostID === getUserID() }
+                  RSVPstatus={ item.RSVP }
+                  eventName={ item.eventName }
+                  eventWhat={ item.eventWhat }
+                  eventWhere={ item.eventWhere }
+                  eventWhen={ item.eventWhen }
+                  coverPhoto={ item.coverPhoto }
+                  eventID={ item.eventID }
+                />
+              );
+            })
           }
         </View>
       </ScrollView>

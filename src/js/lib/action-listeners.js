@@ -1,7 +1,4 @@
 import { uploadPhoto } from '../actions/photos';
-// import { getNotifications } from '../actions/notifications';
-// import { store } from '../init-store';
-// import getUserID from './getUserID';
 
 
 export default function listenForS3URL (store) {
@@ -18,19 +15,3 @@ export default function listenForS3URL (store) {
     }
   }
 }
-
-// export function listenForUserID (store) {
-//
-//     let unsubscribe = store.subscribe(listener);
-//
-//     function listener () {
-//
-//         let userID = store.getState().user.id;
-//
-//         if (userID) {
-//             console.log('I am in listren for user id', userID);
-//             unsubscribe();
-//             // store.dispatch(getNotifications(userID));
-//         }
-//     }
-// }

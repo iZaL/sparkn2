@@ -1,23 +1,22 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import { userLogin } from '../actions/auth.js';
-import Login from '../components/login.js';
+import { userLogin } from '../actions/auth';
+import Login from '../components/login';
 import jsonState from '../testState/jsonState.json';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
 
-    return {
-        auth: jsonState.auth
-    };
+  return {
+    auth: jsonState.auth
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
 
-    return {
-        login: () => {
-            dispatch(userLogin());
-        }
-    };
+  return {
+    login: () => {
+      dispatch(userLogin());
+    }
+  };
 };
 
 const LoginContainer = connect(

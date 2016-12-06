@@ -1,44 +1,39 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import Calendar from '../components/calendar/calendar.js';
-import { applyFilter, clearFilter } from '../actions/calendar.js';
-import filterNotifications from '../lib/filterNotifications.js';
-import getPastEvents from '../lib/getPastEvents.js';
-import { getEvent } from '../actions/event.js';
+import Calendar from '../components/calendar/calendar';
+import { applyFilter, clearFilter } from '../actions/calendar';
+import filterNotifications from '../lib/filterNotifications';
+import getPastEvents from '../lib/getPastEvents';
 import jsonState from '../testState/jsonState.json';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
 
-    let pastEvents = jsonState.calendar.data.filter(getPastEvents);
-    let data = jsonState.calendar.data;
-    let calendarIsFiltered = jsonState.calendar.filter;
-    let isShowHosting = jsonState.calendar.showHosting;
+  const pastEvents = jsonState.calendar.data.filter(getPastEvents);
+  const data = jsonState.calendar.data;
+  const calendarIsFiltered = jsonState.calendar.filter;
+  const isShowHosting = jsonState.calendar.showHosting;
 
-    let filteredEvents = filterNotifications(pastEvents, calendarIsFiltered, isShowHosting);
+  const filteredEvents = filterNotifications(pastEvents, calendarIsFiltered, isShowHosting);
 
-    return {
-        allEvents: data,
-        filteredEvents,
-        isFetching: jsonState.calendar.isFetching,
-        calendarIsFiltered,
-        isShowHosting
-    };
+  return {
+    allEvents: data,
+    filteredEvents,
+    isFetching: jsonState.calendar.isFetching,
+    calendarIsFiltered,
+    isShowHosting
+  };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => ({
 
-    return {
+  displaySome: (filterChoice) => {
 
-        displaySome: (filterChoice) => {
+    dispatch(applyFilter(filterChoice));
+  },
+  displayAll: () => {
 
-            dispatch(applyFilter(filterChoice));
-        },
-        displayAll: () => {
-
-            dispatch(clearFilter());
-        }
-    };
-};
+    dispatch(clearFilter());
+  }
+});
 
 
 const AlbumsContainer = connect(

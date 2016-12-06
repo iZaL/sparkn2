@@ -13,7 +13,7 @@ import styles from '../style';
 moment.locale('en-gb');
 
 const Notification = ({ eventID, timestamp, firstName, lastName, photoURL,
-  eventWhat, eventWhere, eventWhen, userIsHost, isPoll, subjectID, hostID,
+  eventWhere, eventWhen, userIsHost, isPoll, subjectID,
   index, handleUpdateNotification, viewed, inviteesNumber, eventName, hasEdited }) => {
 
   const userIsSubject = subjectID === getUserID();

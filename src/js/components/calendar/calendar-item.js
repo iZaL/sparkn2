@@ -2,8 +2,8 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import formatDate from '../../lib/formatDate';
-import CardSection from '../common';
-import Card from '../common';
+import CardSection from '../common/CardSection';
+import Card from '../common/Card';
 import styles from '../../style';
 
 /***
@@ -11,8 +11,8 @@ import styles from '../../style';
 to Notification.jsx for feed view
 ***/
 
-const CalendarItem = ({ eventName, eventWhat, eventWhere, eventWhen,
-  eventID, coverPhoto, RSVPstatus, userIsHost }) => {
+const CalendarItem = ({ eventName, eventWhere, eventWhen,
+ coverPhoto, RSVPstatus, userIsHost }) => {
   // need to add onPress handler for Button.
   return (
     <Card style={styles.cardStyle}>
