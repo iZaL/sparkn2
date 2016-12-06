@@ -1,6 +1,5 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import InviteePoll from './invitee-poll';
 import HostPoll from './host-poll';
 import Spinner from '../common/Spinner';
@@ -21,24 +20,23 @@ class Event extends React.Component {
   }
 
   cancelEventConfirmationModal () {
-    document.getElementsByClassName('modal-container')[0]
+    document.getElementsByClassName('modal-container')[0] // eslint-disable-line no-undef
     .style.display = 'flex';
   }
 
   handleDeleteEvent () {
-    this.props.handleDeleteEvent(this.props.params.eventID); //eslint-disable-line
-    Actions.tabbar();
+    this.props.handleDeleteEvent(this.props.params.eventID);
     this.handleCloseModal();
   }
 
   handleCloseModal () {
-    document.getElementsByClassName('modal-container')[0]
+    document.getElementsByClassName('modal-container')[0] // eslint-disable-line no-undef
       .style.display = 'none';
   }
 
   renderView () {
 
-    if (this.props.userIsHost && this.props.isPoll)  //eslint-disable-line
+    if (this.props.userIsHost && this.props.isPoll) {
       // changed from this.props.params.eventID
       return (
         <View>
@@ -50,11 +48,9 @@ class Event extends React.Component {
             hostEventChoices={ this.props.hostEventChoices }
             handleConfirmEvent={ this.props.handleConfirmEvent }
           />
-      </View>
+        </View>
       );
     } else if (!this.props.userIsHost && this.props.isPoll) {
-      console.log('you are a invitee viewing poll');
-
       return (
         <View>
           <View style={styles.container}>
@@ -70,38 +66,35 @@ class Event extends React.Component {
           </View>
         </View>
       );
-    } else {
-      console.log('you are a host/invittee viewing an event');
-      console.log(this.props);
+    } else { // eslint-disable-line no-else-return
       return (
-          <View>
-              <View
-                style={styles.container}>
-                  <ConfirmedEvent
-                    event={ this.props.event }
-                    eventID={ this.props.params.eventID }
-                    userIsHost={ this.props.userIsHost }
-                    RSVPs={ this.props.RSVPs }
-                    RSVPToEvent={ this.props.RSVPToEvent }
-                    invitees={ this.props.invitees }
-                    handleUploadPhoto={ this.props.handleUploadPhoto }
-                    photos={ this.props.photos }
-                    deletedPhotos={ this.props.deletedPhotos }
-                    handleDeletePhoto={ this.props.handleDeletePhoto }
-                    handleSharePhoto={ this.props.handleSharePhoto }
-                    file={ this.props.file }
-                    handleSetFile={ this.props.handleSetFile }
-                    getSelectedPhoto={ this.props.getSelectedPhoto }
-                    hasPhotoLoaded={ this.props.hasPhotoLoaded }/>
-              </View>
+        <View>
+          <View style={styles.container}>
+            <ConfirmedEvent
+              event={ this.props.event }
+              eventID={ this.props.params.eventID }
+              userIsHost={ this.props.userIsHost }
+              RSVPs={ this.props.RSVPs }
+              RSVPToEvent={ this.props.RSVPToEvent }
+              invitees={ this.props.invitees }
+              handleUploadPhoto={ this.props.handleUploadPhoto }
+              photos={ this.props.photos }
+              deletedPhotos={ this.props.deletedPhotos }
+              handleDeletePhoto={ this.props.handleDeletePhoto }
+              handleSharePhoto={ this.props.handleSharePhoto }
+              file={ this.props.file }
+              handleSetFile={ this.props.handleSetFile }
+              getSelectedPhoto={ this.props.getSelectedPhoto }
+              hasPhotoLoaded={ this.props.hasPhotoLoaded }
+            />
           </View>
+        </View>
       );
     }
   }
 
 
   render () {
-    console.log(this.props);
     return (
       <View>
         {
@@ -128,7 +121,7 @@ class Event extends React.Component {
 
 
             <EventDetailsHeader
-              location='Event'
+              location="Event"
               eventName={ this.props.event.eventName }
               eventDescription={ this.props.event.eventDescription }
               hostPhotoURL={ this.props.event.hostPhotoURL }
@@ -150,5 +143,5 @@ class Event extends React.Component {
 
 export default Event;
 
-//<Modal deleteEvent={ this.handleDeleteEvent }
+// <Modal deleteEvent={ this.handleDeleteEvent }
 //       closeModal={ this.handleCloseModal } />

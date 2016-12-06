@@ -18,6 +18,7 @@
     "react/prop-types": 0,
     "import/no-named-as-default-member": 0,
     "import/no-named-as-default": 0,
-    "arrow-body-style": ["warn", "always"]
+    "arrow-body-style": ["warn", "always"],
+    "class-methods-use-this": 0
   }
 }
