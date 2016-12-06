@@ -7,7 +7,8 @@ import TopBar from '../event/top-bar';
 import getUserID from '../../lib/getUserID';
 import styles from '../../style';
 
-const Calendar = ({ location, allEvents, filteredEvents, isFetching, fetchEvent, displaySome, displayAll, calendarIsFiltered, isShowHosting }) => {
+const Calendar = ({ location, allEvents, filteredEvents, isFetching,
+  fetchEvent, displaySome, displayAll, calendarIsFiltered, isShowHosting }) => {
 
   const sortedData = filteredEvents.sort((a, b) => {
     a = a.eventWhen[0].date;
@@ -29,7 +30,8 @@ const Calendar = ({ location, allEvents, filteredEvents, isFetching, fetchEvent,
             displaySome={ displaySome }
             displayAll={ displayAll }
             dataIsFiltered={ calendarIsFiltered }
-            isShowHosting={ isShowHosting } />
+            isShowHosting={ isShowHosting }
+          />
         }
       </View>
 
@@ -38,13 +40,13 @@ const Calendar = ({ location, allEvents, filteredEvents, isFetching, fetchEvent,
           {
             sortedData.length === 0 && !isFetching &&
               <Text style={styles.smallMessageText}>
-                You have no { currentScene.includes('album') ? "past" : "upcoming" } events.
+                You have no { currentScene.includes('album') ? 'past' : 'upcoming' } events.
               </Text>
           }
           {
             !isFetching && sortedData.map((item, i) => {
 
-              return <CalendarItem
+              return (<CalendarItem
                 key={ 1 }
                 userIsHost={ item.hostID === getUserID() }
                 RSVPstatus={ item.RSVP }
@@ -53,8 +55,9 @@ const Calendar = ({ location, allEvents, filteredEvents, isFetching, fetchEvent,
                 eventWhere={ item.eventWhere }
                 eventWhen={ item.eventWhen }
                 coverPhoto={ item.coverPhoto }
-                eventID={ item.eventID } />;
-            })
+                eventID={ item.eventID }
+              />
+            )}
           }
         </View>
       </ScrollView>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextInput, View, Text, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Button } from '../common';
+import Button from '../common/Button';
 import styles from '../../style.js';
 
 const Input = ({ handleChange, value, placeholder, removeInput, inputKey, inputCount, style }) => {

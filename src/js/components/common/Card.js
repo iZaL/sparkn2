@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { View } from 'react-native';
 
-const Card = (props) => {
+const propTypes = {
+  style: PropTypes.string,
+  children: PropTypes.element
+};
+
+export default function Card (props) {
   return (
     <View style={props.style}>
       {props.children}
     </View>
   );
-};
+}
+
+Card.propTypes = propTypes;
 
 const styles = {
   containerStyle: {
@@ -25,5 +32,3 @@ const styles = {
     marginTop: 10
   }
 };
-
-export { Card };

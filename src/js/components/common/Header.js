@@ -1,14 +1,8 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Text, View } from 'react-native';
 
-const Header = (props) => {
-  const { textStyle, viewStyle } = styles;
-
-  return (
-    <View style={viewStyle}>
-      <Text style={textStyle}>{props.headerText}</Text>
-    </View>
-  );
+const propTypes = {
+  headerText: PropTypes.string
 };
 
 const styles = {
@@ -29,4 +23,14 @@ const styles = {
   }
 };
 
-export { Header };
+export default function Header (props) {
+  const { textStyle, viewStyle } = styles;
+
+  return (
+    <View style={viewStyle}>
+      <Text style={textStyle}>{props.headerText}</Text>
+    </View>
+  );
+}
+
+Header.propTypes = propTypes;
