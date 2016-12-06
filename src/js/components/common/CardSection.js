@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { View } from 'react-native';
 
-const CardSection = (props) => {
-  console.log(props);
+const propTypes = {
+  style: PropTypes.string, // check this
+  children: PropTypes.element
+};
+
+export default function CardSection (props) {
   return (
     <View style={props.style}>
       {props.children}
     </View>
   );
-};
+}
+
+CardSection.propTypes = propTypes;
+
 
 const styles = {
   containerStyle: {
@@ -21,5 +28,3 @@ const styles = {
     position: 'relative'
   }
 };
-
-export { CardSection };

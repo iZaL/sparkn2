@@ -2,7 +2,8 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import formatDate from '../../lib/formatDate';
-import { CardSection, Card } from '../common';
+import CardSection from '../common';
+import Card from '../common';
 import styles from '../../style';
 
 /***
@@ -62,7 +63,7 @@ const CalendarItem = ({ eventName, eventWhat, eventWhere, eventWhen,
 
             <Image
               style={styles.coverImage}
-              source={coverPhoto ? { uri: coverPhoto.photoURL } : require('../../../img/placeholder.png')}
+              source={coverPhoto ? { uri: coverPhoto.photoURL } : require('../../../img/placeholder.png')} // eslint-disable-line global-require
             />
 
           </View>

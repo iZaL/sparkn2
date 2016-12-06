@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Image, Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 //import classnames from 'classnames';
-import { Button } from '../common/Button';
+import Button from '../common/Button';
 
 const Navbar = ({ currentLocation }) => {
     console.log(currentLocation);

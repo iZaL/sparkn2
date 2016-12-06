@@ -3,7 +3,7 @@ import { View, Image, Text, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { store } from '../../init-store.js';
 import styles from '../../style.js';
-import { Button } from '../common';
+import Button from '../common/Button';
 
 const DateTimeInput = ({ value, inputKey, inputCount, handleDate, handleTime, removeInput }) => {
 

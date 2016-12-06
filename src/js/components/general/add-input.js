@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Button } from '../common';
+import Button from '../common/Button';
 import styles from '../../style.js';
 
 const AddInput = ({ data, handler }) => {
