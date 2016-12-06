@@ -6,7 +6,7 @@ import {
   StackNavigation
 } from '@exponent/ex-navigation';
 import { store } from './init-store';
-import Router from './routes';
+import Router from './router';
 
 // disable remote debugger warning in a simulator
 console.disableYellowBox = true;
@@ -25,7 +25,7 @@ class App extends Component {
     return (
       <Provider store={ store }>
         <NavigationProvider context={ navigationContext }>
-          <StackNavigation initialRoute={ Router.getRoute('profile') } />
+          <StackNavigation initialRoute={ Router.getRoute('navbar') } />
         </NavigationProvider>
       </Provider>
     );
