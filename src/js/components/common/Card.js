@@ -1,10 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { View } from 'react-native';
-
-const propTypes = {
-  style: PropTypes.string,
-  children: PropTypes.element
-};
 
 export default function Card (props) {
   return (
@@ -14,7 +9,6 @@ export default function Card (props) {
   );
 }
 
-Card.propTypes = propTypes;
 //
 // const styles = {
 //   containerStyle: {

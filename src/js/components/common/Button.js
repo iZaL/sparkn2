@@ -1,12 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-
-const propTypes = {
-  onPress: PropTypes.func,
-  buttonStyle: PropTypes.string,
-  textStyle: PropTypes.string,
-  children: PropTypes.element
-};
 
 export default function Button ({ onPress, children, buttonStyle, textStyle }) {
   return (
@@ -17,5 +10,3 @@ export default function Button ({ onPress, children, buttonStyle, textStyle }) {
     </TouchableOpacity>
   );
 }
-
-Button.propTypes = propTypes;

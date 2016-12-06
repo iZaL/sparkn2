@@ -1,9 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Text, View } from 'react-native';
-
-const propTypes = {
-  headerText: PropTypes.string
-};
 
 const styles = {
   viewStyle: {
@@ -32,5 +28,3 @@ export default function Header (props) {
     </View>
   );
 }
-
-Header.propTypes = propTypes;

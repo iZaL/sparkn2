@@ -1,14 +1,7 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Text, View, Modal } from 'react-native';
 import CardSection from './CardSection';
 import Button from './Button';
-
-const propTypes = {
-  visible: PropTypes.bool,
-  deleteEvent: PropTypes.func,
-  closeModal: PropTypes.func,
-  children: PropTypes.element
-};
 
 const styles = {
   cardSectionStyle: {
@@ -53,5 +46,3 @@ export default function Confirm ({ children, visible, deleteEvent, closeModal })
     </Modal>
   );
 }
-
-Confirm.propTypes = propTypes;

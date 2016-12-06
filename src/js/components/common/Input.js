@@ -1,11 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { TextInput, View, Text } from 'react-native';
-
-const propTypes = {
-  label: PropTypes.string,
-  placeholder: PropTypes.string,
-  value: PropTypes.string
-};
 
 const styles = {
   inputStyle: {
@@ -46,5 +40,3 @@ export default function Input ({ label, value, onChangeText, placeholder, secure
     </View>
   );
 }
-
-Input.propTypes = propTypes;
