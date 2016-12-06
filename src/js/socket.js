@@ -1,24 +1,26 @@
 import io from 'socket.io-client';
-import getUserID from './lib/getUserID.js';
-import { store } from './init-store.js';
-import { getNotifications } from './actions/notifications.js';
+import getUserID from './lib/getUserID';
+import { store } from './init-store';
+import { getNotifications } from './actions/notifications';
 
-let port = process.env.PORT || 9000;
+const port = process.env.PORT || 9000;
 let currentLocation = '';
 
 if (process.env.DEVELOPMENT) {
-    currentLocation = `${location.protocol}//${location.hostname}:${port}`;
+  currentLocation = `${location.protocol}//${location.hostname}:${port}`; // eslint-disable-line no-undef
 }
 
-export const feedSocket = io(`${currentLocation}/feed`);
+const feedSocket = io(`${currentLocation}/feed`);
 
-feedSocket.on('connected', (thing) => {
+feedSocket.on('connected', () => {
 
-    var userID = getUserID();
+  const userID = getUserID();
 
-    if (userID) {
+  if (userID) {
 
-        feedSocket.emit('join', JSON.stringify([userID]));
-        store.dispatch(getNotifications(userID));
-    }
+    feedSocket.emit('join', JSON.stringify([userID]));
+    store.dispatch(getNotifications(userID));
+  }
 });
+
+export default feedSocket;

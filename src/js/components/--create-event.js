@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { CardSection } from './common';
+import CardSection from './common';
 import Navbar from './general/navbar';
 
 class CreateEvent extends Component {

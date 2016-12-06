@@ -1,19 +1,15 @@
-import getUserID from './getUserID.js';
+import getUserID from './getUserID';
 
 export default function filterNotifications (notifications, calendarIsFiltered, isHosting) {
 
-    let currentUserID = getUserID();
+  const currentUserID = getUserID();
 
-    if (!calendarIsFiltered) {
-        return notifications;
-    } else {
+  if (!calendarIsFiltered) {
+    return notifications;
+  }
+  return notifications.filter((notification) => {
 
-        let condition = isHosting;
-
-        return notifications.filter((notification) => {
-            
-            let hostID = notification.hostID;
-            return isHosting ? (hostID === currentUserID) : (hostID !== currentUserID);
-        });
-    }
+    const hostID = notification.hostID;
+    return isHosting ? (hostID === currentUserID) : (hostID !== currentUserID);
+  });
 }

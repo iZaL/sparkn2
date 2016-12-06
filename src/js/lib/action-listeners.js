@@ -1,39 +1,17 @@
-import { uploadPhoto } from '../actions/photos.js';
-import { getNotifications } from '../actions/notifications.js';
-import { store } from '../init-store.js';
-import getUserID from './getUserID.js';
+import { uploadPhoto } from '../actions/photos';
 
 
-export function listenForS3URL (store) {
+export default function listenForS3URL (store) {
+  const unsubscribe = store.subscribe(listener);
 
-    let unsubscribe = store.subscribe(listener);
+  function listener () {
+    const status = store.getState().photos.signedURL;
 
-    function listener () {
-
-        let status = store.getState().photos.signedURL;
-
-        if (status) {
-
-            unsubscribe();
-            const file = store.getState().photos.file;
-            const url = store.getState().photos.signedURL;
-            store.dispatch(uploadPhoto(url, file));
-        }
+    if (status) {
+      unsubscribe();
+      const file = store.getState().photos.file;
+      const url = store.getState().photos.signedURL;
+      store.dispatch(uploadPhoto(url, file));
     }
+  }
 }
-
-// export function listenForUserID (store) {
-//
-//     let unsubscribe = store.subscribe(listener);
-//
-//     function listener () {
-//
-//         let userID = store.getState().user.id;
-//
-//         if (userID) {
-//             console.log('I am in listren for user id', userID);
-//             unsubscribe();
-//             // store.dispatch(getNotifications(userID));
-//         }
-//     }
-// }

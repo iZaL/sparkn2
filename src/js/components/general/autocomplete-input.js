@@ -3,7 +3,7 @@ import { View, Image, TextInput } from 'react-native';
 import autocompleteHelper from '../../lib/autocomplete-helper.js';
 import Input from '../general/input.js';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Button } from '../common';
+import Button from '../common/Button';
 import styles from '../../style.js';
 
 class AutocompleteInput extends Component {

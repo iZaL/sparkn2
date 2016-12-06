@@ -1,22 +1,17 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import App from '../components/app.js';
+import App from '../components/app';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => ({
 
-    return {
-        error: state.user.error || state.auth.error || state.createEvent.error || state.event.error
-    };
-};
+  error: state.user.error || state.auth.error || state.createEvent.error || state.event.error
+});
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = () => ({
 
-    return {
-        login: () => {
-            dispatch(userLogin());
-        }
-    };
-};
+  login: () => {
+    // dispatch(userLogin());
+  }
+});
 
 const AppContainer = connect(
     mapStateToProps,

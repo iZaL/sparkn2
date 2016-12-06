@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 //import classnames from 'classnames';
-import { Button } from '../common';
+import Button from '../common/Button';
 
 const FilterPanel = ({ displaySome, displayAll, dataIsFiltered, isShowHosting }) => {
 

@@ -1,19 +1,19 @@
 import { combineReducers } from 'redux';
-import auth from './auth.js';
-import user from './user.js';
-import calendar from './calendar.js';
-import event from './event.js';
-import notifications from './notifications.js';
-import createEvent from './create-event.js';
-import photos from './photos.js';
+import auth from './auth';
+import user from './user';
+import calendar from './calendar';
+import event from './event';
+import notifications from './notifications';
+import createEvent from './create-event';
+import photos from './photos';
 
 
 export default combineReducers({
-    auth,
-    user,
-    calendar,
-    event,
-    notifications,
-    createEvent,
-    photos
+  auth,
+  user,
+  calendar,
+  event,
+  notifications,
+  createEvent,
+  photos
 });
