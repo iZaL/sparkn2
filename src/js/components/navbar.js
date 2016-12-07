@@ -64,6 +64,18 @@ export default function Navbar () {
           initialRoute={ Router.getRoute('profile') }
         />
       </TabItem>
+
+      <TabItem
+        id="create"
+        title="Create"
+        selectedStyle={ tabBarSelectedItemStyle }
+        renderIcon={ isSelected => <Icon name="pencil" size={ 28 } color={ isSelected ? colours.blue : colours.gray } /> }
+      >
+        <StackNavigation
+          id="create"
+          initialRoute={ Router.getRoute('details') }
+        />
+      </TabItem>
     </TabNavigation>
   );
 }
