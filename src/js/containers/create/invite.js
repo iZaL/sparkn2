@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { addInvitee, removeInvitee, clearCreateEvent } from '../../actions/create-event';
-import InviteFriends from '../../components/create/invite';
+import Invite from '../../components/create/invite';
 import jsonState from '../../testState/jsonStateCreate.json';
 
 const mapStateToProps = (state) => { // eslint-disable-line no-unused-vars
@@ -33,6 +33,6 @@ const mapDispatchToProps = dispatch => ({
 const InviteFriendsContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(InviteFriends);
+)(Invite);
 
 export default InviteFriendsContainer;

@@ -1,14 +1,17 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import Router from '../../router';
 import DateTimeInput from '../general/date-time-input';
 import AddInput from '../general/add-input';
 import EventDetailsHeader from '../general/event-details-header';
-import TopBar from '../event/top-bar';
 import Button from '../common/Button';
 import styles from '../../style';
 
-const EventWhen = ({ eventDetails, eventWhenData, addInput, removeInput, handleDate, handleTime }) => {
+const EventWhen = ({ eventDetails, eventWhenData, addInput, removeInput, handleDate, handleTime, navigator }) => {
+
+  const nextPage = () => {
+    navigator.push(Router.getRoute('invite'));
+  };
 
   const inputs = eventWhenData.map((value, i) => {
     return (
@@ -59,7 +62,7 @@ const EventWhen = ({ eventDetails, eventWhenData, addInput, removeInput, handleD
           { (!hideNext) &&
             <Button
               buttonStyle={styles.buttonStyle}
-              onPress={Actions.inviteFriends}
+              onPress={ () => nextPage() }
             >
               Next
             </Button>

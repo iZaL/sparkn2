@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { Actions } from 'react-native-router-flux';
 import getUserID from '../lib/getUserID';
 
 export const SET_EVENT_DETAILS = 'SET_EVENT_DETAILS';
@@ -78,7 +77,6 @@ export function newEvent (eventData) {
     return axios.post('/new-event', eventData)
       .then(() => {
         dispatch(newEventSuccess());
-        Actions.tabbar();
         dispatch(clearCreateEvent());
       })
       .catch((error) => {

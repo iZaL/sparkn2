@@ -11,10 +11,8 @@ const mapStateToProps = () => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-
   return {
     handleChange: (inputType, event) => {
-
       dispatch(setEventDetails(event.target.value, inputType));
     },
     discardEvent: () => {

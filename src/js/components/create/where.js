@@ -1,14 +1,17 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import AutocompleteInput from '../general/autocomplete-input';
+import Router from '../../router';
 import AddInput from '../general/add-input';
 import EventDetailsHeader from '../general/event-details-header';
-import TopBar from '../event/top-bar';
 import Button from '../common/Button';
 import styles from '../../style';
 
-const EventWhere = ({ eventDetails, eventWhereData, addInput, removeInput, handleEventWhere }) => { // eslint-disable-line react/prop-types
+const EventWhere = ({ eventDetails, eventWhereData, addInput, removeInput, handleEventWhere, navigator }) => { // eslint-disable-line react/prop-types
+
+  const nextPage = () => {
+    navigator.push(Router.getRoute('when'));
+  };
 
   const inputs = eventWhereData.map((value, i) => {
 
@@ -64,7 +67,7 @@ const EventWhere = ({ eventDetails, eventWhereData, addInput, removeInput, handl
           { (!hideNext) &&
             <Button
               buttonStyle={styles.buttonStyle}
-              onPress={Actions.when}
+              onPress={ () => nextPage() }
             >
               Next
             </Button>

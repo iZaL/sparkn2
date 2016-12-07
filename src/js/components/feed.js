@@ -4,12 +4,12 @@ import Notification from './notification';
 import getUserID from '../lib/getUserID';
 import TopBar from './event/top-bar';
 import FilterPanel from './general/filter-panel';
-// import Button from './common/Button';
+import Button from './common/Button';
 import Spinner from './common/Spinner';
 // import Navbar from './general/navbar';
 import styles from '../style';
 
-const Feed = ({ allEvents, notifications, isFetching,
+const Feed = ({ navigator, allEvents, notifications, isFetching,
   handleUpdateNotification, displaySome, displayAll, feedIsFiltered, isShowHosting }) => {
 
   const mappedNotifications = notifications.map((data, i) => {
@@ -48,6 +48,9 @@ const Feed = ({ allEvents, notifications, isFetching,
         !isFetching &&
         <View>
           <TopBar location="feed" />
+          <Button onPress={ () => navigator.pop() }>
+            BACK (test navigation stack)
+          </Button>
         </View>
       }
       <View style={styles.filterPanelContainer}>

@@ -37,6 +37,7 @@ export default function Navbar () {
       >
         <StackNavigation
           id="calendar"
+          navigatorUID="calendar"
           initialRoute={ Router.getRoute('calendar') }
         />
       </TabItem>
@@ -49,6 +50,7 @@ export default function Navbar () {
       >
         <StackNavigation
           id="feed"
+          navigatorUID="feed"
           initialRoute={ Router.getRoute('feed') }
         />
       </TabItem>
@@ -61,6 +63,7 @@ export default function Navbar () {
       >
         <StackNavigation
           id="profile"
+          navigatorUID="profile"
           initialRoute={ Router.getRoute('profile') }
         />
       </TabItem>
@@ -73,7 +76,8 @@ export default function Navbar () {
       >
         <StackNavigation
           id="create"
-          initialRoute={ Router.getRoute('details') }
+          navigatorUID="create"
+          initialRoute={ Router.getRoute('confirm') }
         />
       </TabItem>
     </TabNavigation>

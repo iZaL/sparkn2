@@ -1,16 +1,19 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import Input from '../general/input';
+import Router from '../../router';
 import AddInput from '../general/add-input';
 import EventDetailsHeader from '../general/event-details-header';
-import TopBar from '../event/top-bar';
 import Button from '../common/Button';
 import styles from '../../style';
 
-const EventWhat = ({ eventDetails, eventWhatData, addInput, removeInput, handleEventWhat }) => { // eslint-disable-line react/prop-types
+const EventWhat = ({ eventDetails, eventWhatData, addInput, removeInput, handleEventWhat, navigator }) => { // eslint-disable-line react/prop-types
 
   const inputCount = eventWhatData.length;
+
+  const nextPage = () => {
+    navigator.push(Router.getRoute('where'));
+  };
 
   const inputs = eventWhatData.map((value, i) => {
 
@@ -63,7 +66,7 @@ const EventWhat = ({ eventDetails, eventWhatData, addInput, removeInput, handleE
           }
           { (!hideNext) &&
             <Button
-              onPress={Actions.where}
+              onPress={ () => nextPage() }
               buttonStyle={styles.buttonStyle}
               buttonTextStyle={styles.buttonTextStyle}
             >

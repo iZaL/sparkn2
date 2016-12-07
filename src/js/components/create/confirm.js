@@ -1,17 +1,24 @@
 import React from 'react';
 import { View, Image, Text, ScrollView } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import Router from '../../router';
 import ConfirmEventWhat from './confirm-what';
 import ConfirmEventWhere from './confirm-where';
 import ConfirmEventWhen from './confirm-when';
 import { isPoll } from '../../lib/create-event-helpers';
-import TopBar from '../event/top-bar';
 import styles from '../../style';
 import Button from '../common/Button';
 
-const ConfirmNewEvent = ({ data, saveEvent }) => { // eslint-disable-line react/prop-types
+export default function Confirm ({ data, saveEvent, navigation }) { // eslint-disable-line
+
   const SaveButtonIsHidden = data.eventWhen[0].date === '' && isPoll(data) === false;
-  const SaveButtonText = isPoll(data) === true ? 'SEND POLL' : 'CONFIRM & SEND INVITES';
+  const SaveButtonText = isPoll(data) ? 'SEND POLL' : 'CONFIRM & SEND INVITES';
+
+  const nextPage = () => {
+    navigation.performAction(({ tabs, stacks }) => {
+      tabs('main').jumpToTab('feed');
+      stacks('confirm').immediatelyResetStack([Router.getRoute('feed')], 0);
+    });
+  };
 
   const invitedFriends = data.invitees.map((inviteeObject) => {
     return (
@@ -50,9 +57,9 @@ const ConfirmNewEvent = ({ data, saveEvent }) => { // eslint-disable-line react/
               <Button
                 buttonStyle={styles.buttonStyle}
                 buttonTextStyle={styles.buttonTextStyle}
-                onPress={Actions.when}
+                onPress={ () => console.log('add validation to date')}
               >
-                  Add a Date
+                Add a Date
               </Button>
 
             </View>
@@ -78,7 +85,7 @@ const ConfirmNewEvent = ({ data, saveEvent }) => { // eslint-disable-line react/
               <Button
                 buttonStyle={styles.confirmButton}
                 textStyle={styles.confirmButtonText}
-                onPress={ () => saveEvent(data) }
+                onPress={ () => nextPage() }
               >
                 { SaveButtonText }
               </Button>
@@ -89,6 +96,4 @@ const ConfirmNewEvent = ({ data, saveEvent }) => { // eslint-disable-line react/
       </ScrollView>
     </View>
   );
-};
-
-export default ConfirmNewEvent;
+}
