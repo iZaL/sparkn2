@@ -18,7 +18,7 @@ const EventWhat = ({ eventDetails, eventWhatData, addInput, removeInput, handleE
 
       <Input
         style={styles.inputStyle}
-        handleChange={ handleEventWhat.bind(this, i) }
+        handleChange={ () => handleEventWhat(i) }
         key={ i }
         inputCount={ inputCount }
         value={ value }
@@ -30,12 +30,10 @@ const EventWhat = ({ eventDetails, eventWhatData, addInput, removeInput, handleE
     );
   });
 
-  const hideAddInput = eventWhatData.length >= 3;
   const hideNext = eventWhatData[0] === '';
 
   return (
     <View>
-      <TopBar location="eventdetails/what" />
       <View style={styles.rowEventDetailsHeader}>
 
         <EventDetailsHeader

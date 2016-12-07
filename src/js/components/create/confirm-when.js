@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Button from '../../common/Button';
-import formatDate from '../../../lib/formatDate';
-import styles from '../../../style';
+import Button from '../common/Button';
+import formatDate from '../../lib/formatDate';
+import styles from '../../style';
 
 const ConfirmEventWhen = ({ eventWhen }) => { // eslint-disable-line react/prop-types
 

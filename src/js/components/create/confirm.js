@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Image, Text, ScrollView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import ConfirmEventWhat from './confirmation/confirm-event-what';
-import ConfirmEventWhere from './confirmation/confirm-event-where';
-import ConfirmEventWhen from './confirmation/confirm-event-when';
+import ConfirmEventWhat from './confirm-what';
+import ConfirmEventWhere from './confirm-where';
+import ConfirmEventWhen from './confirm-when';
 import { isPoll } from '../../lib/create-event-helpers';
 import TopBar from '../event/top-bar';
 import styles from '../../style';
@@ -35,7 +35,6 @@ const ConfirmNewEvent = ({ data, saveEvent }) => { // eslint-disable-line react/
 
   return (
     <View>
-      <TopBar location="confirm" />
       <ScrollView>
         <View>
           <ConfirmEventWhat eventWhat={ data.eventWhat } />
@@ -79,7 +78,7 @@ const ConfirmNewEvent = ({ data, saveEvent }) => { // eslint-disable-line react/
               <Button
                 buttonStyle={styles.confirmButton}
                 textStyle={styles.confirmButtonText}
-                onPress={ e => saveEvent(data) }
+                onPress={ () => saveEvent(data) }
               >
                 { SaveButtonText }
               </Button>

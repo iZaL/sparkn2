@@ -1,43 +1,33 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import AutocompleteInput from '../general/autocomplete-input';
+import DateTimeInput from '../general/date-time-input';
 import AddInput from '../general/add-input';
 import EventDetailsHeader from '../general/event-details-header';
 import TopBar from '../event/top-bar';
 import Button from '../common/Button';
 import styles from '../../style';
 
-const EventWhere = ({ eventDetails, eventWhereData, addInput, removeInput, handleEventWhere }) => { // eslint-disable-line react/prop-types
+const EventWhen = ({ eventDetails, eventWhenData, addInput, removeInput, handleDate, handleTime }) => {
 
-  const inputs = eventWhereData.map((value, i) => {
-
-    const templateNoSpace = `${value.placeName}${value.placeAddress}`;
-    const templateWithSpace = `${value.placeName} ${value.placeAddress}`;
-    const chosenTemplate = (value.placeAddress === '') ? templateNoSpace : templateWithSpace;
-    const fullAddress = (value.placeName ? chosenTemplate : '');
-
-    const autocompleteID = `autocomplete-${i}`;
+  const inputs = eventWhenData.map((value, i) => {
     return (
-      <AutocompleteInput
-        handleChange={ handleEventWhere.bind(this, i) }
+      <DateTimeInput
+        inputCount={ eventWhenData.length }
+        value={ value }
         key={ i }
         inputKey={ i }
-        inputCount={ eventWhereData.length }
-        value={ fullAddress }
-        placeholder="Where?"
-        id={ autocompleteID }
+        handleTime={ handleTime }
+        handleDate={ handleDate }
         removeInput={ removeInput }
-      />
-    );
+      />);
   });
 
-  const hideAddInput = eventWhereData.length >= 3;
-  const hideNext = eventWhereData[0].placeName === '';
+  const hideNext = eventWhenData[0].date === '';
 
   return (
+
     <View>
-      <TopBar location="eventdetails/where" />
       <View style={styles.rowEventDetailsHeader}>
 
         <EventDetailsHeader
@@ -48,17 +38,20 @@ const EventWhere = ({ eventDetails, eventWhereData, addInput, removeInput, handl
 
       </View>
       <View style={styles.container}>
+
         <Text style={styles.smallMessageText}>
-          Enter where the event will take place (or leave blank to decide it later).
+          Enter a date and a time for your event (or leave them blank to decide later).
         </Text>
         <Text style={styles.smallMessageText}>
           You can add more than one option to create a poll.
         </Text>
-
+      </View>
+      <View style={styles.whenContainer}>
         { inputs }
 
-        <AddInput data={ eventWhereData } handler={ addInput } />
-
+        <AddInput data={ eventWhenData } handler={ addInput } />
+      </View>
+      <View style={styles.container}>
         <View style={styles.row}>
           { (hideNext) &&
             <View />
@@ -66,15 +59,16 @@ const EventWhere = ({ eventDetails, eventWhereData, addInput, removeInput, handl
           { (!hideNext) &&
             <Button
               buttonStyle={styles.buttonStyle}
-              onPress={Actions.when}
+              onPress={Actions.inviteFriends}
             >
               Next
             </Button>
           }
         </View>
       </View>
+
     </View>
   );
 };
 
-export default EventWhere;
+export default EventWhen;

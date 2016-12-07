@@ -97,8 +97,6 @@ class InviteFriends extends Component {
 
     return (
       <View>
-        <TopBar location="inviteFriends" />
-
         <ScrollView>
           <View >
             { (this.props.invitees.length === 0) && // eslint-disable-line react/prop-types
