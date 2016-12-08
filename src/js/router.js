@@ -10,6 +10,7 @@ import WhereContainer from './containers/create/where';
 import WhenContainer from './containers/create/when';
 import InviteContainer from './containers/create/invite';
 import ConfirmContainer from './containers/create/confirm';
+import EventContainer from './containers/event';
 import Navbar from './components/navbar';
 
 const Router = createRouter(() => ({
@@ -24,7 +25,8 @@ const Router = createRouter(() => ({
   where: () => WhereContainer,
   when: () => WhenContainer,
   invite: () => InviteContainer,
-  confirm: () => ConfirmContainer
+  confirm: () => ConfirmContainer,
+  event: () => EventContainer
 }));
 
 export default Router;

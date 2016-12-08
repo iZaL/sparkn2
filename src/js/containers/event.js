@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Event from '../components/event/event';
+import Event from '../components/event';
 import getUserID from '../lib/getUserID';
 import { getEvent, updatePoll, confirmPoll, addHostEventChoice, confirmEvent, deleteEvent, updateRSVP } from '../actions/event';
 import { setFile, selectPhoto, getS3URL, deletePhoto, sharePhoto } from '../actions/photos';

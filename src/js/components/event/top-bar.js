@@ -11,7 +11,7 @@ class TopBar extends Component {
   }
 
   render () {
-    const primaryPath = this.props.location.split('/')[0]; //eslint-disable-line
+    const primaryPath = 'feed'; //eslint-disable-line
 
     return (
       <View style={ styles.topBarContainer }>

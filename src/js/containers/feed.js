@@ -3,6 +3,7 @@ import Feed from '../components/feed';
 import { applyFilter, clearFilter } from '../actions/notifications';
 import { updateNotification } from '../actions/event';
 import filterNotifications from '../lib/filterNotifications';
+import Router from '../router';
 import jsonState from '../testState/jsonState.json';
 
 const mapStateToProps = () => {
@@ -22,19 +23,17 @@ const mapStateToProps = () => {
     isShowHosting
   };
 };
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
 
   return {
     handleUpdateNotification: (index) => {
-
       dispatch(updateNotification(index));
+      ownProps.navigator.push(Router.getRoute('event'));
     },
     displaySome: (filterChoice) => {
-
       dispatch(applyFilter(filterChoice));
     },
     displayAll: () => {
-
       dispatch(clearFilter());
     }
   };
