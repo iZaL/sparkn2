@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { setEventWhere, addInput, removeInput, clearCreateEvent } from '../../actions/create-event';
-import EventWhere from '../../components/create/where';
+import Where from '../../components/create/where';
 import jsonState from '../../testState/jsonStateCreate.json';
 
 const mapStateToProps = state => ({ // eslint-disable-line no-unused-vars
@@ -31,9 +31,9 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-const EventWhereContainer = connect(
+const WhereContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(EventWhere);
+)(Where);
 
-export default EventWhereContainer;
+export default WhereContainer;

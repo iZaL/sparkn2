@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { setEventWhen, addInput, removeInput, clearCreateEvent } from '../../actions/create-event';
-import EventWhen from '../../components/create/when';
+import When from '../../components/create/when';
 import jsonState from '../../testState/jsonStateCreate.json';
 
 const mapStateToProps = state => ({ // eslint-disable-line no-unused-vars
@@ -31,9 +31,9 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-const EventWhenContainer = connect(
+const WhenContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(EventWhen);
+)(When);
 
-export default EventWhenContainer;
+export default WhenContainer;

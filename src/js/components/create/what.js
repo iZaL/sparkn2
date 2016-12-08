@@ -7,7 +7,7 @@ import EventDetailsHeader from '../general/event-details-header';
 import Button from '../common/Button';
 import styles from '../../style';
 
-const EventWhat = ({ eventDetails, eventWhatData, addInput, removeInput, handleEventWhat, navigator }) => { // eslint-disable-line react/prop-types
+const What = ({ eventDetails, eventWhatData, addInput, removeInput, handleEventWhat, navigator }) => { // eslint-disable-line react/prop-types
 
   const inputCount = eventWhatData.length;
 
@@ -80,4 +80,4 @@ const EventWhat = ({ eventDetails, eventWhatData, addInput, removeInput, handleE
   );
 };
 
-export default EventWhat;
+export default What;

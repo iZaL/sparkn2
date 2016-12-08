@@ -7,7 +7,7 @@ import EventDetailsHeader from '../general/event-details-header';
 import Button from '../common/Button';
 import styles from '../../style';
 
-const EventWhen = ({ eventDetails, eventWhenData, addInput, removeInput, handleDate, handleTime, navigator }) => {
+const When = ({ eventDetails, eventWhenData, addInput, removeInput, handleDate, handleTime, navigator }) => {
 
   const nextPage = () => {
     navigator.push(Router.getRoute('invite'));
@@ -74,4 +74,4 @@ const EventWhen = ({ eventDetails, eventWhenData, addInput, removeInput, handleD
   );
 };
 
-export default EventWhen;
+export default When;

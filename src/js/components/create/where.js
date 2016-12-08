@@ -7,7 +7,7 @@ import EventDetailsHeader from '../general/event-details-header';
 import Button from '../common/Button';
 import styles from '../../style';
 
-const EventWhere = ({ eventDetails, eventWhereData, addInput, removeInput, handleEventWhere, navigator }) => { // eslint-disable-line react/prop-types
+const Where = ({ eventDetails, eventWhereData, addInput, removeInput, handleEventWhere, navigator }) => { // eslint-disable-line react/prop-types
 
   const nextPage = () => {
     navigator.push(Router.getRoute('when'));
@@ -78,4 +78,4 @@ const EventWhere = ({ eventDetails, eventWhereData, addInput, removeInput, handl
   );
 };
 
-export default EventWhere;
+export default Where;
