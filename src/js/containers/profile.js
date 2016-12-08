@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
 import Profile from '../components/profile';
 import removeCookie from '../lib/removeCookie';
 import { changeName, editName } from '../actions/user';
@@ -18,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleLogOut: () => {
       removeCookie();
-      Actions.login({ type: 'reset' });
+      // Actions.login({ type: 'reset' });
     },
     handleChangeName: (inputType, e) => {
       dispatch(changeName(e.target.value, inputType));

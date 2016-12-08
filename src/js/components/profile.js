@@ -1,20 +1,18 @@
 import React from 'react';
 import { View, Text, Image, TextInput } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import TopBar from './event/top-bar';
 import Button from './common/Button';
 // import Input from './general/input';
 import styles from '../style';
 
-const Profile = ({ location, user, firstName, lastName, handleLogOut, handleChangeName, handleEditName }) => {
+const Profile = ({ user, firstName, lastName, handleLogOut, handleChangeName, handleEditName }) => {
 
   const hideEditButton = (firstName === '' ? styles.hideEditButton : [styles.buttonStyle, { backgroundColor: 'green' }]);
 
-  function changeName (firstName, lastName) {
+  function changeName (firstName, lastName) { // eslint-disable-line no-shadow
     handleEditName(firstName, lastName);
-    Actions.feed({ type: 'reset' });
+    // Actions.feed({ type: 'reset' });
   }
-  console.log(this.props);
   // <TopBar location={ location } />
 
   return (
@@ -48,7 +46,7 @@ const Profile = ({ location, user, firstName, lastName, handleLogOut, handleChan
           <TextInput
             value={ lastName }
             placeholder="Surname"
-            onChangeText={ (e) => handleChangeName('lastName', e)}
+            onChangeText={ e => handleChangeName('lastName', e)}
             style={styles.inputStyle}
           />
         </View>
@@ -79,7 +77,7 @@ const Profile = ({ location, user, firstName, lastName, handleLogOut, handleChan
           <Button
             buttonStyle={[styles.buttonStyle, { backgroundColor: '#fff' }]}
             textStyle={[styles.buttonTextStyle, { color: 'lightgray' }]}
-            onPress={ () => Actions.intro() }
+            onPress={ () => {} }
           >
             Return to main
           </Button>

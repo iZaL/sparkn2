@@ -1,41 +1,36 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { Actions } from 'react-native-router-flux';
-import Input from '../general/input';
+import Router from '../../router';
+import DateTimeInput from '../general/date-time-input';
 import AddInput from '../general/add-input';
 import EventDetailsHeader from '../general/event-details-header';
-import TopBar from '../event/top-bar';
 import Button from '../common/Button';
 import styles from '../../style';
 
-const EventWhat = ({ eventDetails, eventWhatData, addInput, removeInput, handleEventWhat }) => { // eslint-disable-line react/prop-types
+const When = ({ eventDetails, eventWhenData, addInput, removeInput, handleDate, handleTime, navigator }) => {
 
-  const inputCount = eventWhatData.length;
+  const nextPage = () => {
+    navigator.push(Router.getRoute('invite'));
+  };
 
-  const inputs = eventWhatData.map((value, i) => {
-
+  const inputs = eventWhenData.map((value, i) => {
     return (
-
-      <Input
-        style={styles.inputStyle}
-        handleChange={ handleEventWhat.bind(this, i) }
-        key={ i }
-        inputCount={ inputCount }
+      <DateTimeInput
+        inputCount={ eventWhenData.length }
         value={ value }
+        key={ i }
         inputKey={ i }
+        handleTime={ handleTime }
+        handleDate={ handleDate }
         removeInput={ removeInput }
-        placeholder="What would you like to do?"
-      />
-
-    );
+      />);
   });
 
-  const hideAddInput = eventWhatData.length >= 3;
-  const hideNext = eventWhatData[0] === '';
+  const hideNext = eventWhenData[0].date === '';
 
   return (
+
     <View>
-      <TopBar location="eventdetails/what" />
       <View style={styles.rowEventDetailsHeader}>
 
         <EventDetailsHeader
@@ -45,38 +40,38 @@ const EventWhat = ({ eventDetails, eventWhatData, addInput, removeInput, handleE
         />
 
       </View>
-
       <View style={styles.container}>
+
         <Text style={styles.smallMessageText}>
-          Enter what your event will be (or leave blank to decide it later).
+          Enter a date and a time for your event (or leave them blank to decide later).
         </Text>
         <Text style={styles.smallMessageText}>
           You can add more than one option to create a poll.
         </Text>
-
+      </View>
+      <View style={styles.whenContainer}>
         { inputs }
 
-        <AddInput data={ eventWhatData } handler={ addInput } />
-
+        <AddInput data={ eventWhenData } handler={ addInput } />
+      </View>
+      <View style={styles.container}>
         <View style={styles.row}>
-
           { (hideNext) &&
             <View />
           }
           { (!hideNext) &&
             <Button
-              onPress={Actions.where}
               buttonStyle={styles.buttonStyle}
-              buttonTextStyle={styles.buttonTextStyle}
+              onPress={ () => nextPage() }
             >
               Next
             </Button>
           }
-
         </View>
       </View>
+
     </View>
   );
 };
 
-export default EventWhat;
+export default When;

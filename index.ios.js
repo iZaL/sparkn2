@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import Index from './src/js/index';
+import App from './src/js/index';
 
-AppRegistry.registerComponent('sparkn2', () => Index);
+AppRegistry.registerComponent('sparkn2', () => App);

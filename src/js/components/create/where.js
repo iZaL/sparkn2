@@ -1,14 +1,17 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import AutocompleteInput from '../general/autocomplete-input';
+import Router from '../../router';
 import AddInput from '../general/add-input';
 import EventDetailsHeader from '../general/event-details-header';
-import TopBar from '../event/top-bar';
 import Button from '../common/Button';
 import styles from '../../style';
 
-const EventWhere = ({ eventDetails, eventWhereData, addInput, removeInput, handleEventWhere }) => { // eslint-disable-line react/prop-types
+const Where = ({ eventDetails, eventWhereData, addInput, removeInput, handleEventWhere, navigator }) => { // eslint-disable-line react/prop-types
+
+  const nextPage = () => {
+    navigator.push(Router.getRoute('when'));
+  };
 
   const inputs = eventWhereData.map((value, i) => {
 
@@ -20,7 +23,7 @@ const EventWhere = ({ eventDetails, eventWhereData, addInput, removeInput, handl
     const autocompleteID = `autocomplete-${i}`;
     return (
       <AutocompleteInput
-        handleChange={ handleEventWhere.bind(this, i) }
+        handleChange={ () => handleEventWhere(i) }
         key={ i }
         inputKey={ i }
         inputCount={ eventWhereData.length }
@@ -32,12 +35,10 @@ const EventWhere = ({ eventDetails, eventWhereData, addInput, removeInput, handl
     );
   });
 
-  const hideAddInput = eventWhereData.length >= 3;
   const hideNext = eventWhereData[0].placeName === '';
 
   return (
     <View>
-      <TopBar location="eventdetails/where" />
       <View style={styles.rowEventDetailsHeader}>
 
         <EventDetailsHeader
@@ -66,7 +67,7 @@ const EventWhere = ({ eventDetails, eventWhereData, addInput, removeInput, handl
           { (!hideNext) &&
             <Button
               buttonStyle={styles.buttonStyle}
-              onPress={Actions.when}
+              onPress={ () => nextPage() }
             >
               Next
             </Button>
@@ -77,4 +78,4 @@ const EventWhere = ({ eventDetails, eventWhereData, addInput, removeInput, handl
   );
 };
 
-export default EventWhere;
+export default Where;

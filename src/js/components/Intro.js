@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import Button from './common/Button';
 import styles from '../style';
 
@@ -18,7 +17,6 @@ const Intro = () => {
         <Button
           buttonStyle={styles.buttonStyle}
           textStyle={styles.buttonTextStyle}
-          onPress={ () => Actions.login() }
         >
           Login
         </Button>
@@ -27,7 +25,6 @@ const Intro = () => {
         <Button
           buttonStyle={styles.buttonStyle}
           textStyle={styles.buttonTextStyle}
-          onPress={ () => Actions.tabbar() }
         >
           Main App
         </Button>
@@ -37,7 +34,6 @@ const Intro = () => {
         <Button
           buttonStyle={styles.buttonStyle}
           textStyle={styles.buttonTextStyle}
-          onPress={ () => Actions.event() }
         >
           Event Screens
         </Button>

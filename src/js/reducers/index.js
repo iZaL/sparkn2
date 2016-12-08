@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { NavigationReducer } from '@exponent/ex-navigation';
 import auth from './auth';
 import user from './user';
 import calendar from './calendar';
@@ -9,6 +10,7 @@ import photos from './photos';
 
 
 export default combineReducers({
+  navigation: NavigationReducer,
   auth,
   user,
   calendar,
