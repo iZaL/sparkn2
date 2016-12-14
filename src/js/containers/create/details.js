@@ -13,8 +13,10 @@ const mapStateToProps = ({ create }) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
+  console.log('dispatch');
   return {
     handleChange: (inputType, event) => {
+      console.log('-----');
       dispatch(setEventDetails(event.target.value, inputType));
     },
     discardEvent: () => {
