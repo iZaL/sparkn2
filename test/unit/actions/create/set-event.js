@@ -3,10 +3,7 @@ import * as create from '../../../../src/js/actions/create';
 // import { ADD_INPUT, REMOVE_INPUT } from '../../../../src/js/actions/create';
 
 // import { addInput, removeInput } from '../../../../src/js/actions/create';
-test('a test', (t) => {
-  t.ok(1);
-  t.end();
-});
+
 test('setDetails creates the correct action', (t) => {
 
   const expected = {
@@ -19,21 +16,20 @@ test('setDetails creates the correct action', (t) => {
   t.deepEqual(actual, expected);
   t.end();
 });
-/*
-test('setEventWhat creates the correct action', (t) => {
 
-    const expected = {
-        type: SET_EVENT_WHAT,
-        data: "someData",
-        inputKey: 4,
-        eventType: "eventWhat"
-    };
-    const actual = setEventWhat("someData", 4);
+test('`setWhat` creates the correct action', (t) => {
 
-    t.deepEqual(actual, expected);
-    t.end();
+  const expected = {
+    type: create.SET_WHAT,
+    data: 'someData',
+    inputKey: 4
+  };
+  const actual = create.setWhat('someData', 4);
+
+  t.deepEqual(actual, expected);
+  t.end();
 });
-
+/*
 test('setEventWhere creates the correct action', (t) => {
 
     const expected = {

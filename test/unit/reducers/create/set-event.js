@@ -1,89 +1,63 @@
 import test from 'tape';
-import reducer from '../../../../src/js/reducers/create.js';
+import reducer from '../../../../src/js/reducers/create';
 
 
-test('Reducer handles SET_EVENT_DETAILS as expected', (t) => {
-    const initialState = {
-        eventDetails: {
-            eventName: "Sohil Bowling"
-        }
-    };
-    const action = {
-        type: 'SET_EVENT_DETAILS',
-        data: "We're going bowling!!!",
-        inputType: "eventDescription",
-        eventType: "eventDetails"
-    };
-    const nextState = reducer(initialState, action);
-    const expected = {
-        eventDetails: {
-            eventName: "Sohil Bowling",
-            eventDescription: "We're going bowling!!!"
-        }
-    };
+test('Reducer handles SET_DETAILS as expected', (t) => {
+  const initialState = {
+    name: 'Sohil Bowling'
+  };
+  const action = {
+    type: 'SET_DETAILS',
+    data: 'We\'re going bowling!!!',
+    inputType: 'description'
+  };
+  const nextState = reducer(initialState, action);
+  const expected = Object.assign({}, initialState, { description: "We're going bowling!!!" });
 
-    t.deepEqual(nextState, expected, 'eventDetails.eventDescription set correctly');
-    t.end();
+  t.deepEqual(nextState, expected, "'description' set correctly");
+  t.end();
 });
 
-test('Reducer handles SET_EVENT_WHAT as expected', (t) => {
+test('Reducer handles SET_WHAT as expected', (t) => {
 
-    const initialState = {
-        eventDetails: {
-            eventName:"Sohil Bowling",
-            eventDescription:"Bowling"
-        },
-        eventWhat: ['']
-    };
+  const initialState = {
+    name: 'Sohil Bowling',
+    description: 'Bowling',
+    _what: ['']
+  };
 
-    const action = {
-        type: 'SET_EVENT_WHAT',
-        data: 'sohil',
-        inputKey: 0,
-        eventType: "eventWhat",
-    };
+  const action = {
+    type: 'SET_WHAT',
+    data: 'sohil',
+    inputKey: 0
+  };
 
-    const nextState = reducer(initialState, action);
+  const nextState = reducer(initialState, action);
 
-    const expected = {
-        eventDetails: {
-            eventName:"Sohil Bowling",
-            eventDescription:"Bowling"
-        },
-        eventWhat: ['sohil']
-    };
-    t.deepEqual(nextState, expected, "eventWhat set correctly");
-    t.end();
+  const expected = Object.assign({}, initialState, { _what: ['sohil'] });
+  t.deepEqual(nextState, expected, "'what' set correctly");
+  t.end();
 });
 
-test('Reducer handles SET_EVENT_WHAT as expected', (t) => {
+test('Reducer handles SET_WHAT as expected', (t) => {
 
-    const initialState = {
-        eventDetails: {
-            eventName:"Sohil Bowling",
-            eventDescription:"Bowling"
-        },
-        eventWhat: ['sohil1']
-    };
+  const initialState = {
+    name: 'Event',
+    description: 'A cool event',
+    _what: ['sohil1']
+  };
 
-    const action = {
-        type: 'SET_EVENT_WHAT',
-        data: 'sohil2',
-        inputKey: 1,
-        eventType: "eventWhat",
-    };
+  const action = {
+    type: 'SET_WHAT',
+    data: 'sohil2',
+    inputKey: 1
+  };
 
-    const nextState = reducer(initialState, action);
+  const nextState = reducer(initialState, action);
 
-    const expected = {
-        eventDetails: {
-            eventName:"Sohil Bowling",
-            eventDescription:"Bowling"
-        },
-        eventWhat: ['sohil1','sohil2']
-    };
-    t.deepEqual(nextState, expected, "eventWhat set correctly");
-    t.end();
+  const expected = Object.assign({}, initialState, { _what: ['sohil1', 'sohil2'] });
+  t.deepEqual(nextState, expected, "'what' set correctly");
+  t.end();
 });
 
 test('SET_EVENT_WHERE behaves as expected', (t) => {

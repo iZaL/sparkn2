@@ -21,6 +21,7 @@
     "arrow-body-style": ["warn", "as-needed"],
     "class-methods-use-this": 0,
     "import/no-extraneous-dependencies": 0,
-    "no-param-reassign": ["error", { "props": false }]
+    "no-param-reassign": ["error", { "props": false }],
+    "no-underscore-dangle": 0
   }
 }

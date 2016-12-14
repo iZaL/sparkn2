@@ -1,5 +1,5 @@
 import update from 'react-addons-update';
-import { SET_DETAILS, SET_EVENT_WHAT, SET_EVENT_WHERE, SET_EVENT_WHEN,
+import { SET_DETAILS, SET_WHAT, SET_WHERE, SET_EVENT_WHEN,
          ADD_INPUT, REMOVE_INPUT,
          SAVE_EVENT_REQUEST, SAVE_EVENT_SUCCESS, SAVE_EVENT_FAILURE, CLEAR_CREATE_EVENT,
          ADD_INVITEE, REMOVE_INVITEE, HYDRATE_CREATE_EVENT } from '../actions/create';
@@ -8,8 +8,8 @@ const initialState = {
   name: '',
   description: '',
   note: '',
-  _what: [],
-  _where: [],
+  _what: [''],
+  _where: [''],
   _when: [],
   _invitees: [],
   is_poll: undefined,
@@ -25,9 +25,15 @@ export default function create (state = initialState, action) {
     case SET_DETAILS:
       return setDetails(state, action);
 
-    case SET_EVENT_WHAT:
-    case SET_EVENT_WHERE:
-      return setEvent(state, action);
+    case SET_WHAT:
+      return update(state, {
+        _what: { $splice: [[action.inputKey, 1, action.data]] }
+      });
+
+    case SET_WHERE:
+      return update(state, {
+        _where: { $splice: [[action.inputKey, 1, action.data]] }
+      });
 
     case SET_EVENT_WHEN:
       return setEventWhen(state, action);
@@ -36,7 +42,9 @@ export default function create (state = initialState, action) {
       return addInput(state, action);
 
     case REMOVE_INPUT:
-      return removeInput(state, action);
+      return update(state, {
+        [action.eventType]: { $splice: [[action.inputKey, 1]] }
+      });
 
     case SAVE_EVENT_REQUEST:
     case SAVE_EVENT_SUCCESS:
@@ -112,14 +120,6 @@ function addInput (state, action) {
 
   const newState = update(state, {
     [action.eventType]: { $push: [initialValue] }
-  });
-  return newState;
-}
-
-function removeInput (state, action) {
-
-  const newState = update(state, {
-    [action.eventType]: { $splice: [[action.inputKey, 1]] }
   });
   return newState;
 }

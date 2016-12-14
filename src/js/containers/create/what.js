@@ -1,28 +1,27 @@
 import { connect } from 'react-redux';
-import { setEventWhat, addInput, removeInput, clearCreateEvent } from '../../actions/create';
+import { setWhat, addInput, removeInput, clearCreateEvent } from '../../actions/create';
 import What from '../../components/create/what';
-import jsonState from '../../testState/jsonStateCreate.json';
 
-const mapStateToProps = (state) => { // eslint-disable-line no-unused-vars
-  const data = jsonState.createEvent.eventWhat;
+const mapStateToProps = ({ create }) => {
   return {
-    eventWhatData: data,
-    eventDetails: jsonState.createEvent.eventDetails
+    data: create._what,
+    name: create.name,
+    description: create.description
   };
 };
 
 const mapDispatchToProps = dispatch => ({
 
-  handleEventWhat: (inputKey, event) => {
-    dispatch(setEventWhat(event.target.value, inputKey));
+  handleChange: (text, inputKey) => {
+    dispatch(setWhat(text, inputKey));
   },
 
   addInput: (nextInputKey) => {
-    dispatch(addInput(nextInputKey, 'eventWhat'));
+    dispatch(addInput(nextInputKey, '_what'));
   },
 
   removeInput: (inputIndex) => {
-    dispatch(removeInput(inputIndex, 'eventWhat'));
+    dispatch(removeInput(inputIndex, '_what'));
   },
 
   discardEvent: () => {
