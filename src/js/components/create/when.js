@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, DatePickerIOS } from 'react-native';
 import Router from '../../router';
-import DateTimeInput from '../general/date-time-input';
 import AddInput from '../general/add-input';
 import EventDetailsHeader from '../general/event-details-header';
 import Button from '../common/Button';
@@ -15,11 +14,19 @@ const When = ({ name, description, data, addInput, removeInput, handleDate, hand
 
   const inputs = data.map((value, i) => {
     return (
-      <DatePickerIOS
-        date={ value.date }
-        mode="date"
-        onDateChange={ date => handleDate(date, i) }
-      />
+      <View>
+        <DatePickerIOS
+          date={ value.date }
+          mode="date"
+          onDateChange={ date => handleDate(date, i) }
+        />
+        <DatePickerIOS
+          date={ value.time }
+          mode="time"
+          onDateChange={ time => handleTime(time, i) }
+          minuteInterval={ 10 }
+        />
+      </View>
     );
   });
 

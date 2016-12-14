@@ -97,6 +97,7 @@ test('SET_WHERE behaves as expected', (t) => {
 test('SET_WHEN behaves as expected', (t) => {
 
   const initialState = state;
+  const initialTime = initialState._when[0].time;
   const now = new Date();
   const action = {
     type: 'SET_WHEN',
@@ -108,8 +109,29 @@ test('SET_WHEN behaves as expected', (t) => {
 
   const nextState = reducer(initialState, action);
 
-  const expected = Object.assign({}, initialState, { _when: [{ date: now, time: '' }] });
+  const expected = Object.assign({}, initialState, { _when: [{ date: now, time: initialTime }] });
 
-  t.deepEqual(nextState, expected, "'when' set correctly");
+  t.deepEqual(nextState, expected, "'when' date set correctly");
+  t.end();
+});
+
+test('SET_WHEN behaves as expected', (t) => {
+
+  const initialState = state;
+  const initialDate = initialState._when[0].date;
+  const now = new Date();
+  const action = {
+    type: 'SET_WHEN',
+    data: now,
+    eventType: '_when',
+    inputKey: 0,
+    format: 'time'
+  };
+
+  const nextState = reducer(initialState, action);
+
+  const expected = Object.assign({}, initialState, { _when: [{ date: initialDate, time: now }] });
+
+  t.deepEqual(nextState, expected, "'when' time set correctly");
   t.end();
 });

@@ -17,12 +17,11 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setWhen(date, inputKey, 'date'));
   },
 
-  handleTime: (inputKey, event) => {
-    dispatch(setWhen(event.target.value, inputKey, 'time'));
+  handleTime: (time, inputKey) => {
+    dispatch(setWhen(time, inputKey, 'time'));
   },
 
   addInput: (nextInputKey) => {
-    console.log("add input", nextInputKey);
     dispatch(addInput(nextInputKey, '_when'));
   },
 

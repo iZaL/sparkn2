@@ -11,7 +11,7 @@ export const initialState = {
   _what: [''],
   _where: [''],
   _when: [
-    { date: new Date(), time: '' }
+    { date: new Date(), time: new Date() }
   ],
   _invitees: [],
   is_poll: undefined,
