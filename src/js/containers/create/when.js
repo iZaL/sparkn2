@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setEventWhen, addInput, removeInput, clearCreateEvent } from '../../actions/create-event';
+import { setEventWhen, addInput, removeInput, clearCreateEvent } from '../../actions/create';
 import When from '../../components/create/when';
 import jsonState from '../../testState/jsonStateCreate.json';
 

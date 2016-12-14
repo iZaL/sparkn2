@@ -1,6 +1,6 @@
 import test from 'tape';
-import { HYDRATE_CREATE_EVENT } from '../../../../src/js/actions/create-event.js';
-import { hydrateCreateEvent } from '../../../../src/js/actions/create-event.js';
+import { HYDRATE_CREATE_EVENT } from '../../../../src/js/actions/create.js';
+import { hydrateCreateEvent } from '../../../../src/js/actions/create.js';
 import { eventConfirmedHarry as data } from '../../../utils/fixtures.js';
 
 test('hydrateCreateEvent creates the correct action', (t) => {

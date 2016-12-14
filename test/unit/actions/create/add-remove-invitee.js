@@ -1,6 +1,6 @@
 import test from 'tape';
-import { ADD_INVITEE, REMOVE_INVITEE } from '../../../../src/js/actions/create-event.js';
-import { addInvitee, removeInvitee } from '../../../../src/js/actions/create-event.js';
+import { ADD_INVITEE, REMOVE_INVITEE } from '../../../../src/js/actions/create.js';
+import { addInvitee, removeInvitee } from '../../../../src/js/actions/create.js';
 
 test('addInvitee creates the correct action', (t) => {
 

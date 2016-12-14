@@ -5,7 +5,7 @@ import user from './user';
 import calendar from './calendar';
 import event from './event';
 import notifications from './notifications';
-import create from './create-event';
+import create from './create';
 import photos from './photos';
 
 

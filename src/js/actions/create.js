@@ -1,7 +1,7 @@
 import axios from 'axios';
 // import getUserID from '../lib/getUserID';
 
-export const SET_EVENT_DETAILS = 'SET_EVENT_DETAILS';
+export const SET_DETAILS = 'SET_DETAILS';
 export const SET_EVENT_WHAT = 'SET_EVENT_WHAT';
 export const SET_EVENT_WHERE = 'SET_EVENT_WHERE';
 export const SET_EVENT_WHEN = 'SET_EVENT_WHEN';
@@ -24,12 +24,11 @@ export const HYDRATE_CREATE_EVENT = 'HYDRATE_CREATE_EVENT';
 SET EVENT ACTIONS
 ********/
 
-export function setEventDetails (data, inputType) {
+export function setDetails (data, inputType) {
   return {
-    type: SET_EVENT_DETAILS,
+    type: SET_DETAILS,
     data,
-    inputType,
-    eventType: 'details'
+    inputType
   };
 }
 

@@ -3,8 +3,11 @@ import * as create from '../../../../src/js/actions/create';
 // import { ADD_INPUT, REMOVE_INPUT } from '../../../../src/js/actions/create';
 
 // import { addInput, removeInput } from '../../../../src/js/actions/create';
-
-test.only('setDetails creates the correct action', (t) => {
+test('a test', (t) => {
+  t.ok(1);
+  t.end();
+});
+test('setDetails creates the correct action', (t) => {
 
   const expected = {
     type: create.SET_DETAILS,

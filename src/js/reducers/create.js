@@ -1,8 +1,8 @@
 import update from 'react-addons-update';
-import { SET_EVENT_DETAILS, SET_EVENT_WHAT, SET_EVENT_WHERE, SET_EVENT_WHEN,
+import { SET_DETAILS, SET_EVENT_WHAT, SET_EVENT_WHERE, SET_EVENT_WHEN,
          ADD_INPUT, REMOVE_INPUT,
          SAVE_EVENT_REQUEST, SAVE_EVENT_SUCCESS, SAVE_EVENT_FAILURE, CLEAR_CREATE_EVENT,
-         ADD_INVITEE, REMOVE_INVITEE, HYDRATE_CREATE_EVENT } from '../actions/create-event';
+         ADD_INVITEE, REMOVE_INVITEE, HYDRATE_CREATE_EVENT } from '../actions/create';
 
 const initialState = {
   name: '',
@@ -18,12 +18,12 @@ const initialState = {
   didSave: undefined
 };
 
-export default function createEvent (state = initialState, action) {
+export default function create (state = initialState, action) {
 
   switch (action.type) {
 
-    case SET_EVENT_DETAILS:
-      return setEventDetails(state, action);
+    case SET_DETAILS:
+      return setDetails(state, action);
 
     case SET_EVENT_WHAT:
     case SET_EVENT_WHERE:
@@ -70,10 +70,9 @@ function handleSaveEvent (state, action) {
   });
 }
 
-function setEventDetails (state, action) {
-
+function setDetails (state, action) {
   return update(state, {
-    details: { [action.inputType]: { $set: action.data } }
+    [action.inputType]: { $set: action.data }
   });
 }
 

@@ -1,6 +1,6 @@
 import test from 'tape';
-import { CLEAR_CREATE_EVENT } from '../../../../src/js/actions/create-event.js';
-import { clearCreateEvent } from '../../../../src/js/actions/create-event.js';
+import { CLEAR_CREATE_EVENT } from '../../../../src/js/actions/create.js';
+import { clearCreateEvent } from '../../../../src/js/actions/create.js';
 
 test('clearCreateEvent returns expected action', (t) => {
 

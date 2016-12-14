@@ -1,6 +1,6 @@
 import axios from 'axios';
 import getUserID from '../lib/getUserID';
-import { clearCreateEvent } from './create-event';
+import { clearCreateEvent } from './create';
 import { getPhotos, getDeletedPhotos } from './photos';
 
 export const GET_EVENT = 'GET_EVENT';

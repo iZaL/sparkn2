@@ -1,5 +1,5 @@
 import test from 'tape';
-import reducer from '../../../../src/js/reducers/create-event.js';
+import reducer from '../../../../src/js/reducers/create.js';
 
 test('Reducer handles ADD_INVITEE as expected', (t) => {
     const initialState = {

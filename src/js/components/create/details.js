@@ -28,7 +28,7 @@ export default function Details ({ handleChange, name, description, note, title,
         <View style={ styles.row }>
           <TextInput
             style={ styles.inputStyle }
-            onChangeText={ () => handleChange('name') }
+            onChangeText={ text => handleChange(text, 'name') }
             value={ name }
             type="text"
             placeholder="Event name"
@@ -37,7 +37,7 @@ export default function Details ({ handleChange, name, description, note, title,
         <View style={ styles.row }>
           <TextInput
             style={ styles.inputStyle }
-            onChangeText={ () => handleChange('description') }
+            onChangeText={ text => handleChange(text, 'description') }
             value={ description }
             type="text"
             placeholder="Event description"
@@ -46,7 +46,7 @@ export default function Details ({ handleChange, name, description, note, title,
         <View style={ styles.row }>
           <TextInput
             style={ styles.inputStyle }
-            onChangeText={ () => handleChange('note') }
+            onChangeText={ text => handleChange(text, 'note') }
             value={ note }
             placeholder="Leave a note to your friends (optional)"
           />

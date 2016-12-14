@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
-import { setEventDetails, clearCreateEvent } from '../../actions/create-event';
+import { setDetails, clearCreateEvent } from '../../actions/create';
 import Details from '../../components/create/details';
-// import jsonState from '../../testState/jsonStateCreate.json';
 
 const mapStateToProps = ({ create }) => {
   return {
@@ -13,11 +12,9 @@ const mapStateToProps = ({ create }) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  console.log('dispatch');
   return {
-    handleChange: (inputType, event) => {
-      console.log('-----');
-      dispatch(setEventDetails(event.target.value, inputType));
+    handleChange: (text, inputType) => {
+      dispatch(setDetails(text, inputType));
     },
     discardEvent: () => {
       dispatch(clearCreateEvent());
