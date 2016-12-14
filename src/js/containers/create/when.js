@@ -1,29 +1,33 @@
 import { connect } from 'react-redux';
-import { setEventWhen, addInput, removeInput, clearCreateEvent } from '../../actions/create';
+import { setWhen, addInput, removeInput, clearCreateEvent } from '../../actions/create';
 import When from '../../components/create/when';
-import jsonState from '../../testState/jsonStateCreate.json';
 
-const mapStateToProps = state => ({ // eslint-disable-line no-unused-vars
-  eventWhenData: jsonState.createEvent.eventWhen,
-  eventDetails: jsonState.createEvent.eventDetails
-});
+const mapStateToProps = ({ create }) => {
+  console.log(create._when);
+  return {
+    data: create._when,
+    name: create.name,
+    description: create.description
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
 
-  handleDate: (inputKey, event) => {
-    dispatch(setEventWhen(event.target.value, inputKey, 'date'));
+  handleDate: (date, inputKey) => {
+    dispatch(setWhen(date, inputKey, 'date'));
   },
 
   handleTime: (inputKey, event) => {
-    dispatch(setEventWhen(event.target.value, inputKey, 'time'));
+    dispatch(setWhen(event.target.value, inputKey, 'time'));
   },
 
   addInput: (nextInputKey) => {
-    dispatch(addInput(nextInputKey, 'eventWhen'));
+    console.log("add input", nextInputKey);
+    dispatch(addInput(nextInputKey, '_when'));
   },
 
   removeInput: (lastInputKey) => {
-    dispatch(removeInput(lastInputKey, 'eventWhen'));
+    dispatch(removeInput(lastInputKey, '_when'));
   },
 
   discardEvent: () => {

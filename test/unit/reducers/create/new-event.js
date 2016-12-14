@@ -1,5 +1,5 @@
 import test from 'tape';
-import reducer from '../../../../src/js/reducers/create.js';
+import { reducer } from '../../../../src/js/reducers/create';
 
 test('Reducer handles NEW_EVENT_REQUEST as expected', (t) => {
     const initialState = {

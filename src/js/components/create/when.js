@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, DatePickerIOS } from 'react-native';
 import Router from '../../router';
 import DateTimeInput from '../general/date-time-input';
 import AddInput from '../general/add-input';
@@ -7,26 +7,23 @@ import EventDetailsHeader from '../general/event-details-header';
 import Button from '../common/Button';
 import styles from '../../style';
 
-const When = ({ eventDetails, eventWhenData, addInput, removeInput, handleDate, handleTime, navigator }) => {
+const When = ({ name, description, data, addInput, removeInput, handleDate, handleTime, navigator }) => {
 
   const nextPage = () => {
     navigator.push(Router.getRoute('invite'));
   };
 
-  const inputs = eventWhenData.map((value, i) => {
+  const inputs = data.map((value, i) => {
     return (
-      <DateTimeInput
-        inputCount={ eventWhenData.length }
-        value={ value }
-        key={ i }
-        inputKey={ i }
-        handleTime={ handleTime }
-        handleDate={ handleDate }
-        removeInput={ removeInput }
-      />);
+      <DatePickerIOS
+        date={ value.date }
+        mode="date"
+        onDateChange={ date => handleDate(date, i) }
+      />
+    );
   });
 
-  const hideNext = eventWhenData[0].date === '';
+  const hideNext = data[0].date === '';
 
   return (
 
@@ -35,8 +32,8 @@ const When = ({ eventDetails, eventWhenData, addInput, removeInput, handleDate, 
 
         <EventDetailsHeader
           location="Enter details"
-          eventName={ eventDetails.eventName }
-          eventDescription={ eventDetails.eventDescription }
+          eventName={ name }
+          eventDescription={ description }
         />
 
       </View>
@@ -52,7 +49,7 @@ const When = ({ eventDetails, eventWhenData, addInput, removeInput, handleDate, 
       <View style={styles.whenContainer}>
         { inputs }
 
-        <AddInput data={ eventWhenData } handler={ addInput } />
+        <AddInput data={ data } handler={ addInput } />
       </View>
       <View style={styles.container}>
         <View style={styles.row}>

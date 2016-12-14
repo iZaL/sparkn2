@@ -1,5 +1,5 @@
 import test from 'tape';
-import reducer from '../../../../src/js/reducers/create';
+import { create as reducer, initialState as state } from '../../../../src/js/reducers/create';
 
 
 test('Reducer handles SET_DETAILS as expected', (t) => {
@@ -94,60 +94,22 @@ test('SET_WHERE behaves as expected', (t) => {
   t.end();
 });
 
-test('SET_EVENT_WHEN behaves as expected', (t) => {
+test('SET_WHEN behaves as expected', (t) => {
 
-    const initialState = {
-        eventDetails: {
-            eventName:"Sohil Bowling",
-            eventDescription:"Bowling"
-        },
-        eventWhat: {
-            0:"Bowling",
-            1:"Swimming"
-        },
-        eventWhere: {
-            0:"sohil",
-            1:"Shoreditch"
-        },
-        eventWhen: [
-            {
-                date:'',
-                time:''
-            }
-        ]
-    };
+  const initialState = state;
+  const now = new Date();
+  const action = {
+    type: 'SET_WHEN',
+    data: now,
+    eventType: '_when',
+    inputKey: 0,
+    format: 'date'
+  };
 
-    const action = {
-        type: "SET_EVENT_WHEN",
-        data: "1460479400956",
-        eventType: "eventWhen",
-        inputKey: 0,
-        format: "time"
-    };
+  const nextState = reducer(initialState, action);
 
-    const nextState = reducer(initialState, action);
+  const expected = Object.assign({}, initialState, { _when: [{ date: now, time: '' }] });
 
-    const expected = {
-        eventDetails: {
-            eventName:"Sohil Bowling",
-            eventDescription:"Bowling"
-        },
-        eventWhat: {
-            0:"Bowling",
-            1:"Swimming"
-        },
-        eventWhere: {
-            0:"sohil",
-            1:"Shoreditch"
-        },
-        eventWhen: [
-            {
-                time: '1460479400956',
-                date: ''
-            }
-        ]
-    };
-
-    t.deepEqual(nextState, expected, "eventWhen set correctly");
-    t.end();
+  t.deepEqual(nextState, expected, "'when' set correctly");
+  t.end();
 });

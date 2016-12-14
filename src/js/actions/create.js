@@ -4,7 +4,7 @@ import axios from 'axios';
 export const SET_DETAILS = 'SET_DETAILS';
 export const SET_WHAT = 'SET_WHAT';
 export const SET_WHERE = 'SET_WHERE';
-export const SET_EVENT_WHEN = 'SET_EVENT_WHEN';
+export const SET_WHEN = 'SET_WHEN';
 
 export const SAVE_EVENT = 'SAVE_EVENT';
 export const SAVE_EVENT_REQUEST = 'SAVE_EVENT_REQUEST';
@@ -48,12 +48,11 @@ export function setWhere (data, inputKey) {
   };
 }
 
-export function setEventWhen (data, inputKey, format) {
+export function setWhen (data, inputKey, format) {
   return {
-    type: SET_EVENT_WHEN,
+    type: SET_WHEN,
     data,
     inputKey,
-    eventType: 'when',
     format
   };
 }

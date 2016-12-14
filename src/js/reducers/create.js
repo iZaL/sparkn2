@@ -1,16 +1,18 @@
 import update from 'react-addons-update';
-import { SET_DETAILS, SET_WHAT, SET_WHERE, SET_EVENT_WHEN,
+import { SET_DETAILS, SET_WHAT, SET_WHERE, SET_WHEN,
          ADD_INPUT, REMOVE_INPUT,
          SAVE_EVENT_REQUEST, SAVE_EVENT_SUCCESS, SAVE_EVENT_FAILURE, CLEAR_CREATE_EVENT,
          ADD_INVITEE, REMOVE_INVITEE, HYDRATE_CREATE_EVENT } from '../actions/create';
 
-const initialState = {
+export const initialState = {
   name: '',
   description: '',
   note: '',
   _what: [''],
   _where: [''],
-  _when: [],
+  _when: [
+    { date: new Date(), time: '' }
+  ],
   _invitees: [],
   is_poll: undefined,
   isFetching: false,
@@ -18,7 +20,7 @@ const initialState = {
   didSave: undefined
 };
 
-export default function create (state = initialState, action) {
+export function create (state = initialState, action) {
 
   switch (action.type) {
 
@@ -35,8 +37,8 @@ export default function create (state = initialState, action) {
         _where: { $splice: [[action.inputKey, 1, action.data]] }
       });
 
-    case SET_EVENT_WHEN:
-      return setEventWhen(state, action);
+    case SET_WHEN:
+      return setWhen(state, action);
 
     case ADD_INPUT:
       return addInput(state, action);
@@ -84,40 +86,29 @@ function setDetails (state, action) {
   });
 }
 
-function setEvent (state, action) {
+function setWhen (state, action) {
 
-  const newState = update(state, {
-    [action.eventType]: { $splice: [[action.inputKey, 1, action.data]] }
-  });
-  return newState;
-}
-
-function setEventWhen (state, action) {
-
-  const oldValue = state.when[action.inputKey];
+  const oldValue = state._when[action.inputKey];
   const newValue = update(oldValue, {
     [action.format]: { $set: action.data }
   });
-  const newState = update(state, {
-    when: { $splice: [[action.inputKey, 1, newValue]] }
+  return update(state, {
+    _when: { $splice: [[action.inputKey, 1, newValue]] }
   });
-  return newState;
 }
 
 function addInput (state, action) {
-
   let initialValue;
 
-  if (action.eventType === 'when') {
+  if (action.eventType === '_when') {
 
     initialValue = {
-      date: state.when[action.nextInputKey - 1].date,
-      time: state.when[action.nextInputKey - 1].time
+      date: state._when[action.nextInputKey - 1].date,
+      time: state._when[action.nextInputKey - 1].time
     };
   } else {
     initialValue = '';
   }
-
   const newState = update(state, {
     [action.eventType]: { $push: [initialValue] }
   });
