@@ -60,56 +60,38 @@ test('Reducer handles SET_WHAT as expected', (t) => {
   t.end();
 });
 
-test('SET_EVENT_WHERE behaves as expected', (t) => {
+test('SET_WHERE behaves as expected', (t) => {
 
-    const initialState = {
-        eventDetails: {
-            eventName:"Sohil Bowling",
-            eventDescription:"Bowling"
-        },
-        eventWhat: {
-            0:"Bowling",
-            1:"Swimming"
-        },
-        eventWhere: [
-            {
-                placeName: "",
-                placeAddress: ""
-            }
-        ]
-    };
+  const initialState = {
+    name: 'Sohil Bowling',
+    description: 'Bowling',
+    _what: [
+      'Bowling',
+      'Swimming'
+    ],
+    _where: ['']
+  };
 
-    const action = {
-        type: 'SET_EVENT_WHERE',
-        data: {
-            "placeName": "Founders & Coders",
-            "placeAddress": "123 Fake Street, London"
-        },
-        eventType: "eventWhere",
-        inputKey: 0
-    };
+  const action = {
+    type: 'SET_WHERE',
+    data: 'Founders & Coders',
+    inputKey: 0
+  };
 
-    const nextState = reducer(initialState, action);
+  const nextState = reducer(initialState, action);
 
-    const expected = {
-        eventDetails: {
-            eventName: "Sohil Bowling",
-            eventDescription: "Bowling"
-        },
-        eventWhat: {
-            0: "Bowling",
-            1: "Swimming"
-        },
-        eventWhere: [
-            {
-                "placeName": "Founders & Coders",
-                "placeAddress": "123 Fake Street, London"
-            }
-        ]
-    };
+  const expected = {
+    name: 'Sohil Bowling',
+    description: 'Bowling',
+    _what: [
+      'Bowling',
+      'Swimming'
+    ],
+    _where: ['Founders & Coders']
+  };
 
-    t.deepEqual(nextState, expected, "eventWhere set correctly");
-    t.end();
+  t.deepEqual(nextState, expected, "'where' set correctly");
+  t.end();
 });
 
 test('SET_EVENT_WHEN behaves as expected', (t) => {

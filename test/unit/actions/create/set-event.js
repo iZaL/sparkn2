@@ -4,7 +4,7 @@ import * as create from '../../../../src/js/actions/create';
 
 // import { addInput, removeInput } from '../../../../src/js/actions/create';
 
-test('setDetails creates the correct action', (t) => {
+test('`setDetails` creates the correct action', (t) => {
 
   const expected = {
     type: create.SET_DETAILS,
@@ -29,21 +29,20 @@ test('`setWhat` creates the correct action', (t) => {
   t.deepEqual(actual, expected);
   t.end();
 });
-/*
-test('setEventWhere creates the correct action', (t) => {
 
-    const expected = {
-        type: SET_EVENT_WHERE,
-        data: "someData",
-        inputKey: 4,
-        eventType: "eventWhere"
-    };
-    const actual = setEventWhere("someData", 4);
+test('`setWhere` creates the correct action', (t) => {
 
-    t.deepEqual(actual, expected);
-    t.end();
+  const expected = {
+    type: create.SET_WHERE,
+    data: 'someData',
+    inputKey: 2
+  };
+  const actual = create.setWhere('someData', 2);
+
+  t.deepEqual(actual, expected);
+  t.end();
 });
-
+/*
 test('setEventWhen creates the correct action', (t) => {
 
     const expected = {
