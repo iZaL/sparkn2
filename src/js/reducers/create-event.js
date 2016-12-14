@@ -1,37 +1,24 @@
 import update from 'react-addons-update';
 import { SET_EVENT_DETAILS, SET_EVENT_WHAT, SET_EVENT_WHERE, SET_EVENT_WHEN,
          ADD_INPUT, REMOVE_INPUT,
-         NEW_EVENT_REQUEST, NEW_EVENT_SUCCESS, NEW_EVENT_FAILURE, CLEAR_CREATE_EVENT,
-         GET_FB_FRIENDS_REQUEST, GET_FB_FRIENDS_SUCCESS, GET_FB_FRIENDS_FAILURE,
+         SAVE_EVENT_REQUEST, SAVE_EVENT_SUCCESS, SAVE_EVENT_FAILURE, CLEAR_CREATE_EVENT,
          ADD_INVITEE, REMOVE_INVITEE, HYDRATE_CREATE_EVENT } from '../actions/create-event';
 
 const initialState = {
-  eventDetails: {
-    eventName: '',
-    eventDescription: '',
-    eventNote: ''
-  },
-  eventWhat: [''],
-  eventWhere: [
-    {
-      placeName: '',
-      placeAddress: ''
-    }
-  ],
-  eventWhen: [
-    {
-      date: '',
-      time: ''
-    }
-  ],
-  friends: [],
-  invitees: [],
+  name: '',
+  description: '',
+  note: '',
+  _what: [],
+  _where: [],
+  _when: [],
+  _invitees: [],
+  is_poll: undefined,
   isFetching: false,
   error: undefined,
-  didSave: undefined,
-  isPoll: undefined
+  didSave: undefined
 };
-export default function createEvent  (state = initialState, action) {
+
+export default function createEvent (state = initialState, action) {
 
   switch (action.type) {
 
@@ -51,20 +38,13 @@ export default function createEvent  (state = initialState, action) {
     case REMOVE_INPUT:
       return removeInput(state, action);
 
-    case NEW_EVENT_REQUEST:
-    case NEW_EVENT_SUCCESS:
-    case NEW_EVENT_FAILURE:
-        return handleNewEvent(state, action);
+    case SAVE_EVENT_REQUEST:
+    case SAVE_EVENT_SUCCESS:
+    case SAVE_EVENT_FAILURE:
+      return handleSaveEvent(state, action);
 
     case CLEAR_CREATE_EVENT:
       return initialState;
-
-    case GET_FB_FRIENDS_REQUEST:
-      return handleFBFriendsRequest(state, action);
-    case GET_FB_FRIENDS_SUCCESS:
-      return handleFBFriendsSuccess(state, action);
-    case GET_FB_FRIENDS_FAILURE:
-      return handleFBFriendsFailure(state, action);
 
     case ADD_INVITEE:
       return addInvitee(state, action);
@@ -80,30 +60,8 @@ export default function createEvent  (state = initialState, action) {
   }
 }
 
-function handleFBFriendsRequest (state, action) {
 
-  return update(state, {
-    isFetching: { $set: action.isFetching }
-  });
-}
-
-function handleFBFriendsSuccess (state, action) {
-
-  return update(state, {
-    isFetching: { $set: action.isFetching },
-    friends: { $push: action.data }
-  });
-}
-
-function handleFBFriendsFailure (state, action) {
-
-  return update(state, {
-    isFetching: { $set: action.isFetching },
-    error: { $set: action.error }
-  });
-}
-
-function handleNewEvent (state, action) {
+function handleSaveEvent (state, action) {
 
   return update(state, {
     isFetching: { $set: action.isFetching },
@@ -115,7 +73,7 @@ function handleNewEvent (state, action) {
 function setEventDetails (state, action) {
 
   return update(state, {
-    eventDetails: { [action.inputType]: { $set: action.data } }
+    details: { [action.inputType]: { $set: action.data } }
   });
 }
 
@@ -129,12 +87,12 @@ function setEvent (state, action) {
 
 function setEventWhen (state, action) {
 
-  const oldValue = state.eventWhen[action.inputKey];
+  const oldValue = state.when[action.inputKey];
   const newValue = update(oldValue, {
     [action.format]: { $set: action.data }
   });
   const newState = update(state, {
-    eventWhen: { $splice: [[action.inputKey, 1, newValue]] }
+    when: { $splice: [[action.inputKey, 1, newValue]] }
   });
   return newState;
 }
@@ -143,11 +101,11 @@ function addInput (state, action) {
 
   let initialValue;
 
-  if (action.eventType === 'eventWhen') {
+  if (action.eventType === 'when') {
 
     initialValue = {
-      date: state.eventWhen[action.nextInputKey - 1].date,
-      time: state.eventWhen[action.nextInputKey - 1].time
+      date: state.when[action.nextInputKey - 1].date,
+      time: state.when[action.nextInputKey - 1].time
     };
   } else {
     initialValue = '';
@@ -169,11 +127,11 @@ function removeInput (state, action) {
 
 function addInvitee (state, action) {
 
-    let newState = update(state, {
-        invitees: { $push: [action.data] },
-        friends: { $splice: [[action.index, 1]] }
-    });
-    return newState;
+  const newState = update(state, {
+    invitees: { $push: [action.data] },
+    friends: { $splice: [[action.index, 1]] }
+  });
+  return newState;
 }
 
 function removeInvitee (state, action) {
@@ -188,16 +146,16 @@ function removeInvitee (state, action) {
 function hydrateCreateEvent (state, action) {
 
   const eventDetails = {
-    eventName: action.data.eventName,
-    eventDescription: action.data.eventDescription,
-    eventNote: action.data.eventNote
+    name: action.data.eventName,
+    description: action.data.eventDescription,
+    note: action.data.eventNote
   };
 
   const newState = update(state, {
-    eventDetails: { $set: eventDetails },
-    eventWhat: { $set: action.data.eventWhat },
-    eventWhere: { $set: action.data.eventWhere },
-    eventWhen: { $set: action.data.eventWhen }
+    details: { $set: eventDetails },
+    what: { $set: action.data.eventWhat },
+    where: { $set: action.data.eventWhere },
+    when: { $set: action.data.eventWhen }
   });
   return newState;
 }

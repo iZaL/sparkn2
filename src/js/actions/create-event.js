@@ -1,21 +1,16 @@
 import axios from 'axios';
-import getUserID from '../lib/getUserID';
+// import getUserID from '../lib/getUserID';
 
 export const SET_EVENT_DETAILS = 'SET_EVENT_DETAILS';
 export const SET_EVENT_WHAT = 'SET_EVENT_WHAT';
 export const SET_EVENT_WHERE = 'SET_EVENT_WHERE';
 export const SET_EVENT_WHEN = 'SET_EVENT_WHEN';
 
-export const NEW_EVENT = 'NEW_EVENT';
-export const NEW_EVENT_REQUEST = 'NEW_EVENT_REQUEST';
-export const NEW_EVENT_SUCCESS = 'NEW_EVENT_SUCCESS';
-export const NEW_EVENT_FAILURE = 'NEW_EVENT_FAILURE';
+export const SAVE_EVENT = 'SAVE_EVENT';
+export const SAVE_EVENT_REQUEST = 'SAVE_EVENT_REQUEST';
+export const SAVE_EVENT_SUCCESS = 'SAVE_EVENT_SUCCESS';
+export const SAVE_EVENT_FAILURE = 'SAVE_EVENT_FAILURE';
 export const CLEAR_CREATE_EVENT = 'CLEAR_CREATE_EVENT';
-
-export const GET_FB_FRIENDS = 'GET_FB_FRIENDS';
-export const GET_FB_FRIENDS_REQUEST = 'GET_FB_FRIENDS_REQUEST';
-export const GET_FB_FRIENDS_SUCCESS = 'GET_FB_FRIENDS_SUCCESS';
-export const GET_FB_FRIENDS_FAILURE = 'GET_FB_FRIENDS_FAILURE';
 
 export const ADD_INPUT = 'ADD_INPUT';
 export const REMOVE_INPUT = 'REMOVE_INPUT';
@@ -34,7 +29,7 @@ export function setEventDetails (data, inputType) {
     type: SET_EVENT_DETAILS,
     data,
     inputType,
-    eventType: 'eventDetails'
+    eventType: 'details'
   };
 }
 
@@ -43,7 +38,7 @@ export function setEventWhat (data, inputKey) {
     type: SET_EVENT_WHAT,
     data,
     inputKey,
-    eventType: 'eventWhat'
+    eventType: 'what'
   };
 }
 
@@ -52,7 +47,7 @@ export function setEventWhere (data, inputKey) {
     type: SET_EVENT_WHERE,
     data,
     inputKey,
-    eventType: 'eventWhere'
+    eventType: 'where'
   };
 }
 
@@ -61,48 +56,48 @@ export function setEventWhen (data, inputKey, format) {
     type: SET_EVENT_WHEN,
     data,
     inputKey,
-    eventType: 'eventWhen',
+    eventType: 'when',
     format
   };
 }
 
 /********
-* NEW EVENT ACTIONS
+* SAVE EVENT ACTIONS
 ********/
 
-export function newEvent (eventData) {
+export function saveEvent (eventData) {
   return function (dispatch) {
-    dispatch(newEventRequest());
+    dispatch(saveEventRequest());
 
-    return axios.post('/new-event', eventData)
+    return axios.post('http://localhost:3000/events', eventData)
       .then(() => {
-        dispatch(newEventSuccess());
+        dispatch(saveEventSuccess());
         dispatch(clearCreateEvent());
       })
       .catch((error) => {
-        dispatch(newEventFailure(error));
+        dispatch(saveEventFailure(error));
       });
   };
 }
 
-export function newEventRequest () {
+export function saveEventRequest () {
   return {
-    type: NEW_EVENT_REQUEST,
+    type: SAVE_EVENT_REQUEST,
     isFetching: true
   };
 }
 
-export function newEventSuccess () {
+export function saveEventSuccess () {
   return {
-    type: NEW_EVENT_SUCCESS,
+    type: SAVE_EVENT_SUCCESS,
     isFetching: false,
     didSave: true
   };
 }
 
-export function newEventFailure (error) {
+export function saveEventFailure (error) {
   return {
-    type: NEW_EVENT_FAILURE,
+    type: SAVE_EVENT_FAILURE,
     isFetching: false,
     error,
     didSave: false
@@ -112,50 +107,6 @@ export function newEventFailure (error) {
 export function clearCreateEvent () {
   return {
     type: CLEAR_CREATE_EVENT
-  };
-}
-
-/********
-* GET FB FRIENDS ACTIONS
-********/
-
-export function getFBFriends () {
-  const id = getUserID();
-
-  return (dispatch) => {
-    dispatch(getFBFriendsRequest());
-
-    axios.get(`/new-event/friends?userID='${id}`)
-      .then((response) => {
-        dispatch(getFBFriendsSuccess(response.data));
-      })
-      .catch((error) => {
-        dispatch(getFBFriendsFailure(error));
-      });
-  };
-}
-
-export function getFBFriendsRequest () {
-  return {
-    type: GET_FB_FRIENDS_REQUEST,
-    isFetching: true,
-    data: []
-  };
-}
-
-export function getFBFriendsSuccess (data) {
-  return {
-    type: GET_FB_FRIENDS_SUCCESS,
-    isFetching: false,
-    data
-  };
-}
-
-export function getFBFriendsFailure (error) {
-  return {
-    type: GET_FB_FRIENDS_FAILURE,
-    isFetching: false,
-    error
   };
 }
 

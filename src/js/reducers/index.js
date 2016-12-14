@@ -5,7 +5,7 @@ import user from './user';
 import calendar from './calendar';
 import event from './event';
 import notifications from './notifications';
-import createEvent from './create-event';
+import create from './create-event';
 import photos from './photos';
 
 
@@ -16,6 +16,6 @@ export default combineReducers({
   calendar,
   event,
   notifications,
-  createEvent,
+  create,
   photos
 });

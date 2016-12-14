@@ -1,11 +1,13 @@
 import { connect } from 'react-redux';
 import { setEventDetails, clearCreateEvent } from '../../actions/create-event';
 import Details from '../../components/create/details';
-import jsonState from '../../testState/jsonStateCreate.json';
+// import jsonState from '../../testState/jsonStateCreate.json';
 
-const mapStateToProps = () => {
+const mapStateToProps = ({ create }) => {
   return {
-    eventDetails: jsonState.createEvent.eventDetails,
+    name: create.name,
+    description: create.description,
+    note: create.note,
     title: 'A title'
   };
 };
