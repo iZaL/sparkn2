@@ -1,19 +1,20 @@
 import { connect } from 'react-redux';
-import { setEventDetails, clearCreateEvent } from '../../actions/create-event';
+import { setDetails, clearCreateEvent } from '../../actions/create';
 import Details from '../../components/create/details';
-import jsonState from '../../testState/jsonStateCreate.json';
 
-const mapStateToProps = () => {
+const mapStateToProps = ({ create }) => {
   return {
-    eventDetails: jsonState.createEvent.eventDetails,
+    name: create.name,
+    description: create.description,
+    note: create.note,
     title: 'A title'
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleChange: (inputType, event) => {
-      dispatch(setEventDetails(event.target.value, inputType));
+    handleChange: (text, inputType) => {
+      dispatch(setDetails(text, inputType));
     },
     discardEvent: () => {
       dispatch(clearCreateEvent());

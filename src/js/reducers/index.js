@@ -3,9 +3,9 @@ import { NavigationReducer } from '@exponent/ex-navigation';
 import auth from './auth';
 import user from './user';
 import calendar from './calendar';
-import event from './event';
+import { event } from './event';
 import notifications from './notifications';
-import createEvent from './create-event';
+import { create } from './create';
 import photos from './photos';
 
 
@@ -16,6 +16,6 @@ export default combineReducers({
   calendar,
   event,
   notifications,
-  createEvent,
+  create,
   photos
 });

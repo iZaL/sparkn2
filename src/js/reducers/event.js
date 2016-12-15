@@ -8,7 +8,7 @@ import { GET_EVENT_REQUEST, GET_EVENT_SUCCESS, GET_EVENT_FAILURE, UPDATE_POLL,
          UPDATE_NOTIFICATION_REQUEST, UPDATE_NOTIFICATION_SUCCESS, UPDATE_NOTIFICATION_FAILURE,
          RESET_EVENT_STATE } from '../actions/event';
 
-const initialState = {
+export const initialState = {
   data: {},
   isFetching: false,
   error: undefined,
@@ -21,7 +21,7 @@ const initialState = {
   updateNotification: false
 };
 
-export default function event (state = initialState, action) {
+export function event (state = initialState, action) {
 
   switch (action.type) {
 

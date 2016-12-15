@@ -5,9 +5,9 @@ import EventDetailsHeader from '../general/event-details-header';
 import Button from '../common/Button';
 import styles from '../../style';
 
-export default function Details ({ handleChange, title, eventDetails, navigator }) {
+export default function Details ({ handleChange, name, description, note, title, navigator }) {
 
-  const hideNext = eventDetails.eventName === '' || eventDetails.eventDescription === '';
+  const hideNext = name === '' || description === '';
 
   const nextPage = () => {
     navigator.push(Router.getRoute('what'));
@@ -17,10 +17,10 @@ export default function Details ({ handleChange, title, eventDetails, navigator 
     <View>
       <EventDetailsHeader
         location={ title }
-        eventName={ eventDetails.eventName }
-        eventDescription={ eventDetails.eventDescription }
+        eventName={ name }
+        eventDescription={ description }
       />
-      <View style={styles.container}>
+      <View style={ styles.container }>
         <Text>
           Enter the name of your event and a description.
         </Text>
@@ -28,8 +28,8 @@ export default function Details ({ handleChange, title, eventDetails, navigator 
         <View style={ styles.row }>
           <TextInput
             style={ styles.inputStyle }
-            handleChange={ () => { handleChange('eventName'); }}
-            value={ eventDetails ? eventDetails.eventName : '' }
+            onChangeText={ text => handleChange(text, 'name') }
+            value={ name }
             type="text"
             placeholder="Event name"
           />
@@ -37,8 +37,8 @@ export default function Details ({ handleChange, title, eventDetails, navigator 
         <View style={ styles.row }>
           <TextInput
             style={ styles.inputStyle }
-            handleChange={ () => { handleChange('eventDescription'); }}
-            value={ eventDetails ? eventDetails.eventDescription : '' }
+            onChangeText={ text => handleChange(text, 'description') }
+            value={ description }
             type="text"
             placeholder="Event description"
           />
@@ -46,20 +46,20 @@ export default function Details ({ handleChange, title, eventDetails, navigator 
         <View style={ styles.row }>
           <TextInput
             style={ styles.inputStyle }
-            handleChange={ () => { handleChange('eventNote'); }}
-            value={ eventDetails ? eventDetails.eventNote : '' }
+            onChangeText={ text => handleChange(text, 'note') }
+            value={ note }
             placeholder="Leave a note to your friends (optional)"
           />
         </View>
-        <View style={styles.row}>
+        <View style={ styles.row }>
           { (hideNext) &&
             <View />
           }
           { (!hideNext) &&
             <Button
               onPress={ () => nextPage() }
-              buttonStyle={styles.buttonStyle}
-              buttonTextStyle={styles.buttonTextStyle}
+              buttonStyle={ styles.buttonStyle }
+              buttonTextStyle={ styles.buttonTextStyle }
             >
               Next
             </Button>

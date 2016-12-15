@@ -3,7 +3,7 @@ import Event from '../components/event';
 import getUserID from '../lib/getUserID';
 import { getEvent, updatePoll, confirmPoll, addHostEventChoice, confirmEvent, deleteEvent, updateRSVP } from '../actions/event';
 import { setFile, selectPhoto, getS3URL, deletePhoto, sharePhoto } from '../actions/photos';
-import { hydrateCreateEvent, clearCreateEvent } from '../actions/create-event';
+import { hydrateCreateEvent, clearCreateEvent } from '../actions/create';
 import listenForS3URL from '../lib/action-listeners';
 import listenForSavePhotoURL from '../lib/save-photo-url-helper';
 import jsonState from '../testState/jsonStateEvent.json';

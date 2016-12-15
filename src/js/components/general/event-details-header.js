@@ -2,9 +2,9 @@ import React from 'react';
 import { View, Text, Image } from 'react-native';
 import styles from '../../style.js';
 
-const EventDetailsHeader = ({ location, eventName, eventDescription, hostPhotoURL }) => {
+const EventDetailsHeader = ({ location, name, description, hostPhotoURL }) => {
 
-    let hideEventDetails = eventName === "" || eventDescription === "" || location === "createEvent";
+    let hideEventDetails = name === "" || description === "" || location === "createEvent";
 
     if (!hostPhotoURL) {
 
@@ -17,11 +17,11 @@ const EventDetailsHeader = ({ location, eventName, eventDescription, hostPhotoUR
               <View style={styles.rowEventDetailsHeader}>
                   <View>
                     <Text style={styles.eventDetailTextTitle}>
-                      { eventName }
+                      { name }
                     </Text>
 
                     <Text style={styles.eventDetailText}>
-                      { eventDescription }
+                      { description }
                     </Text>
                   </View>
               </View>
@@ -52,10 +52,10 @@ const EventDetailsHeader = ({ location, eventName, eventDescription, hostPhotoUR
                         <View style={styles.columnCentered}>
 
                               <Text style={styles.eventDetailTextTitle}>
-                                { eventName }
+                                { name }
                               </Text>
                               <Text style={styles.eventDetailText}>
-                                { eventDescription }
+                                { description }
                               </Text>
                         </View>
                       </View>

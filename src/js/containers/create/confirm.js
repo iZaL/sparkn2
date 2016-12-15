@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { newEvent, clearCreateEvent } from '../../actions/create-event';
+import { newEvent, clearCreateEvent } from '../../actions/create';
 import Confirm from '../../components/create/confirm';
 import { isPoll, cleanEventData } from '../../lib/create-event-helpers';
 import { store } from '../../init-store';
