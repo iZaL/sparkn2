@@ -19,6 +19,7 @@
     "react-addons-update": "^15.4.1",
     "react-native": "0.38.0",
     "react-native-button": "^1.7.1",
+    "react-native-contacts": "^0.6.0",
     "react-native-cookies": "^2.0.0",
     "react-native-router-flux": "^3.37.0",
     "react-native-vector-icons": "^3.0.0",
@@ -33,7 +34,8 @@
   },
   "config": {
     "ghooks": {
-      "pre-push": "npm run lint"
+      "pre-push": "npm run lint",
+      "post-install": "npm install"
     }
   },
   "devDependencies": {
