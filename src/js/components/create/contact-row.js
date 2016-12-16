@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text, TouchableHighlight } from 'react-native';
 
-export default function ContactRow ({ givenName, familyName, phoneNumber }) {
+export default function ContactRow (props) {
+  const { givenName, familyName, phoneNumber } = props.data;
   const number = phoneNumber[0].number;
   return (
-    <View>
+    <View style={{ backgroundColor: 'aliceblue' }}>
       <TouchableHighlight
         onPress={ () => console.log('---') }
       >

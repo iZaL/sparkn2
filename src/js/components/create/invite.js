@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Contacts from 'react-native-contacts';
-import { View, ListView } from 'react-native';
+import { View, ListView, StyleSheet } from 'react-native';
 import Router from '../../router';
 import ContactRow from './contact-row';
 import Button from '../common/Button';
 import styles from '../../style';
+
+const separatorStyles = { flex: 1, height: StyleSheet.hairlineWidth, backgroundColor: '#8E8E8E' };
 
 export default class Invite extends Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -43,12 +45,13 @@ export default class Invite extends Component { // eslint-disable-line react/pre
 
   render () {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, marginTop: 20 }}>
         {
           this.state.dataSource &&
           <ListView
             dataSource={this.state.dataSource}
-            renderRow={ ContactRow }
+            renderRow={ (data, sectionID, rowID) => <ContactRow data={data} rowID={rowID} sectionID={sectionID} /> }
+            renderSeparator={(sectionId, rowId) => <View key={rowId} style={ separatorStyles } />}
           />
         }
 
