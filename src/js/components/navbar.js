@@ -59,7 +59,7 @@ export default function Navbar () {
         id="profile"
         title="Profile"
         selectedStyle={ tabBarSelectedItemStyle }
-        renderIcon={ isSelected => <Icon name="rocket" size={ 28 } color={ isSelected ? colours.blue : colours.gray} /> }
+        renderIcon={ isSelected => <Icon name="user" size={ 28 } color={ isSelected ? colours.blue : colours.gray} /> }
       >
         <StackNavigation
           id="profile"

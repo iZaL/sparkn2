@@ -13,7 +13,7 @@ const ConfirmEventWhen = ({ eventWhen }) => { // eslint-disable-line react/prop-
 
     return (
       <View
-        style={styles.rowSpaced}
+        style={styles.pollSection}
         key={ i }
       >
         { (hideTitle) &&

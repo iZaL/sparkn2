@@ -12,7 +12,7 @@ const ConfirmEventWhat = ({ eventWhat }) => {
 
     return (
       <View
-        style={styles.rowSpaced}
+        style={styles.pollSection}
         key={ i }
       >
         { (hideTitle) &&
@@ -37,6 +37,7 @@ const ConfirmEventWhat = ({ eventWhat }) => {
             </Button>
           </View>
         </View>
+        
       </View>
     );
   });

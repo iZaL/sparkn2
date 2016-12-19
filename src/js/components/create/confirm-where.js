@@ -12,7 +12,7 @@ const ConfirmEventWhere = ({ eventWhere }) => { // eslint-disable-line react/pro
 
     return (
       <View
-        style={styles.rowSpaced}
+        style={styles.pollSection}
         key={ i }
       >
         { (hideTitle) &&

@@ -1,5 +1,5 @@
 import { createRouter } from '@exponent/ex-navigation';
-import Intro from './components/intro';
+import Intro from './components/Intro';
 import AlbumsContainer from './containers/albums';
 import CalendarContainer from './containers/calendar';
 import FeedContainer from './containers/feed';
