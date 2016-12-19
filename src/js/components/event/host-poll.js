@@ -62,10 +62,10 @@ function createVoteSection (event, tally, eventType, EventTypeComponent,
     const tallyCount = tally[eventType] ? tally[eventType][i] : '';
 
     if (tally[eventType]) {
-      console.log(choice);
-      console.log(tallyCount);
-      console.log(selectedClasses);
-      console.log(hideClasses);
+      // console.log(choice);
+      // console.log(tallyCount);
+      // console.log(selectedClasses);
+      // console.log(hideClasses);
 
       return (
         <Button

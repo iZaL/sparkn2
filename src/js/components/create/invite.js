@@ -15,7 +15,6 @@ export default class Invite extends Component { // eslint-disable-line react/pre
   }
 
   componentWillMount () {
-    console.log(this.props);
     this.createDataSource(this.props._invitees);
   }
 
@@ -29,13 +28,16 @@ export default class Invite extends Component { // eslint-disable-line react/pre
   }
 
   render () {
+
+    const { toggleContact } = this.props;
+
     return (
       <View style={{ flex: 1, marginTop: 20 }}>
         {
-          this.state.dataSource &&
+          this.dataSource &&
           <ListView
             dataSource={this.dataSource}
-            renderRow={ (data, sectionID, rowID) => <ContactRow data={data} rowID={rowID} sectionID={sectionID} /> }
+            renderRow={ (data, sectionID, rowID) => <ContactRow toggleContact={toggleContact} data={data} rowID={rowID} sectionID={sectionID} /> }
             renderSeparator={(sectionId, rowId) => <View key={rowId} style={ separatorStyles } />}
           />
         }

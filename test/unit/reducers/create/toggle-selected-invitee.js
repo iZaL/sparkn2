@@ -3,7 +3,7 @@ import { create as reducer, initialState } from '../../../../src/js/reducers/cre
 import { contacts as data, contactsSelected } from '../../../utils/fixtures';
 
 
-test.only('Reducer handles TOGGLE_SELECTED_INVITEE as expected', (t) => {
+test('Reducer handles TOGGLE_SELECTED_INVITEE as expected', (t) => {
   t.plan(1);
 
   const action = {

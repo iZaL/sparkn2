@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
-import { addInvitee, removeInvitee, clearCreateEvent } from '../../actions/create';
+import { toggleSelectedInvitee, clearCreateEvent } from '../../actions/create';
 import Invite from '../../components/create/invite';
 
 const mapStateToProps = ({ create }) => {
-
   return {
     name: create.name,
     description: create.description,
@@ -12,12 +11,10 @@ const mapStateToProps = ({ create }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  handleSelected: (id, index) => {
-    dispatch(addInvitee(id, index));
-  },
 
-  removeSelected: (id, index) => {
-    dispatch(removeInvitee(id, index));
+  toggleContact: (index) => {
+    console.log(index);
+    dispatch(toggleSelectedInvitee(index));
   },
 
   discardEvent: () => {
