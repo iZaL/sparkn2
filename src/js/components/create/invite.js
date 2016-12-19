@@ -18,6 +18,10 @@ export default class Invite extends Component { // eslint-disable-line react/pre
     this.createDataSource(this.props._invitees);
   }
 
+  componentWillReceiveProps (nextProps) {
+    this.createDataSource(nextProps._invitees);
+  }
+
   createDataSource (contacts) {
     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.dataSource = ds.cloneWithRows(contacts);
@@ -28,16 +32,16 @@ export default class Invite extends Component { // eslint-disable-line react/pre
   }
 
   render () {
-
     const { toggleContact } = this.props;
-
     return (
       <View style={{ flex: 1, marginTop: 20 }}>
         {
           this.dataSource &&
           <ListView
             dataSource={this.dataSource}
-            renderRow={ (data, sectionID, rowID) => <ContactRow toggleContact={toggleContact} data={data} rowID={rowID} sectionID={sectionID} /> }
+            renderRow={ (data, sectionID, rowID) => (
+              <ContactRow onPress={ () => toggleContact(rowID)} data={data} rowID={rowID} sectionID={sectionID} />
+            )}
             renderSeparator={(sectionId, rowId) => <View key={rowId} style={ separatorStyles } />}
           />
         }

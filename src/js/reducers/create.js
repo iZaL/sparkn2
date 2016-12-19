@@ -22,7 +22,6 @@ export const initialState = {
 };
 
 export function create (state = initialState, action) {
-
   switch (action.type) {
 
     case SET_DETAILS:
@@ -50,9 +49,13 @@ export function create (state = initialState, action) {
       });
 
     case SET_CONTACTS:
-      return update(state, {
-        _invitees: { $set: action.data }
-      });
+      return {
+        ...state,
+        _invitees: [
+          ...action.data
+        ]
+      };
+
 
     case TOGGLE_SELECTED_INVITEE: // eslint-disable-line no-case-declarations
       const newObj = state._invitees[action.index];

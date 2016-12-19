@@ -13,7 +13,6 @@ const mapStateToProps = ({ create }) => {
 const mapDispatchToProps = dispatch => ({
 
   toggleContact: (index) => {
-    console.log(index);
     dispatch(toggleSelectedInvitee(index));
   },
 
