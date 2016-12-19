@@ -27,6 +27,11 @@ const styles = {
     color: colours.gray,
     fontWeight: '600'
   },
+  msg4: {
+    fontSize: 12,
+    color: colours.gray,
+    fontWeight: '600'
+  },
   invitedTitle: {
     fontSize: 18,
     color: colours.gray,
@@ -98,7 +103,7 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: 45,
+    height: 40,
     width: Dimensions.get('window').width * 1
   },
   rowCentered: {
@@ -130,14 +135,21 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    marginRight: 10
+    marginRight: 5
+  },
+  columnMiddlePoll: {
+    flex: 3.8,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    marginRight: 0
   },
   columnRight: {
     flex: 2,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    marginRight: 10
+    marginRight: 15
   },
   rowFlexStart: {
     flex: 1,
@@ -147,10 +159,9 @@ const styles = {
   },
   optionTitleWhat: {
     flex: 1,
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: 'bold',
     color: colours.what,
-    paddingLeft: 20,
     paddingTop: 10
   },
   optionSelectedWhat: {
@@ -167,7 +178,7 @@ const styles = {
   },
   optionTextSelected: {
     flex: 1,
-    fontSize: 14,
+    fontSize: 12,
     color: colours.white,
     justifyContent: 'space-around'
   },
@@ -185,15 +196,14 @@ const styles = {
   },
   optionTextDeselectedWhat: {
     flex: 1,
-    fontSize: 14,
+    fontSize: 12,
     color: colours.what
   },
   optionTitleWhere: {
     flex: 1,
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: 'bold',
     color: colours.where,
-    paddingLeft: 20,
     paddingTop: 10
   },
   optionSelectedWhere: {
@@ -222,15 +232,14 @@ const styles = {
   },
   optionTextDeselectedWhere: {
     flex: 1,
-    fontSize: 14,
+    fontSize: 12,
     color: colours.where
   },
   optionTitleWhen: {
     flex: 1,
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: 'bold',
     color: colours.when,
-    paddingLeft: 20,
     paddingTop: 10
   },
   optionSelectedWhen: {
@@ -259,7 +268,7 @@ const styles = {
   },
   optionTextDeselectedWhen: {
     flex: 1,
-    fontSize: 14,
+    fontSize: 12,
     color: colours.when
   },
   confirmButton: {
