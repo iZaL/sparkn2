@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import React, { Component } from 'react';
 import { View, Image, Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';

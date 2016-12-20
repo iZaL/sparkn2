@@ -5,7 +5,7 @@ import styles from '../../../style';
 
 const RSVPsArea = ({ eventID, invitees, RSVPs, respondedList, notRespondedList, handleClick }) => {
 
-  function RSVPUserList (RSVPs, invitees, status) {
+  function RSVPUserList (RSVPs, invitees, status) { // eslint-disable-line
 
     return RSVPs[status].map((id, index) => {
       const usersWithRSVP = invitees.filter(userObject => id === userObject.id);

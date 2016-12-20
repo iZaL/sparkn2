@@ -1,11 +1,10 @@
 import { Dimensions } from 'react-native';
 import colours from './colours';
 
-// const width = Dimensions.get('window').width; //full width
-
 const styles = {
 
   // app Wide
+
   title1: {
     color: colours.white,
     fontSize: 24
@@ -24,7 +23,14 @@ const styles = {
     fontWeight: '400'
   },
   msg3: {
-
+    fontSize: 14,
+    color: colours.gray,
+    fontWeight: '600'
+  },
+  msg4: {
+    fontSize: 12,
+    color: colours.gray,
+    fontWeight: '600'
   },
   invitedTitle: {
     fontSize: 18,
@@ -95,12 +101,9 @@ const styles = {
   },
   pollSection: {
     flexDirection: 'row',
-    borderColor: 'brown',
-    borderWidth: 3,
-    borderRadius: 3,
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: 45,
+    height: 40,
     width: Dimensions.get('window').width * 1
   },
   rowCentered: {
@@ -115,6 +118,12 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center'
   },
+  columnFlexStart: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start'
+  },
   columnLeft: {
     flex: 1.2,
     flexDirection: 'column',
@@ -122,16 +131,25 @@ const styles = {
     alignItems: 'flex-start'
   },
   columnMiddle: {
-    flex: 3,
+    flex: 2.8,
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    marginRight: 5
+  },
+  columnMiddlePoll: {
+    flex: 3.8,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    marginRight: 0
   },
   columnRight: {
     flex: 2,
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    marginRight: 15
   },
   rowFlexStart: {
     flex: 1,
@@ -141,10 +159,9 @@ const styles = {
   },
   optionTitleWhat: {
     flex: 1,
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: 'bold',
     color: colours.what,
-    paddingLeft: 20,
     paddingTop: 10
   },
   optionSelectedWhat: {
@@ -152,15 +169,16 @@ const styles = {
     backgroundColor: colours.what,
     borderColor: colours.what,
     borderWidth: 1,
-    borderRadius: 12,
+    borderRadius: 100,
     paddingTop: 8,
     paddingBottom: 8,
     paddingLeft: 15,
-    paddingRight: 15
+    paddingRight: 15,
+    marginBottom: 2
   },
   optionTextSelected: {
     flex: 1,
-    fontSize: 16,
+    fontSize: 12,
     color: colours.white,
     justifyContent: 'space-around'
   },
@@ -169,23 +187,23 @@ const styles = {
     backgroundColor: colours.white,
     borderColor: colours.what,
     borderWidth: 1,
-    borderRadius: 12,
+    borderRadius: 100,
     paddingTop: 8,
     paddingBottom: 8,
     paddingLeft: 15,
-    paddingRight: 15
+    paddingRight: 15,
+    marginBottom: 2
   },
   optionTextDeselectedWhat: {
     flex: 1,
-    fontSize: 16,
+    fontSize: 12,
     color: colours.what
   },
   optionTitleWhere: {
     flex: 1,
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: 'bold',
     color: colours.where,
-    paddingLeft: 20,
     paddingTop: 10
   },
   optionSelectedWhere: {
@@ -193,34 +211,35 @@ const styles = {
     backgroundColor: colours.where,
     borderColor: colours.where,
     borderWidth: 1,
-    borderRadius: 12,
+    borderRadius: 100,
     paddingTop: 8,
     paddingBottom: 8,
     paddingLeft: 15,
-    paddingRight: 15
+    paddingRight: 15,
+    marginBottom: 2
   },
   optionDeselectedWhere: {
     flex: 1,
     backgroundColor: colours.white,
     borderColor: colours.where,
     borderWidth: 1,
-    borderRadius: 12,
+    borderRadius: 100,
     paddingTop: 8,
     paddingBottom: 8,
     paddingLeft: 15,
-    paddingRight: 15
+    paddingRight: 15,
+    marginBottom: 2
   },
   optionTextDeselectedWhere: {
     flex: 1,
-    fontSize: 16,
+    fontSize: 12,
     color: colours.where
   },
   optionTitleWhen: {
     flex: 1,
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: 'bold',
     color: colours.when,
-    paddingLeft: 20,
     paddingTop: 10
   },
   optionSelectedWhen: {
@@ -228,26 +247,28 @@ const styles = {
     backgroundColor: colours.when,
     borderColor: colours.when,
     borderWidth: 1,
-    borderRadius: 12,
+    borderRadius: 100,
     paddingTop: 8,
     paddingBottom: 8,
     paddingLeft: 15,
-    paddingRight: 15
+    paddingRight: 15,
+    marginBottom: 2
   },
   optionDeselectedWhen: {
     flex: 1,
     backgroundColor: colours.white,
     borderColor: colours.when,
     borderWidth: 1,
-    borderRadius: 12,
+    borderRadius: 100,
     paddingTop: 8,
     paddingBottom: 8,
     paddingLeft: 15,
-    paddingRight: 15
+    paddingRight: 15,
+    marginBottom: 2
   },
   optionTextDeselectedWhen: {
     flex: 1,
-    fontSize: 16,
+    fontSize: 12,
     color: colours.when
   },
   confirmButton: {
@@ -256,7 +277,7 @@ const styles = {
     backgroundColor: colours.confirm,
     borderColor: colours.confirm,
     borderWidth: 1,
-    borderRadius: 12,
+    borderRadius: 100,
     paddingTop: 8,
     paddingBottom: 8,
     paddingLeft: 30,
@@ -291,7 +312,6 @@ const styles = {
     color: '#333333',
     marginBottom: 5
   },
-
   navigationBarStyle: {
     backgroundColor: colours.blue
   },
@@ -342,6 +362,10 @@ const styles = {
     alignSelf: 'flex-start',
     alignItems: 'flex-start',
     padding: 10
+  },
+  chartRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   rowWhen: {
     flexDirection: 'row',
@@ -634,8 +658,6 @@ const styles = {
     alignSelf: 'center',
     borderRadius: 15
   },
-
-
   label: {
     fontSize: 12,
     fontWeight: '300'
@@ -728,7 +750,6 @@ const styles = {
 
   // confirm event
 
-
   item: {
 
   },
@@ -768,7 +789,6 @@ const styles = {
   iconBar: {
     flex: 1,
     alignItems: 'center'
-
   },
   iconBarStyle: {
     backgroundColor: colours.blue
@@ -792,6 +812,7 @@ const styles = {
   },
 
   // invitee-poll
+
   // poll sections
   tallyText: {
 
@@ -838,6 +859,27 @@ const styles = {
   },
   RSVPButtonNotResponded: {
 
+  },
+  barContainer: {
+    flexDirection: 'column',
+    marginTop: 1,
+    marginBottom: 1
+  },
+  // Item
+  barItem: {
+    flexDirection: 'column',
+    flex: 1
+  },
+  barData: {
+    flex: 2,
+    flexDirection: 'row'
+  },
+  bar: {
+    borderBottomLeftRadius: 0,
+    borderTopLeftRadius: 0,
+    borderBottomRightRadius: 15,
+    borderTopRightRadius: 15,
+    height: 12
   }
 
 };

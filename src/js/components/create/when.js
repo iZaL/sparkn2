@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { View, Text, DatePickerIOS } from 'react-native';
 import Router from '../../router';
