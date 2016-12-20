@@ -1,73 +1,71 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
-import styles from '../../style.js';
+import styles from '../../style';
 
 const EventDetailsHeader = ({ location, name, description, hostPhotoURL }) => {
 
-    let hideEventDetails = name === "" || description === "" || location === "createEvent";
+  const hideEventDetails = name === '' || description === '' || location === 'createEvent';
 
-    if (!hostPhotoURL) {
+  if (!hostPhotoURL) {
 
-        return (
-          <View>
-            { (hideEventDetails) &&
-              <View />
-            }
-            { (!hideEventDetails) &&
-              <View style={styles.rowEventDetailsHeader}>
-                  <View>
-                    <Text style={styles.eventDetailTextTitle}>
-                      { name }
-                    </Text>
+    return (
+      <View>
+        { (hideEventDetails) &&
+          <View />
+        }
+        { (!hideEventDetails) &&
+          <View style={styles.rowEventDetailsHeader}>
+            <View>
+              <Text style={styles.eventDetailTextTitle}>
+                { name }
+              </Text>
 
-                    <Text style={styles.eventDetailText}>
-                      { description }
-                    </Text>
-                  </View>
-              </View>
-            }
+              <Text style={styles.eventDetailText}>
+                { description }
+              </Text>
+            </View>
           </View>
-        );
-    } else {
-
-        return (
-          <View>
-            { (hideEventDetails) &&
-              <View />
-            }
-            { (!hideEventDetails) &&
+        }
+      </View>
+    );
+  }
+  return (
+    <View>
+      { (hideEventDetails) &&
+        <View />
+      }
+      { (!hideEventDetails) &&
+        <View>
+          <View style={styles.rowEventDetailsHeader}>
+            <View style={styles.columnLeft}>
               <View>
-                <View style={styles.rowEventDetailsHeader}>
-                  <View style={styles.columnLeft}>
-                      <View>
-                        <Image
-                          source={{ uri: hostPhotoURL }}
-                          style={styles.uiEventDetailPhotoCircularImage}
-                        />
-                      </View>
-                  </View>
-                  <View style={styles.columnMiddle}>
+                <Image
+                  source={{ uri: hostPhotoURL }}
+                  style={styles.uiEventDetailPhotoCircularImage}
+                />
+              </View>
+            </View>
+            <View style={styles.columnMiddle}>
 
-                      <View style={styles.rowCentered}>
-                        <View style={styles.columnCentered}>
+              <View style={styles.rowCentered}>
+                <View style={styles.columnCentered}>
 
-                              <Text style={styles.eventDetailTextTitle}>
-                                { name }
-                              </Text>
-                              <Text style={styles.eventDetailText}>
-                                { description }
-                              </Text>
-                        </View>
-                      </View>
-
-                  </View>
+                  <Text style={styles.eventDetailTextTitle}>
+                    { name }
+                  </Text>
+                  <Text style={styles.eventDetailText}>
+                    { description }
+                  </Text>
                 </View>
               </View>
-            }
-          </View>
 
-        );
-    }
+            </View>
+          </View>
+        </View>
+      }
+    </View>
+
+  );
 };
 
 export default EventDetailsHeader;

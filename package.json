@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "tape -r babel-register 'test/**/*.js' | tap-spec",
-    "lint": "node_modules/eslint/bin/eslint.js 'src/js/actions/**/*.@(js|jsx)'",
+    "lint": "node_modules/eslint/bin/eslint.js 'src/js/**/*.@(js|jsx)'",
     "test:watch": "nodemon -q -x 'npm test'"
   },
   "dependencies": {

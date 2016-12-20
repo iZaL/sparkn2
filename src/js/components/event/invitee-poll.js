@@ -1,6 +1,7 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-else-return */
 import React from 'react';
 import { View } from 'react-native';
-// import { Actions } from 'react-native-router-flux';
 import PollButton from '../general/poll-button';
 import { EventWhatSection, EventWhereSection, EventWhenSection } from './poll-sections';
 import Button from '../common/Button';

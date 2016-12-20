@@ -5,7 +5,7 @@ import Router from '../../router';
 import AddInput from '../general/add-input';
 import EventDetailsHeader from '../general/event-details-header';
 import Button from '../common/Button';
-import styles from '../../style.js';
+import styles from '../../style';
 
 const What = ({ data, name, description, addInput, removeInput, handleChange, navigator }) => { // eslint-disable-line react/prop-types
 

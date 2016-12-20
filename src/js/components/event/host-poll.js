@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-else-return */
 import React from 'react';
 import { View, Text } from 'react-native';
 import { EventWhatSection, EventWhereSection, EventWhenSection } from './poll-sections';

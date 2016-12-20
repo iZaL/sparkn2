@@ -41,12 +41,11 @@ export default class BarChart extends Component {
   }
 
   handleAnimation () {
-    const { barWidth } = this.state;
     const width = this.getWidth(this.props.tallyData);
     const timing = Animated.timing;
 
     const indicators = ['poll1'];
-    Animated.parallel(indicators.map(item => {
+    Animated.parallel(indicators.map((item) => {
       return timing(this.state[item], { toValue: width[item] });
     })).start();
   }

@@ -25,7 +25,7 @@ export const EventWhatSection = ({ text, tally, choiceClasses, labelClasses }) =
             <Button buttonStyle={styles.optionDeselectedWhat} textStyle={styles.optionTextDeselectedWhat}>
               <Icon name="star" size={16} color={colours.what} />
               {' '}
-              { text || "TBC" }
+              { text || 'TBC' }
             </Button>
           </View>
         </View>
@@ -34,9 +34,9 @@ export const EventWhatSection = ({ text, tally, choiceClasses, labelClasses }) =
         <View style={styles.columnMiddlePoll}>
           <View style={styles.rowSpaced}>
             <Button buttonStyle={styles.optionSelectedWhat} textStyle={styles.optionTextSelected}>
-                      <Icon name="star" size={16} color="white" />
-                      {' '}
-                      { text || "TBC" }
+              <Icon name="star" size={16} color="white" />
+              {' '}
+              { text || 'TBC' }
             </Button>
           </View>
         </View>
@@ -52,7 +52,7 @@ export const EventWhatSection = ({ text, tally, choiceClasses, labelClasses }) =
 
           <View style={styles.columnFlexStart}>
             <Text style={styles.msg4}>
-              {(tally !== 0) && '  ' + tally + ' votes'}
+              {(tally !== 0) && `  ${tally} votes`}
             </Text>
             <BarChart tally={tally} allData={jsonState.event.tally.eventWhat} chartColor={colours.what} />
           </View>
@@ -83,12 +83,12 @@ export const EventWhereSection = ({ text, tally, choiceClasses, labelClasses }) 
               {' '}
               { (!placeNameLong) &&
                 <Text style={styles.placeNameShort}>
-                  { text.placeName || "TBC" }
+                  { text.placeName || 'TBC' }
                 </Text>
               }
               { (placeNameLong) &&
                 <Text style={styles.placeNameLong}>
-                  { text.placeName || "TBC" }
+                  { text.placeName || 'TBC' }
                 </Text>
               }
 
@@ -110,12 +110,12 @@ export const EventWhereSection = ({ text, tally, choiceClasses, labelClasses }) 
               {' '}
               { (!placeNameLong) &&
                 <Text style={styles.placeNameShort}>
-                  { text.placeName || "TBC" }
+                  { text.placeName || 'TBC' }
                 </Text>
               }
               { (placeNameLong) &&
                 <Text style={styles.placeNameLong}>
-                  { text.placeName || "TBC" }
+                  { text.placeName || 'TBC' }
                 </Text>
               }
 
@@ -140,7 +140,7 @@ export const EventWhereSection = ({ text, tally, choiceClasses, labelClasses }) 
 
           <View style={styles.columnFlexStart}>
             <Text style={styles.msg4}>
-              {(tally !== 0) && '  ' + tally + ' votes'}
+              {(tally !== 0) && `  ${tally} votes`}
             </Text>
             <BarChart tally={tally} allData={jsonState.event.tally.eventWhere} chartColor={colours.where} />
           </View>
@@ -167,7 +167,7 @@ export const EventWhenSection = ({ text, tally, choiceClasses, labelClasses }) =
             <Button buttonStyle={styles.optionDeselectedWhen} textStyle={styles.optionTextDeselectedWhen}>
               <Icon name="calendar" size={16} color={colours.when} />
               {' '}
-              { formatDate(text.date, 'half') || "TBC" }
+              { formatDate(text.date, 'half') || 'TBC' }
               {'  '}
               <Icon name="clock-o" size={16} color={colours.when} />
               {' '}
@@ -182,7 +182,7 @@ export const EventWhenSection = ({ text, tally, choiceClasses, labelClasses }) =
             <Button buttonStyle={styles.optionSelectedWhen} textStyle={styles.optionTextSelected}>
               <Icon name="calendar" size={16} color="white" />
               {' '}
-              { formatDate(text.date, 'half') || "TBC" }
+              { formatDate(text.date, 'half') || 'TBC' }
               {'  '}
               <Icon name="clock-o" size={16} color="white" />
               {' '}
@@ -202,7 +202,7 @@ export const EventWhenSection = ({ text, tally, choiceClasses, labelClasses }) =
 
           <View style={styles.columnFlexStart}>
             <Text style={styles.msg4}>
-              {(tally !== 0) && '  ' + tally + ' votes'}
+              {(tally !== 0) && `  ${tally} votes`}
             </Text>
             <BarChart tally={tally} allData={jsonState.event.tally.eventWhen} chartColor={colours.when} />
           </View>
