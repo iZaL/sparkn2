@@ -1,3 +1,4 @@
+/*
 import test from 'tape';
 import { GET_EVENT, GET_EVENT_REQUEST, GET_EVENT_SUCCESS, GET_EVENT_FAILURE, UPDATE_POLL } from '../../../src/js/actions/event.js';
 import { getEvent, getEventRequest, getEventSuccess, getEventFailure, updatePoll } from '../../../src/js/actions/event.js';
@@ -29,9 +30,7 @@ import createThunk from '../../utils/mock-thunk.js';
 import { event as eventFixtures } from './fixtures.js';
 import * as genericFixtures from '../../utils/fixtures.js';
 
-/********
-GET EVENT ACTIONS
-********/
+
 
 test('getEvent async action creator returns expected action', (t) => {
 
@@ -98,9 +97,6 @@ test('getEventFailure action creator returns expected action', (t) => {
     t.end();
 });
 
-/********
-UPDATE POLL ACTIONS
-********/
 
 test('updatePoll action creator returns expected action', (t) => {
 
@@ -116,9 +112,6 @@ test('updatePoll action creator returns expected action', (t) => {
     t.end();
 });
 
-/********
-CONFIRM POLL ACTIONS
-********/
 
 test('confirmPoll async action creator returns expected action', (t) => {
 
@@ -180,10 +173,6 @@ test('confirmPollFailure action creator returns expected action', (t) => {
     t.end();
 });
 
-/********
-ADD HOST EVENT CHOICE ACTIONS
-********/
-
 test('addHostEventChoice action creator returns expected action', (t) => {
 
     const expected = {
@@ -201,10 +190,6 @@ test('addHostEventChoice action creator returns expected action', (t) => {
     t.deepEqual(actual, expected);
     t.end();
 });
-
-/********
-CONFIRM EVENT ACTIONS
-********/
 
 test('confirmEvent async action creator returns expected action', (t) => {
 
@@ -266,9 +251,6 @@ test('confirmEventFailure action creator returns expected action', (t) => {
     t.end();
 });
 
-/********
-UPDATE EVENT ACTIONS
-********/
 
 test('updateRSVP async action creator returns expected action', (t) => {
 
@@ -332,10 +314,6 @@ test('updateRSVPFailure action creator returns expected action', (t) => {
 });
 
 
-/********
-CANCEL CONFIRMED EVENT ACTIONS
-********/
-
 
 test('deleteEvent async action creator returns expected action', (t) => {
 
@@ -397,10 +375,6 @@ test('deleteEventFailure action creator returns expected action', (t) => {
     t.deepEqual(actual, expected);
     t.end();
 });
-
-/********
-SAVE EDITED EVENT ACTIONS
-********/
 
 
 test('saveEditedEvent async action creator returns expected action', (t) => {
@@ -479,11 +453,6 @@ test('saveEditedEventFailure action creator returns expected action', (t) => {
 });
 
 
-/********
-UPDATE_NOTIFICATION ACTIONS
-********/
-
-
 test('updateNotification async action creator returns expected action', (t) => {
 
     let actual;
@@ -545,3 +514,4 @@ test('updateNotificationFailure action creator returns expected action', (t) => 
     t.deepEqual(actual, expected);
     t.end();
 });
+*/

@@ -20,7 +20,7 @@ export const initialState = {
   didSave: undefined
 };
 
-export function create (state = initialState, action) {
+export default function create (state = initialState, action) {
 
   switch (action.type) {
 

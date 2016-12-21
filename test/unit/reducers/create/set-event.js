@@ -1,5 +1,5 @@
 import test from 'tape';
-import { create as reducer, initialState as state } from '../../../../src/js/reducers/create';
+import reducer, { initialState as state } from '../../../../src/js/reducers/create';
 
 
 test('Reducer handles SET_DETAILS as expected', (t) => {

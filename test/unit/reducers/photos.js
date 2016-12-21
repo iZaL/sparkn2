@@ -1,10 +1,8 @@
+/*
 import test from 'tape';
 import reducer from '../../../src/js/reducers/photos.js';
 import { photos as initialState } from './fixtures.js';
 
-/********
-GET PHOTOS ACTIONS
-********/
 
 test('Reducer handles GET_PHOTOS as expected', (t) => {
 
@@ -38,16 +36,6 @@ test('Reducer handles GET_DELETED_PHOTOS as expected', (t) => {
     t.end();
 });
 
-
-/********
-GET DELETED PHOTO ACTIONS
-********/
-
-
-/********
-SET PHOTO ACTIONS
-********/
-
 test('Reducer handles SET_FILE as expected', (t) => {
 
     let photo = {
@@ -67,10 +55,6 @@ test('Reducer handles SET_FILE as expected', (t) => {
     t.deepEqual(actual, expected);
     t.end();
 });
-
-/********
-GET S3 SIGNED URL ACTIONS
-********/
 
 test('Reducer handles GET_S3_URL_REQUEST', (t) => {
 
@@ -136,10 +120,6 @@ test('Reducer handles GET_S3_URL_FAILURE as expected', (t) => {
     t.end();
 });
 
-
-/********
-UPLOAD PHOTO ACTIONS
-********/
 
 test('Reducer handles UPLOAD_PHOTO_REQUEST as expected', (t) => {
 
@@ -210,10 +190,6 @@ test('Reducer handles UPLOAD_PHOTO_FAILURE as expected', (t) => {
     t.deepEqual(actual, expected, 'isFetching is `false`, error is set, signedURL is unset');
     t.end();
 });
-
-/********
-SAVE PHOTO ACTIONS
-********/
 
 test('Reducer handles SAVE_PHOTO_URL_REQUEST as expected', (t) => {
 
@@ -298,11 +274,6 @@ test('Reducer handles SELECT_PHOTO as expected', (t) => {
     t.end();
 });
 
-/********
-DELETE PHOTO ACTIONS
-********/
-
-
 test('Reducer handles DELETE_PHOTO_REQUEST as expected', (t) => {
 
     let state = initialState;
@@ -363,3 +334,4 @@ test('Reducer handles DELETE_PHOTO_FAILURE as expected', (t) => {
     t.deepEqual(actual, expected);
     t.end();
 });
+*/

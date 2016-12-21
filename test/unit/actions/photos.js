@@ -1,3 +1,4 @@
+/*
 import test from 'tape';
 import { SET_FILE, setFile } from '../../../src/js/actions/photos.js';
 import { GET_S3_URL, GET_S3_URL_REQUEST, GET_S3_URL_SUCCESS, GET_S3_URL_FAILURE } from '../../../src/js/actions/photos.js';
@@ -14,10 +15,6 @@ import { sharePhoto, sharePhotoRequest, sharePhotoSuccess, sharePhotoFailure } f
 import createThunk from '../../utils/mock-thunk.js';
 
 
-/********
-SET PHOTO ACTIONS
-********/
-
 test('setFile action creator returns expected action', (t) => {
 
     const data = {
@@ -33,11 +30,6 @@ test('setFile action creator returns expected action', (t) => {
     t.end();
 });
 
-
-
-/********
-GET S3 SIGNED URL ACTIONS
-********/
 
 test('getS3URL async action creator returns expected action', (t) => {
     let actual;
@@ -102,10 +94,6 @@ test('getS3URLFailure action creator returns expected action', (t) => {
 });
 
 
-/********
-UPLOAD PHOTO ACTIONS
-********/
-
 test('uploadPhoto async action creator returns expected action', (t) => {
     let actual;
     const { dispatch, queue } = createThunk();
@@ -169,10 +157,6 @@ test('uploadPhotoFailure action creator returns expected action', (t) => {
 });
 
 
-/********
-SAVE PHOTO URL ACTIONS
-********/
-
 test('savePhotoURL async action creator returns expected action', (t) => {
     let actual;
     const { dispatch, queue } = createThunk();
@@ -234,9 +218,6 @@ test('savePhotoURLFailure action creator returns expected action', (t) => {
     t.end();
 });
 
-/********
-SELECT PHOTO ACTIONS
-********/
 
 test('selectPhoto action creator returns expected action', (t) => {
 
@@ -251,10 +232,6 @@ test('selectPhoto action creator returns expected action', (t) => {
     t.deepEqual(actual, expected);
     t.end();
 });
-
-/********
-DELETE PHOTO ACTIONS
-********/
 
 test('deletePhoto async action creator returns expected action', (t) => {
     let actual;
@@ -317,10 +294,6 @@ test('deletePhotoFailure action creator returns expected action', (t) => {
 });
 
 
-/********
-SHARE PHOTO ACTIONS
-********/
-
 test('sharePhoto async action creator returns expected action', (t) => {
     let actual;
     const { dispatch, queue } = createThunk();
@@ -379,3 +352,4 @@ test('sharePhotoFailure action creator returns expected action', (t) => {
     t.deepEqual(actual, expected);
     t.end();
 });
+*/
