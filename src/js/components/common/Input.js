@@ -27,7 +27,7 @@ export default function Input ({ label, value, onChangeText, placeholder, secure
   const { inputStyle, labelStyle, containerStyle } = styles;
 
   return (
-    <View style={containerStyle}>
+    <View style={ containerStyle }>
       <Text style={labelStyle}>{label}</Text>
       <TextInput
         secureTextEntry={secureTextEntry}
