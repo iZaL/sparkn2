@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import PollButton from '../general/poll-button';
 import { EventWhatSection, EventWhereSection, EventWhenSection } from './poll-sections';
 import Button from '../common/Button';
-import styles from '../../style';
+import styles from '../../../styles';
 
 const InviteePoll = ({ event, toggleSelection, poll, handlePollConfirmation, //eslint-disable-line
   eventID, isHost, hasVoted }) => { //eslint-disable-line

@@ -6,8 +6,8 @@ import {
 } from '@exponent/ex-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Router from '../router';
-import { tabBarSelectedItemStyle } from '../style';
-import colours from '../colours';
+import { tabBarSelectedItemStyle } from '../../styles';
+import colours from '../../styles/colours';
 
 export default function Navbar () {
   return (

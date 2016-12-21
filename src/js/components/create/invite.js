@@ -4,7 +4,7 @@ import { View, ListView } from 'react-native';
 import Router from '../../router';
 import ContactRow from './contact-row';
 import Button from '../common/Button';
-import styles from '../../style';
+import styles from '../../../styles';
 
 export default class Invite extends Component { // eslint-disable-line react/prefer-stateless-function
 

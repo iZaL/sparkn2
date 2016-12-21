@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import formatDate from '../../lib/formatDate';
 import CardSection from '../common/CardSection';
 import Card from '../common/Card';
-import styles from '../../style';
+import styles from '../../../styles';
 
 /***
 * CalendarItem is used in calendar and album views. Plays equivalent role

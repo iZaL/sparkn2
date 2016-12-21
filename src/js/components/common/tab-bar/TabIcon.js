@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import { Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import styles from '../../../style';
-import colours from '../../../colours';
+import styles from '../../../../styles';
+import colours from '../../../../styles/colours';
 
 const propTypes = {
   selected: PropTypes.bool,

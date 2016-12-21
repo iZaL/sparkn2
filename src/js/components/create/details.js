@@ -3,7 +3,7 @@ import { View, Text, TextInput } from 'react-native';
 import Router from '../../router';
 import EventDetailsHeader from '../general/event-details-header';
 import Button from '../common/Button';
-import styles from '../../style';
+import styles from '../../../styles';
 
 export default function Details ({ handleChange, name, description, note, title, navigator }) {
 

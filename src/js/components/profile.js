@@ -2,8 +2,7 @@ import React from 'react';
 import { View, Text, Image, TextInput } from 'react-native';
 import TopBar from './event/top-bar';
 import Button from './common/Button';
-// import Input from './general/input';
-import styles from '../style';
+import styles from '../../styles';
 
 const Profile = ({ user, firstName, lastName, handleLogOut, handleChangeName, handleEditName }) => {
 
