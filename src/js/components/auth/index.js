@@ -6,8 +6,12 @@ import styles from '../../../styles';
 
 export default function Index ({ navigator }) {
 
-  const nextPage = () => {
+  const goToLogin = () => {
     navigator.push(Router.getRoute('login'));
+  };
+
+  const goToSignup = () => {
+    navigator.push(Router.getRoute('signup'));
   };
 
   return (
@@ -21,10 +25,18 @@ export default function Index ({ navigator }) {
           share pictures and memories with friends, family and groups.
         </Text>
       </View>
-      <Button buttonStyle={ styles.buttonStyle } textStyle={ styles.buttonTextStyle } onPress={ nextPage }>
+      <Button
+        buttonStyle={ styles.buttonStyle }
+        textStyle={ styles.buttonTextStyle }
+        onPress={ goToLogin }
+      >
         Login
       </Button>
-      <Button buttonStyle={ styles.buttonStyle } textStyle={ styles.buttonTextStyle }>
+      <Button
+        buttonStyle={ styles.buttonStyle }
+        textStyle={ styles.buttonTextStyle }
+        onPress={ goToSignup }
+      >
         Sign up
       </Button>
     </View>
