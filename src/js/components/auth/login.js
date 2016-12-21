@@ -1,13 +1,13 @@
 import React from 'react';
-import { TextInput, View } from 'react-native';
+import { Text, TextInput, View } from 'react-native';
 import Button from '../common/Button';
 import styles from '../../../styles';
 
-export default function Login () {
 
+export default function Login () {
   return (
     <View style={{ marginTop: 50 }}>
-
+      <Text style={{ paddingLeft: 5 }}>Email</Text>
       <View style={ styles.row }>
         <TextInput
           style={ styles.inputStyle }
@@ -17,6 +17,7 @@ export default function Login () {
         />
       </View>
 
+      <Text style={{ paddingLeft: 5 }}>Password</Text>
       <View style={ styles.row }>
         <TextInput
           style={ styles.inputStyle }
