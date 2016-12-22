@@ -15,8 +15,8 @@ export const CLEAR_CREATE_EVENT = 'CLEAR_CREATE_EVENT';
 export const ADD_INPUT = 'ADD_INPUT';
 export const REMOVE_INPUT = 'REMOVE_INPUT';
 
-export const ADD_INVITEE = 'ADD_INVITEE';
-export const REMOVE_INVITEE = 'REMOVE_INVITEE';
+export const SET_CONTACTS = 'SET_CONTACTS';
+export const TOGGLE_SELECTED_INVITEE = 'TOGGLE_SELECTED_INVITEE';
 
 export const HYDRATE_CREATE_EVENT = 'HYDRATE_CREATE_EVENT';
 
@@ -130,18 +130,16 @@ export function removeInput (inputKey, eventType) {
 * INVITEE ACTIONS
 ********/
 
-export function addInvitee (friend, index) {
+export function setContacts (data) {
   return {
-    type: ADD_INVITEE,
-    data: friend,
-    index
+    type: SET_CONTACTS,
+    data
   };
 }
 
-export function removeInvitee (invitee, index) {
+export function toggleSelectedInvitee (index) {
   return {
-    type: REMOVE_INVITEE,
-    data: invitee,
+    type: TOGGLE_SELECTED_INVITEE,
     index
   };
 }

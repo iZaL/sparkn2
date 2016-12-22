@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 import Button from '../../common/Button';
-import styles from '../../../style';
+import styles from '../../../../styles';
 
 const RSVPsArea = ({ eventID, invitees, RSVPs, respondedList, notRespondedList, handleClick }) => {
 

@@ -4,7 +4,7 @@ import * as create from '../../../../src/js/actions/create';
 
 // import { addInput, removeInput } from '../../../../src/js/actions/create';
 
-test.only('`setDetails` creates the correct action', (t) => {
+test('`setDetails` creates the correct action', (t) => {
 
   const expected = {
     type: create.SET_DETAILS,

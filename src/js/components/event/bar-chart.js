@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Animated, Dimensions } from 'react-native';
-import styles from '../../style';
+import styles from '../../../styles';
 
 export default class BarChart extends Component {
 

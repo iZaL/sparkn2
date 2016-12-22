@@ -1,15 +1,17 @@
 import React from 'react';
-import { View, Text, TouchableHighlight } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
+/* eslint-disable camelcase */
 
-export default function ContactRow ({ givenName, familyName, phoneNumber }) {
-  const number = phoneNumber[0].number;
+export default function ContactRow (props) {
+  const { firstname, surname, phone_number, isSelected } = props.data;
+
   return (
-    <View>
-      <TouchableHighlight
-        onPress={ () => console.log('---') }
+    <View style={{ backgroundColor: isSelected ? 'green' : 'aliceblue' }}>
+      <TouchableOpacity
+        onPress={ props.onPress }
       >
-        <Text>{givenName} {familyName} {number}</Text>
-      </TouchableHighlight>
+        <Text>{firstname} {surname} {phone_number}</Text>
+      </TouchableOpacity>
     </View>
   );
 }

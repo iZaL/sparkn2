@@ -5,7 +5,7 @@ import Router from '../../router';
 import AddInput from '../general/add-input';
 import EventDetailsHeader from '../general/event-details-header';
 import Button from '../common/Button';
-import styles from '../../style';
+import styles from '../../../styles';
 
 const Where = ({ name, description, data, addInput, removeInput, handleChange, navigator }) => { // eslint-disable-line react/prop-types
 

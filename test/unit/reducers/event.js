@@ -1,11 +1,9 @@
+/*
+
 import test from 'tape';
 import reducer from '../../../src/js/reducers/event.js';
 import { event as state } from './fixtures.js';
 import * as genericFixtures from '../../utils/fixtures.js';
-
-/********
-GET EVENT
-********/
 
 test('Reducer handles GET_EVENT_REQUEST as expected', (t) => {
 
@@ -111,9 +109,6 @@ test('Reducer handles GET_EVENT_FAILURE as expected', (t) => {
     t.end();
 });
 
-/********
-UPDATE POLL
-********/
 
 test('Reducer handles UPDATE_POLL as expected', (t) => {
 
@@ -138,10 +133,6 @@ test('Reducer handles UPDATE_POLL as expected', (t) => {
     t.deepEqual(actual, expected, 'Poll successfully updates');
     t.end();
 });
-
-/********
-CONFIRM POLL
-********/
 
 test('Reducer handles CONFIRM_POLL_REQUEST as expected', (t) => {
 
@@ -199,9 +190,6 @@ test('Reducer handles CONFIRM_POLL_FAILURE as expected', (t) => {
     t.end();
 });
 
-/********
-ADD HOST EVENT CHOICE
-********/
 
 test('reducer handles ADD_HOST_EVENT_CHOICE as expected', (t) => {
 
@@ -253,9 +241,6 @@ test('reducer handles ADD_HOST_EVENT_CHOICE as expected', (t) => {
     t.end();
 });
 
-/********
-UPDATE RSVP
-********/
 
 test('Reducer handles UPDATE_RSVP_REQUEST as expected', (t) => {
 
@@ -313,9 +298,6 @@ test('Reducer handles UPDATE_RSVP_FAILURE as expected', (t) => {
     t.end();
 });
 
-/********
-DELETE EVENT
-********/
 
 test('Reducer handles DELETE_EVENT_REQUEST as expected', (t) => {
 
@@ -349,10 +331,6 @@ test('Reducer handles DELETE_EVENT_SUCCESS as expected', (t) => {
     t.end();
 });
 
-
-
-
-
 test('Reducer handles DELETE_EVENT_FAILURE as expected', (t) => {
 
     let initialState = state;
@@ -377,10 +355,6 @@ test('Reducer handles DELETE_EVENT_FAILURE as expected', (t) => {
     t.end();
 });
 
-
-/********
-UPDATE NOTIFICATIONS
-********/
 
 test('Reducer handles UPDATE_NOTIFICATION_REQUEST as expected', (t) => {
 
@@ -414,10 +388,6 @@ test('Reducer handles UPDATE_NOTIFICATION_SUCCESS as expected', (t) => {
     t.end();
 });
 
-
-
-
-
 test('Reducer handles UPDATE_NOTIFICATION_FAILURE as expected', (t) => {
 
     let initialState = state;
@@ -441,3 +411,5 @@ test('Reducer handles UPDATE_NOTIFICATION_FAILURE as expected', (t) => {
     t.deepEqual(actual, expected);
     t.end();
 });
+
+*/

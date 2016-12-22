@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import Contacts from 'react-native-contacts';
-import { View, ListView } from 'react-native';
+import { View, ListView, StyleSheet } from 'react-native';
 import Router from '../../router';
 import ContactRow from './contact-row';
 import Button from '../common/Button';
-import styles from '../../style';
+import styles from '../../../styles';
+
+const separatorStyles = { flex: 1, height: StyleSheet.hairlineWidth, backgroundColor: '#8E8E8E' };
 
 export default class Invite extends Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -14,27 +15,16 @@ export default class Invite extends Component { // eslint-disable-line react/pre
   }
 
   componentWillMount () {
-    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-
-    Contacts.getAll((err, contacts) => {
-      if (err && err.type === 'permissionDenied') {
-        // x.x
-      } else {
-        this.setState({
-          dataSource: ds.cloneWithRows(this.filterContacts(contacts))
-        });
-      }
-    });
+    this.createDataSource(this.props._invitees);
   }
 
-  filterContacts (contacts) {
-    return contacts.map((contact) => {
-      const obj = {};
-      obj.givenName = contact.givenName;
-      obj.familyName = contact.familyName;
-      obj.phoneNumber = contact.phoneNumbers.filter(number => number.label === 'mobile');
-      return obj;
-    }).filter(contact => contact.phoneNumber.length > 0);
+  componentWillReceiveProps (nextProps) {
+    this.createDataSource(nextProps._invitees);
+  }
+
+  createDataSource (contacts) {
+    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+    this.dataSource = ds.cloneWithRows(contacts);
   }
 
   nextPage () {
@@ -42,13 +32,17 @@ export default class Invite extends Component { // eslint-disable-line react/pre
   }
 
   render () {
+    const { toggleContact } = this.props;
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, marginTop: 20 }}>
         {
-          this.state.dataSource &&
+          this.dataSource &&
           <ListView
-            dataSource={this.state.dataSource}
-            renderRow={ ContactRow }
+            dataSource={this.dataSource}
+            renderRow={ (data, sectionID, rowID) => (
+              <ContactRow onPress={ () => toggleContact(rowID)} data={data} rowID={rowID} sectionID={sectionID} />
+            )}
+            renderSeparator={(sectionId, rowId) => <View key={rowId} style={ separatorStyles } />}
           />
         }
 

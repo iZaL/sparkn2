@@ -1,27 +1,19 @@
 import { connect } from 'react-redux';
-import { addInvitee, removeInvitee, clearCreateEvent } from '../../actions/create';
+import { toggleSelectedInvitee, clearCreateEvent } from '../../actions/create';
 import Invite from '../../components/create/invite';
-import jsonState from '../../testState/jsonStateCreate.json';
 
-const mapStateToProps = (state) => { // eslint-disable-line no-unused-vars
-
-  const friends = jsonState.createEvent.friends;
-  const invitees = jsonState.createEvent.invitees;
-
+const mapStateToProps = ({ create }) => {
   return {
-    friends,
-    invitees,
-    eventDetails: jsonState.createEvent.eventDetails
+    name: create.name,
+    description: create.description,
+    _invitees: create._invitees
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  handleSelected: (id, index) => {
-    dispatch(addInvitee(id, index));
-  },
 
-  removeSelected: (id, index) => {
-    dispatch(removeInvitee(id, index));
+  toggleContact: (index) => {
+    dispatch(toggleSelectedInvitee(index));
   },
 
   discardEvent: () => {

@@ -6,7 +6,7 @@ import { View, Image, Text } from 'react-native';
 import RSVPsArea from './confirmed-event/RSVPs-area';
 import { eventNote } from '../../lib/confirmed-event-helpers';
 import formatDate from '../../lib/formatDate';
-import styles from '../../style';
+import styles from '../../../styles';
 
 
 const ConfirmedEvent = ({ event, eventID, RSVPs, invitees, userIsHost,

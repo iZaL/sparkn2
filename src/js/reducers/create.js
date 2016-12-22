@@ -1,8 +1,9 @@
 import update from 'react-addons-update';
 import { SET_DETAILS, SET_WHAT, SET_WHERE, SET_WHEN,
          ADD_INPUT, REMOVE_INPUT,
+         SET_CONTACTS, TOGGLE_SELECTED_INVITEE,
          SAVE_EVENT_REQUEST, SAVE_EVENT_SUCCESS, SAVE_EVENT_FAILURE, CLEAR_CREATE_EVENT,
-         ADD_INVITEE, REMOVE_INVITEE, HYDRATE_CREATE_EVENT } from '../actions/create';
+         HYDRATE_CREATE_EVENT } from '../actions/create';
 
 export const initialState = {
   name: '',
@@ -20,7 +21,7 @@ export const initialState = {
   didSave: undefined
 };
 
-export function create (state = initialState, action) {
+export default function create (state = initialState, action) {
 
   switch (action.type) {
 
@@ -48,6 +49,22 @@ export function create (state = initialState, action) {
         [action.eventType]: { $splice: [[action.inputKey, 1]] }
       });
 
+    case SET_CONTACTS:
+      return {
+        ...state,
+        _invitees: [
+          ...action.data
+        ]
+      };
+
+
+    case TOGGLE_SELECTED_INVITEE: // eslint-disable-line no-case-declarations
+      const newObj = state._invitees[action.index];
+      newObj.isSelected = !state._invitees[action.index].isSelected;
+      return update(state, {
+        _invitees: { $splice: [[action.index, 1, newObj]] }
+      });
+
     case SAVE_EVENT_REQUEST:
     case SAVE_EVENT_SUCCESS:
     case SAVE_EVENT_FAILURE:
@@ -55,12 +72,6 @@ export function create (state = initialState, action) {
 
     case CLEAR_CREATE_EVENT:
       return initialState;
-
-    case ADD_INVITEE:
-      return addInvitee(state, action);
-
-    case REMOVE_INVITEE:
-      return removeInvitee(state, action);
 
     case HYDRATE_CREATE_EVENT:
       return hydrateCreateEvent(state, action);
@@ -111,24 +122,6 @@ function addInput (state, action) {
   }
   const newState = update(state, {
     [action.eventType]: { $push: [initialValue] }
-  });
-  return newState;
-}
-
-function addInvitee (state, action) {
-
-  const newState = update(state, {
-    invitees: { $push: [action.data] },
-    friends: { $splice: [[action.index, 1]] }
-  });
-  return newState;
-}
-
-function removeInvitee (state, action) {
-
-  const newState = update(state, {
-    friends: { $push: [action.data] },
-    invitees: { $splice: [[action.index, 1]] }
   });
   return newState;
 }
