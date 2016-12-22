@@ -1,4 +1,4 @@
-import axios from 'axios';
+/* eslint-disable */
 import getUserID from '../lib/getUserID';
 // import { feedSocket } from '../socket';
 export const GET_USER = 'GET_USER';

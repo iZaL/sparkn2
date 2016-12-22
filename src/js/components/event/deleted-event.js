@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import Button from '../common/Button';
 import styles from '../../../styles';
 
@@ -24,7 +23,7 @@ const DeletedEvent = () => {
           <Button
             buttonStyle={styles.buttonStyle}
             buttonTextStyle={styles.buttonTextStyle}
-            onClick={ () => { Actions.tabbar(); } }
+            onClick={ () => { console.log('navbar'); } }
           >
             Back to Feed
           </Button>

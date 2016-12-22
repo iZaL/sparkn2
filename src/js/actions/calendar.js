@@ -1,4 +1,3 @@
-import axios from 'axios';
 import getUserID from '../lib/getUserID';
 
 export const GET_CALENDAR = 'GET_CALENDAR';
@@ -9,17 +8,17 @@ export const APPLY_FILTER = 'APPLY_FILTER';
 export const CLEAR_FILTER = 'CLEAR_FILTER';
 
 export function getCalendar () {
-  const id = getUserID();
+  const id = getUserID(); //eslint-disable-line
   return (dispatch) => {
     dispatch(getCalendarRequest());
 
-    axios.get(`/get-calendar?userID=${id}`)
-      .then((response) => {
-        dispatch(getCalendarSuccess(response.data));
-      })
-    .catch((error) => {
-      dispatch(getCalendarFailure(error));
-    });
+    // axios.get(`/get-calendar?userID=${id}`)
+    //   .then((response) => {
+    //     dispatch(getCalendarSuccess(response.data));
+    //   })
+    // .catch((error) => {
+    //   dispatch(getCalendarFailure(error));
+    // });
   };
 }
 

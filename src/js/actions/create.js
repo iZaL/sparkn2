@@ -1,6 +1,3 @@
-import axios from 'axios';
-// import getUserID from '../lib/getUserID';
-
 export const SET_DETAILS = 'SET_DETAILS';
 export const SET_WHAT = 'SET_WHAT';
 export const SET_WHERE = 'SET_WHERE';
@@ -61,18 +58,18 @@ export function setWhen (data, inputKey, format) {
 * SAVE EVENT ACTIONS
 ********/
 
-export function saveEvent (eventData) {
+export function saveEvent (eventData) { //eslint-disable-line
   return function (dispatch) {
     dispatch(saveEventRequest());
 
-    return axios.post('http://localhost:3000/events', eventData)
-      .then(() => {
-        dispatch(saveEventSuccess());
-        dispatch(clearCreateEvent());
-      })
-      .catch((error) => {
-        dispatch(saveEventFailure(error));
-      });
+    // return axios.post('http://localhost:3000/events', eventData)
+    //   .then(() => {
+    //     dispatch(saveEventSuccess());
+    //     dispatch(clearCreateEvent());
+    //   })
+    //   .catch((error) => {
+    //     dispatch(saveEventFailure(error));
+    //   });
   };
 }
 

@@ -1,4 +1,5 @@
-import axios from 'axios';
+/* eslint-disable */
+
 import getUserID from '../lib/getUserID';
 
 export const SET_FILE = 'SET_FILE';
@@ -64,17 +65,17 @@ export function getPhotos (photos) {
 ********/
 
 
-export function getS3URL (filename, filetype, eventID) {
+export function getS3URL (filename, filetype, eventID) { //eslint-disable-line
   return (dispatch) => {
     dispatch(getS3URLRequest());
 
-    axios.get(`/get-s3-url?filename=${filename}&filetype=${filetype}&eventID=${eventID}`)
-      .then((response) => {
-        dispatch(getS3URLSuccess(response.data));
-      })
-      .catch((error) => {
-        dispatch(getS3URLFailure(error));
-      });
+    // axios.get(`/get-s3-url?filename=${filename}&filetype=${filetype}&eventID=${eventID}`)
+    //   .then((response) => {
+    //     dispatch(getS3URLSuccess(response.data));
+    //   })
+    //   .catch((error) => {
+    //     dispatch(getS3URLFailure(error));
+    //   });
   };
 }
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import moment from 'moment';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
-// import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import getUserID from '../lib/getUserID';
 import formatDate from '../lib/formatDate';

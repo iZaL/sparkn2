@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import Profile from '../components/profile';
-import removeCookie from '../lib/removeCookie';
 import { changeName, editName } from '../actions/user';
 import jsonState from '../testState/jsonState.json';
 
@@ -16,7 +15,6 @@ const mapDispatchToProps = (dispatch) => {
 
   return {
     handleLogOut: () => {
-      removeCookie();
       // Actions.login({ type: 'reset' });
     },
     handleChangeName: (inputType, e) => {

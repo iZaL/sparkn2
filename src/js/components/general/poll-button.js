@@ -1,6 +1,5 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import Button from '../common/Button';
 import styles from '../../../styles';
 
@@ -19,7 +18,7 @@ const PollButton = ({ poll, handlePollConfirmation, eventID, voteButtonText }) =
 
   function handleSelection (poll, eventID) { // eslint-disable-line no-shadow
     handlePollConfirmation(poll, eventID);
-    Actions.feed();
+    console.log('got to feed');
   }
 
   return (

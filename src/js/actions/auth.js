@@ -1,4 +1,3 @@
-// import { Actions } from 'react-native-router-flux';
 //
 // export const USER_LOGIN = 'USER_LOGIN';
 // export const USER_LOGIN_REQUEST = 'USER_LOGIN_REQUEST';

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import getUserID from '../lib/getUserID';
 import { clearCreateEvent } from './create';
 import { getPhotos, getDeletedPhotos } from './photos';
@@ -49,19 +48,19 @@ export const RESET_EVENT_STATE = 'RESET_EVENT_STATE';
 GET EVENT ACTIONS
 ********/
 
-export function getEvent (eventID) {
+export function getEvent (eventID) { //eslint-disable-line
   return (dispatch) => {
     dispatch(getEventRequest());
 
-    axios.get(`/get-event?eventID=${eventID}&userID=${getUserID()}`)
-      .then((response) => {
-        dispatch(getEventSuccess(response.data));
-        dispatch(getPhotos(response.data.photos));
-        dispatch(getDeletedPhotos(response.data.deletedPhotos));
-      })
-      .catch((error) => {
-        dispatch(getEventFailure(error));
-      });
+    // axios.get(`/get-event?eventID=${eventID}&userID=${getUserID()}`)
+    //   .then((response) => {
+    //     dispatch(getEventSuccess(response.data));
+    //     dispatch(getPhotos(response.data.photos));
+    //     dispatch(getDeletedPhotos(response.data.deletedPhotos));
+    //   })
+    //   .catch((error) => {
+    //     dispatch(getEventFailure(error));
+    //   });
   };
 }
 
@@ -102,7 +101,7 @@ export function updatePoll (eventType, index) {
 
 export function confirmPoll (poll, eventID) {
   return (dispatch) => {
-    const payload = {
+    const payload = { //eslint-disable-line
       poll,
       eventID,
       userID: getUserID()
@@ -110,14 +109,14 @@ export function confirmPoll (poll, eventID) {
 
     dispatch(confirmPollRequest());
 
-    axios.post('/confirm-poll', payload)
-      .then((response) => {
-        dispatch(confirmPollSuccess(response.data));
-        dispatch(getEvent(eventID));
-      })
-      .catch((error) => {
-        dispatch(confirmPollFailure(error));
-      });
+    // axios.post('/confirm-poll', payload)
+    //   .then((response) => {
+    //     dispatch(confirmPollSuccess(response.data));
+    //     dispatch(getEvent(eventID));
+    //   })
+    //   .catch((error) => {
+    //     dispatch(confirmPollFailure(error));
+    //   });
   };
 }
 
@@ -156,20 +155,20 @@ export function addHostEventChoice (eventType, value, index) {
 
 export function confirmEvent (hostEventChoices, eventID) {
   return (dispatch) => {
-    const payload = {
+    const payload = { //eslint-disable-line
       hostEventChoices,
       eventID
     };
 
     dispatch(confirmEventRequest());
 
-    axios.post('/confirm-event', payload)
-      .then(() => {
-        dispatch(confirmEventSuccess());
-      })
-      .catch(() => {
-        dispatch(confirmEventFailure());
-      });
+    // axios.post('/confirm-event', payload)
+    //   .then(() => {
+    //     dispatch(confirmEventSuccess());
+    //   })
+    //   .catch(() => {
+    //     dispatch(confirmEventFailure());
+    //   });
   };
 }
 
@@ -199,7 +198,7 @@ UPDATE RSVP ACTIONS
 
 export function updateRSVP (RSVPStatus, eventID) {
   return (dispatch) => {
-    const payload = {
+    const payload = { //eslint-disable-line
       userID: getUserID(),
       eventID,
       RSVPStatus
@@ -207,13 +206,13 @@ export function updateRSVP (RSVPStatus, eventID) {
 
     dispatch(updateRSVPRequest());
 
-    axios.post('/update-rsvp', payload)
-      .then((response) => {
-        dispatch(updateRSVPSuccess(response.data));
-      })
-      .catch((error) => {
-        dispatch(updateRSVPFailure(error));
-      });
+    // axios.post('/update-rsvp', payload)
+    //   .then((response) => {
+    //     dispatch(updateRSVPSuccess(response.data));
+    //   })
+    //   .catch((error) => {
+    //     dispatch(updateRSVPFailure(error));
+    //   });
   };
 }
 
@@ -246,17 +245,17 @@ DELETE EVENT ACTIONS
 ********/
 
 
-export function deleteEvent (eventID) {
+export function deleteEvent (eventID) { //eslint-disable-line
   return (dispatch) => {
     dispatch(deleteEventRequest());
 
-    axios.get(`/delete-event?eventID=${eventID}`)
-      .then((response) => {
-        dispatch(deleteEventSuccess(response.data));
-      })
-      .catch((error) => {
-        dispatch(deleteEventFailure(error));
-      });
+    // axios.get(`/delete-event?eventID=${eventID}`)
+    //   .then((response) => {
+    //     dispatch(deleteEventSuccess(response.data));
+    //   })
+    //   .catch((error) => {
+    //     dispatch(deleteEventFailure(error));
+    //   });
   };
 }
 
@@ -288,7 +287,7 @@ export function deleteEventFailure (error) {
 
 export function saveEditedEvent (eventName, eventDescription, eventNote, eventWhat, eventWhere, eventWhen, eventID) { //eslint-disable-line
   return (dispatch) => {
-    const payload = {
+    const payload = { //eslint-disable-line
       eventID,
       eventName,
       eventDescription,
@@ -301,14 +300,14 @@ export function saveEditedEvent (eventName, eventDescription, eventNote, eventWh
 
     dispatch(saveEditedEventRequest());
 
-    axios.post('/edit-event', payload)
-      .then(() => {
-        dispatch(saveEditedEventSuccess());
-        dispatch(clearCreateEvent());
-      })
-      .catch((error) => {
-        dispatch(saveEditedEventFailure(error));
-      });
+    // axios.post('/edit-event', payload)
+    //   .then(() => {
+    //     dispatch(saveEditedEventSuccess());
+    //     dispatch(clearCreateEvent());
+    //   })
+    //   .catch((error) => {
+    //     dispatch(saveEditedEventFailure(error));
+    //   });
   };
 }
 
@@ -337,17 +336,17 @@ export function saveEditedEventFailure (error) {
 /********
 * UPDATE NOTIFICATIONS ACTIONS
 ********/
-export function updateNotification (index) {
+export function updateNotification (index) { //eslint-disable-line
   return (dispatch) => {
     dispatch(updateNotificationRequest());
 
-    axios.get(`/update-notification?index=${index}&userID=${getUserID()}`)
-      .then(() => {
-        dispatch(updateNotificationSuccess());
-      })
-      .catch((error) => {
-        dispatch(updateNotificationFailure(error));
-      });
+    // axios.get(`/update-notification?index=${index}&userID=${getUserID()}`)
+    //   .then(() => {
+    //     dispatch(updateNotificationSuccess());
+    //   })
+    //   .catch((error) => {
+    //     dispatch(updateNotificationFailure(error));
+    //   });
   };
 }
 
