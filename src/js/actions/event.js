@@ -1,6 +1,4 @@
 import getUserID from '../lib/getUserID';
-import { clearCreateEvent } from './create';
-import { getPhotos, getDeletedPhotos } from './photos';
 
 export const GET_EVENT = 'GET_EVENT';
 export const GET_EVENT_REQUEST = 'GET_EVENT_REQUEST';
