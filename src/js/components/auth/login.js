@@ -1,10 +1,16 @@
 import React from 'react';
 import { Text, TextInput, View } from 'react-native';
+import Router from '../../router';
 import Button from '../common/Button';
 import styles from '../../../styles';
 
 
-export default function Login () {
+export default function Login ({ navigator }) {
+
+  const goToNavbar = () => {
+    navigator.push(Router.getRoute('navbar'));
+  };
+
   return (
     <View style={{ marginTop: 50 }}>
       <Text style={{ paddingLeft: 5 }}>Email</Text>
@@ -28,7 +34,7 @@ export default function Login () {
         />
       </View>
 
-      <Button textStyle={ styles.buttonTextStyle } buttonStyle={ styles.buttonStyle }>
+      <Button textStyle={ styles.buttonTextStyle } buttonStyle={ styles.buttonStyle } onPress={ goToNavbar }>
         Login
       </Button>
     </View>
