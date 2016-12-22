@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { View, Text, DatePickerIOS } from 'react-native';
 import Router from '../../router';
 import AddInput from '../general/add-input';
 import EventDetailsHeader from '../general/event-details-header';
 import Button from '../common/Button';
-import styles from '../../style';
+import styles from '../../../styles';
 
 const When = ({ name, description, data, addInput, removeInput, handleDate, handleTime, navigator }) => {
 

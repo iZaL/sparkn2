@@ -1,3 +1,4 @@
+/*
 import test from 'tape';
 import { GET_CALENDAR, GET_CALENDAR_REQUEST, GET_CALENDAR_SUCCESS, GET_CALENDAR_FAILURE } from '../../../src/js/actions/calendar.js';
 import { getCalendar, getCalendarRequest, getCalendarSuccess, getCalendarFailure, updatePoll } from '../../../src/js/actions/calendar.js';
@@ -65,3 +66,4 @@ test('getCalendarFailure action creator returns expected action', (t) => {
     t.deepEqual(actual, expected);
     t.end();
 });
+*/

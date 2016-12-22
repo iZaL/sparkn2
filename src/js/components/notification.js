@@ -8,7 +8,7 @@ import formatDate from '../lib/formatDate';
 // import Button from './common/Button';
 import CardSection from './common/CardSection';
 import Card from './common/Card';
-import styles from '../style';
+import styles from '../../styles';
 
 moment.locale('en-gb');
 

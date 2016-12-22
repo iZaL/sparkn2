@@ -5,7 +5,7 @@ import Router from '../../router';
 import AddInput from '../general/add-input';
 import EventDetailsHeader from '../general/event-details-header';
 import Button from '../common/Button';
-import styles from '../../style';
+import styles from '../../../styles';
 
 const Where = ({ name, description, data, addInput, removeInput, handleChange, navigator }) => { // eslint-disable-line react/prop-types
 
@@ -14,11 +14,6 @@ const Where = ({ name, description, data, addInput, removeInput, handleChange, n
   };
 
   const inputs = data.map((value, i) => {
-
-    const templateNoSpace = `${value.placeName}${value.placeAddress}`;
-    const templateWithSpace = `${value.placeName} ${value.placeAddress}`;
-    const chosenTemplate = (value.placeAddress === '') ? templateNoSpace : templateWithSpace;
-    const fullAddress = (value.placeName ? chosenTemplate : '');
 
     return (
       <Input

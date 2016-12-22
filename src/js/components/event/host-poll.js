@@ -1,9 +1,11 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-else-return */
 import React from 'react';
 import { View, Text } from 'react-native';
 import { EventWhatSection, EventWhereSection, EventWhenSection } from './poll-sections';
 import HostCreateEventButton from './host-create-event-button';
 import Button from '../common/Button';
-import styles from '../../style';
+import styles from '../../../styles';
 
 const HostPoll = ({ event, tally, hostEventChoices, //eslint-disable-line
   handleHostEventChoices, handleConfirmEvent, eventID  }) => { //eslint-disable-line

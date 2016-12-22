@@ -3,7 +3,7 @@ import { View, ListView, StyleSheet } from 'react-native';
 import Router from '../../router';
 import ContactRow from './contact-row';
 import Button from '../common/Button';
-import styles from '../../style';
+import styles from '../../../styles';
 
 const separatorStyles = { flex: 1, height: StyleSheet.hairlineWidth, backgroundColor: '#8E8E8E' };
 

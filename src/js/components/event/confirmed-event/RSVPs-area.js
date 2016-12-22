@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 import Button from '../../common/Button';
-import styles from '../../../style';
+import styles from '../../../../styles';
 
 const RSVPsArea = ({ eventID, invitees, RSVPs, respondedList, notRespondedList, handleClick }) => {
 
-  function RSVPUserList (RSVPs, invitees, status) {
+  function RSVPUserList (RSVPs, invitees, status) { // eslint-disable-line
 
     return RSVPs[status].map((id, index) => {
       const usersWithRSVP = invitees.filter(userObject => id === userObject.id);

@@ -5,8 +5,10 @@ import user from './user';
 import calendar from './calendar';
 import { event } from './event';
 import notifications from './notifications';
-import { create } from './create';
+import create from './create';
 import photos from './photos';
+import signup from './signup';
+import login from './login';
 
 
 export default combineReducers({
@@ -17,5 +19,7 @@ export default combineReducers({
   event,
   notifications,
   create,
-  photos
+  photos,
+  signup,
+  login
 });
