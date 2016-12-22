@@ -1,5 +1,5 @@
 import test from 'tape';
-import { create as reducer, initialState } from '../../../../src/js/reducers/create';
+import reducer, { initialState } from '../../../../src/js/reducers/create';
 import { contacts as data } from '../../../utils/fixtures';
 
 

@@ -1,7 +1,7 @@
 import test from 'tape';
 import deepFreeze from '../utils/deep-freeze';
 
-test('deepFreeze makes an object immutable', (t) => {
+test.skip('deepFreeze makes an object immutable', (t) => {
 
   t.plan(1);
 

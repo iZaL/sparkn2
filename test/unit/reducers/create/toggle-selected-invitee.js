@@ -1,5 +1,5 @@
 import test from 'tape';
-import { create as reducer, initialState } from '../../../../src/js/reducers/create';
+import reducer, { initialState } from '../../../../src/js/reducers/create';
 import { contacts as data, contactsSelected } from '../../../utils/fixtures';
 
 
@@ -17,7 +17,7 @@ test('Reducer handles TOGGLE_SELECTED_INVITEE as expected', (t) => {
   t.deepEqual(nextState, expected, 'TOGGLE_SELECTED_INVITEE sets isSelected to true');
 });
 
-test('Reducer handles TOGGLE_SELECTED_INVITEE as expected', (t) => {
+test.skip('Reducer handles TOGGLE_SELECTED_INVITEE as expected', (t) => {
   t.plan(1);
 
   const action = {
