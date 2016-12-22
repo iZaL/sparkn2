@@ -5,7 +5,7 @@ import ConfirmEventWhat from './confirm-what';
 import ConfirmEventWhere from './confirm-where';
 import ConfirmEventWhen from './confirm-when';
 import { isPoll } from '../../lib/create-event-helpers';
-import styles from '../../style';
+import styles from '../../../styles';
 import Button from '../common/Button';
 
 export default function Confirm ({ data, saveEvent, navigation }) { // eslint-disable-line

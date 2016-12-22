@@ -1,16 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
-import TopBar from '../event/top-bar';
-import styles from '../../style';
+import styles from '../../../styles';
 
-const Create = ({ title, discardEvent, eventDetails }) => {
+const Create = ({ title, discardEvent, eventDetails }) => { // eslint-disable-line no-unused-vars
   return (
     <View>
-      <EventDetailsHeader
-        location={ title }
-        eventName={ eventDetails.eventName }
-        eventDescription={ eventDetails.eventDescription }
-      />
       <View style={styles.container} />
     </View>
   );

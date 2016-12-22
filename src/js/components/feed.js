@@ -7,7 +7,7 @@ import FilterPanel from './general/filter-panel';
 import Button from './common/Button';
 import Spinner from './common/Spinner';
 // import Navbar from './general/navbar';
-import styles from '../style';
+import styles from '../../styles';
 
 const Feed = ({ navigator, allEvents, notifications, isFetching,
   handleUpdateNotification, displaySome, displayAll, feedIsFiltered, isShowHosting }) => {

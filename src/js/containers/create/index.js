@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Create from '../../components/create';
-import { clearCreateEvent } from '../../actions/create-event';
+import { clearCreateEvent } from '../../actions/create';
 import jsonState from '../../testState/jsonStateCreate.json';
 
 const mapStateToProps = state => ({ // eslint-disable-line no-unused-vars

@@ -5,7 +5,7 @@ import FilterPanel from '../general/filter-panel';
 import Spinner from '../common/Spinner';
 import TopBar from '../event/top-bar';
 import getUserID from '../../lib/getUserID';
-import styles from '../../style';
+import styles from '../../../styles';
 
 const Calendar = ({ allEvents, filteredEvents, isFetching,
   displaySome, displayAll, calendarIsFiltered, isShowHosting }) => {

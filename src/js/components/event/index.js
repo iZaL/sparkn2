@@ -8,7 +8,7 @@ import ConfirmedEvent from './confirmed-event';
 // import Modal from '../general/modal';
 import TopBar from './top-bar';
 import DeletedEvent from './deleted-event';
-import styles from '../../style';
+import styles from '../../../styles';
 
 
 class Event extends React.Component {

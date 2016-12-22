@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Button from '../common/Button';
-import styles from '../../style';
+import styles from '../../../styles';
 
 const ConfirmEventWhere = ({ eventWhere }) => { // eslint-disable-line react/prop-types
 
@@ -12,7 +12,7 @@ const ConfirmEventWhere = ({ eventWhere }) => { // eslint-disable-line react/pro
 
     return (
       <View
-        style={styles.rowSpaced}
+        style={styles.pollSection}
         key={ i }
       >
         { (hideTitle) &&

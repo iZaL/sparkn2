@@ -1,34 +1,34 @@
+/* eslint-disable no-use-before-define */
 import React from 'react';
 import { View } from 'react-native';
-//import classnames from 'classnames';
 import Button from '../common/Button';
 
 const FilterPanel = ({ displaySome, displayAll, dataIsFiltered, isShowHosting }) => {
 
-    let allButtonButton = (!dataIsFiltered ? styles.filterButtonSelected : styles.filterButton);
-    let allButtonText = (!dataIsFiltered ? styles.buttonTextSelected : styles.buttonText);
+  const allButtonButton = (!dataIsFiltered ? styles.filterButtonSelected : styles.filterButton);
+  const allButtonText = (!dataIsFiltered ? styles.buttonTextSelected : styles.buttonText);
 
-    let receivedButtonButton = (dataIsFiltered && !isShowHosting ? styles.filterButtonSelected : styles.filterButton);
-    let receivedButtonText = (dataIsFiltered && !isShowHosting ? styles.buttonTextSelected : styles.buttonText);
+  const receivedButtonButton = (dataIsFiltered && !isShowHosting ? styles.filterButtonSelected : styles.filterButton);
+  const receivedButtonText = (dataIsFiltered && !isShowHosting ? styles.buttonTextSelected : styles.buttonText);
 
-    let hostingButtonButton = (dataIsFiltered && isShowHosting ? styles.filterButtonSelected : styles.filterButton);
-    let hostingButtonText = (dataIsFiltered && isShowHosting ? styles.buttonTextSelected : styles.buttonText);
+  const hostingButtonButton = (dataIsFiltered && isShowHosting ? styles.filterButtonSelected : styles.filterButton);
+  const hostingButtonText = (dataIsFiltered && isShowHosting ? styles.buttonTextSelected : styles.buttonText);
 
-    return (
-        <View style={styles.rowFilterPanel}>
+  return (
+    <View style={styles.rowFilterPanel}>
 
-            <Button buttonStyle={allButtonButton} textStyle={allButtonText} onPress={ displayAll }>
-                All
-            </Button>
-            <Button buttonStyle={ receivedButtonButton } textStyle={receivedButtonText} onPress={(e) => displaySome(false) } >
-                Received
-            </Button>
-            <Button buttonStyle={ hostingButtonButton } textStyle={hostingButtonText} onPress={(e) => displaySome(true) } >
-                Hosting
-            </Button>
+      <Button buttonStyle={allButtonButton} textStyle={allButtonText} onPress={ displayAll }>
+        All
+      </Button>
+      <Button buttonStyle={ receivedButtonButton } textStyle={receivedButtonText} onPress={ () => displaySome(false) } >
+        Received
+      </Button>
+      <Button buttonStyle={ hostingButtonButton } textStyle={hostingButtonText} onPress={ () => displaySome(true) } >
+        Hosting
+      </Button>
 
-        </View>
-    );
+    </View>
+  );
 };
 
 const styles = {
@@ -55,18 +55,18 @@ const styles = {
     flex: 1
   },
   buttonText: {
-      fontSize: 12,
-      color: 'blue',
-      fontWeight: '300',
-      paddingTop: 5,
-      paddingBottom: 5
+    fontSize: 12,
+    color: 'blue',
+    fontWeight: '300',
+    paddingTop: 5,
+    paddingBottom: 5
   },
   buttonTextSelected: {
-      fontSize: 12,
-      color: 'white',
-      fontWeight: '300',
-      paddingTop: 5,
-      paddingBottom: 5
+    fontSize: 12,
+    color: 'white',
+    fontWeight: '300',
+    paddingTop: 5,
+    paddingBottom: 5
   },
   filterButtonSelected: {
     backgroundColor: 'blue',

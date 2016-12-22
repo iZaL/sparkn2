@@ -1,5 +1,7 @@
 import { createRouter } from '@exponent/ex-navigation';
-import Intro from './components/intro';
+import Index from './components/auth';
+import LoginContainer from './containers/auth/login';
+import SignupContainer from './containers/auth/signup';
 import AlbumsContainer from './containers/albums';
 import CalendarContainer from './containers/calendar';
 import FeedContainer from './containers/feed';
@@ -14,7 +16,9 @@ import EventContainer from './containers/event';
 import Navbar from './components/navbar';
 
 const Router = createRouter(() => ({
-  intro: () => Intro,
+  auth: () => Index,
+  login: () => LoginContainer,
+  signup: () => SignupContainer,
   albums: () => AlbumsContainer,
   calendar: () => CalendarContainer,
   feed: () => FeedContainer,

@@ -1,13 +1,12 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-else-return */
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { View, Image, Text } from 'react-native';
-// import EventDetailsHeader from '../general/event-details-header';
 import RSVPsArea from './confirmed-event/RSVPs-area';
-import UploadPanel from './confirmed-event/upload-panel';
-import PhotoStream from './confirmed-event/photo-stream';
-import Message from '../general/message';
 import { eventNote } from '../../lib/confirmed-event-helpers';
 import formatDate from '../../lib/formatDate';
-import styles from '../../style';
+import styles from '../../../styles';
 
 
 const ConfirmedEvent = ({ event, eventID, RSVPs, invitees, userIsHost,
@@ -24,9 +23,9 @@ const ConfirmedEvent = ({ event, eventID, RSVPs, invitees, userIsHost,
 
   const notRespondedList = (responded, invitees) => {
 
-    const notResponded = invitees.filter((invitedUser) => { responded.indexOf(invitedUser.id) === -1; });
+    const notResponded = invitees.filter(invitedUser => responded.indexOf(invitedUser.id) === -1);
 
-    return notResponded.map((user, i) => {
+    return notResponded.map((user) => {
       return (
         <View style={styles.item} key={ user.id }>
           <Image style={styles.uiAvatarImage} source={{ uri: user.photoURL }} />
@@ -75,15 +74,14 @@ const ConfirmedEvent = ({ event, eventID, RSVPs, invitees, userIsHost,
 
           <View>
             <View style={styles.date}>
-              { formatDate(event.eventWhen[0].date, true) || "TBC" }
+              { formatDate(event.eventWhen[0].date, true) || 'TBC' }
             </View>
             <View style={styles.time}>
-              { event.eventWhen[0].time || "TBC" }
+              { event.eventWhen[0].time || 'TBC' }
             </View>
           </View>
         </View>
 
-        <Message text="Successfully shared to Facebook" />
         <RSVPsArea
           eventID={ eventID }
           respondedList={ respondedList }
@@ -93,23 +91,8 @@ const ConfirmedEvent = ({ event, eventID, RSVPs, invitees, userIsHost,
           RSVPs={ RSVPs }
         />
 
-        <UploadPanel
-          eventID={ eventID }
-          hasPhotoLoaded={ hasPhotoLoaded }
-          handleUploadPhoto={ handleUploadPhoto }
-          file={ file }
-          handleSetFile={ handleSetFile }
-        />
-
-        <PhotoStream
-          photos={ photos }
-          hasPhotoLoaded={ hasPhotoLoaded }
-          deletedPhotos={ deletedPhotos }
-          handleDeletePhoto={ handleDeletePhoto }
-          handleSharePhoto={ handleSharePhoto }
-          getSelectedPhoto={ getSelectedPhoto }
-          eventID={ eventID }
-        />
+        <Text>Upload panel goes here</Text>
+        <Text>Photo stream goes here</Text>
 
       </View>
 
